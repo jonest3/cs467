@@ -1,9 +1,3 @@
-
-
-
-game_over = True
-
-
 class Item:
 
     # initializes the item. name = the name of the item

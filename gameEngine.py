@@ -18,6 +18,9 @@ class Item:
     def get_trans_id(self):
         return self._TransID
 
+    def examine(self):
+        print(self.Desc)
+
     # use some object on this item to see if it does anything. If it does, turn into the relevant item
     # and return 1, if the items do not interact return 0
     def use(self, input):
@@ -101,25 +104,28 @@ class Player:
     # takes as argument the name of an object the player wishes to examine more closely. If the object is found, prints
     # the description of that object
     def look(self, target):
+        if self._Location.Name is target:
+            self._Location.examine()
+            return 1
         for thing in self.Bag:
             if thing.Name is target:
-                print(thing.Desc)
+                thing.examine()
                 return 1
         for thing in self._Location.Floor:
             if thing.Name is target:
-                print(thing.Desc)
+                thing.examine()
                 return 1
         for thing in self._Location.Shelves:
             if thing.Name is target:
-                print(thing.Desc)
+                thing.examine()
                 return 1
         for thing in self._Location.Traps:
             if thing.Name is target:
-                print(thing.Desc)
+                thing.examine()
                 return 1
         for thing in self._Location.Doors:
             if thing.Name is target:
-                print(thing.Desc)
+                thing.examine()
                 return 1
         print("There is no " + target + " here.")
         return 0
@@ -187,7 +193,7 @@ class Room:
     def add_neighbor(self, room):
         self.Neighbors.append(room)
 
-    def look_around(self):
+    def examine(self):
         print(self.Desc + " through nearby doorways, you see: ")
         for room in self.Neighbors:
             print(room.Name)
@@ -208,7 +214,7 @@ class Room:
     def enter(self):
         print("You enter the " + self.Name)
         if not self.Visited:
-            self.look_around()
+            self.examine()
             self.Visited = True
 
 
@@ -224,6 +230,13 @@ class Door:
 
     def get_lock_val(self):
         return self._LockVal
+
+    def examine(self):
+        print(self.Desc)
+        if self.Locked:
+            print("It appears impassable")
+        else:
+            print("You have unlocked this door and are free to pass")
 
     # takes an Item as input, if the door is locked it compares the key value of the item passed against the key it
     # expects. If they match, it adds the room it stores (leads to) to the list of Rooms accessible from the room set as
@@ -273,6 +286,8 @@ class Shelf:
 
     def examine(self):
         if self.Locked:
+            print(self.Desc)
+            print("It seems like there may something in this, but you can't seem to get inside it.")
             return 0
         else:
             print("The " + self.Name + " contains:")
@@ -296,6 +311,11 @@ class Trap:
 
     def get_lock_val(self):
         return self._LockVal
+
+    def examine(self):
+        print(self.Desc)
+        if not self.Locked:
+            print("It appears to be disarmed and safe to pass")
 
     def spring(self):
         print(self.Spring_desc)

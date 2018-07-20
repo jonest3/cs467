@@ -1,3 +1,6 @@
+
+
+
 game_over = True
 
 
@@ -18,16 +21,13 @@ class Item:
     def get_lock_val(self):
         return self._LockVal
 
-    def get_key_val(self):
-        return self.KeyVal
-
     def get_trans_id(self):
         return self._TransID
 
     # use some object on this item to see if it does anything. If it does, turn into the relevant item
     # and return 1, if the items do not interact return 0
     def use(self, input):
-        key = input.getKeyVal()
+        key = input.KeyVal
         if self._LockVal is not None and key == self._LockVal:
             output = "It works! The " + input.get_name() + " and the " + self.Name + " become a " \
                      + self._TransID.getName()
@@ -42,12 +42,22 @@ class Item:
             return 0
 
 
+# represents the player character and the actions they take
 class Player:
 
-    def __init__(self, location):
+    # Initializes with a Room variable indicating the Room the player starts the game in, an integer indicating how
+    # many actions the player has before time runs out, and a Bag list indicating the items what
+    # the player has in their inventory
+    def __init__(self, location, time):
         self.Bag = []
         self._Location = location
+        self.Turns_Left = time
 
+    def add_item(self, item):
+        self.Bag.append(item)
+
+    # takes the name of an item the player wishes to pick up, and searches everywhere the player has access to for an
+    # Item with a matching name. If found, adds the Item to the player's Bag construct
     def take(self, item):
         for thing in self._Location.Floor:
             if thing.Name is item:
@@ -56,15 +66,19 @@ class Player:
                 print("You pick up the " + item + "and put it in your bag")
                 return 1
         for shelf in self._Location.Shelves:
-            for thing in shelf.Contents:
-                if thing.Name is item:
-                    self.Bag.append(thing)
-                    self._Location.Floor.remove(thing)
-                    print("You pick up the " + item + "and put it in your bag")
-                    return 1
+            if not shelf.Locked:
+                for thing in shelf.Contents:
+                        if thing.Name is item:
+                            self.Bag.append(thing)
+                            self._Location.Floor.remove(thing)
+                            print("You pick up the " + item + "and put it in your bag")
+                            return 1
         print("There is no " + item + " here.")
         return 0
 
+    # represents the player using an item from their inventory on another object (combining it with another item in
+    # their inventory, using it to unlock a door, or shelf, or disarm a trap). Takes as argument the Name of the Item
+    # the player wishes to use as item and the Name of the object they wish to use it on as target
     def use(self, item, target):
         lock = None
         key = None
@@ -83,12 +97,15 @@ class Player:
             if thing.Name is target:
                 lock = thing
         if lock and key:
-            lock.use(key)
+            if lock.use(key) == 1:
+                self.Bag.remove(key)
         if not key:
             print("You do not have a " + item)
         elif not lock:
             print("There is no " + target + " to use your " + item + " on.")
 
+    # takes as argument the name of an object the player wishes to examine more closely. If the object is found, prints
+    # the description of that object
     def look(self, target):
         for thing in self.Bag:
             if thing.Name is target:
@@ -113,9 +130,11 @@ class Player:
         print("There is no " + target + " here.")
         return 0
 
+    # gives the player the more detailed text they receive upon first entering a room
     def look_around(self):
         self._Location.look_around()
 
+    # takes as argument the name of an Item the player wishes to remove from their bag
     def drop(self, item):
         for thing in self.Bag:
             if thing.Name is item:
@@ -126,17 +145,18 @@ class Player:
         print("You do not have a " + item)
         return 0
 
+    # takes as argument the name of a room the player wishes to move to, and attempts to move there (if it can be found
+    # and there are no traps preventing it)
     def move(self, room):
-        global game_over
         for thing in self._Location.Neighbors:
             if thing.Name is room:
                 for trap in self._Location.Traps:
                     if trap.Locked is True:
                         trap.spring()
-                        if trap.Lethal is True:
-                            game_over = True
-                        else:
+                        if trap.Destination:
                             self._Location = trap.Destination
+                        else:
+                            self.Turns_Left = 0
                         return 2
                 thing.enter()
                 self._Location = thing
@@ -146,7 +166,8 @@ class Player:
 
 
 class Room:
-
+    # Represents the discrete spaces found within the dungeon. Initializes with a name and a description, as well as
+    # empty lists to contain the Items, Doors, Shelves, Traps, and other Rooms that can be accessed from this room
     def __init__(self, name, desc):
         self.Name = name
         self.Desc = desc
@@ -157,11 +178,20 @@ class Room:
         self.Neighbors = []
         self.Visited = False
 
-    def get_name(self):
-        return self.Name
+    def add_item(self, item):
+        self.Floor.append(item)
 
-    def get_desc(self):
-        return self.Desc
+    def add_door(self, door):
+        self.Doors.append(door)
+
+    def add_shelf(self, shelf):
+        self.Shelves.append(shelf)
+
+    def add_trap(self, trap):
+        self.Traps.append(trap)
+
+    def add_neighbor(self, room):
+        self.Neighbors.append(room)
 
     def look_around(self):
         print(self.Desc + " through nearby doorways, you see: ")
@@ -189,8 +219,7 @@ class Room:
 
 
 class Door:
-    # init door with name, description, value it expects to unlock, and the room it adds to the neighbor list when
-    # unlocked
+    # init door with name, description, key value that will unlock it, and the room the door is located in
     def __init__(self, name, location, desc, lock_val, neighbor):
         self.Name = name
         self.Location = location
@@ -202,7 +231,12 @@ class Door:
     def get_lock_val(self):
         return self._LockVal
 
-    def use(self, key):
+    # takes an Item as input, if the door is locked it compares the key value of the item passed against the key it
+    # expects. If they match, it adds the room it stores (leads to) to the list of Rooms accessible from the room set as
+    # the Door's location. (notably, location need not be the room where the player finds a door, and a door could be
+    # implemented that doesn't change the room the player is in, but they must search to see what they have unlocked.)
+    def use(self, input):
+        key = input.KeyVal
         if self.Locked:
             if key == self._LockVal:
                 print("Success! The door opens, and you can see that it leads to " + self.neighbor.Name)
@@ -213,42 +247,58 @@ class Door:
                 return 0
         else:
             print("That's already unlocked. It leads to " + self.neighbor.Name)
+            return 0
 
 
 class Shelf:
-    def __init__(self, name, desc, locked, location, lock_val=None):
+    # represents objects found in rooms that contain Items. Initializes with the name of the Shelf, a description,
+    # weather or not the Shelf needs to be unlocked before the items in it can be accessed, and, if it does need to be
+    # unlocked, what key value it is expecting to unlock it
+    def __init__(self, name, desc, locked, lock_val=None):
+        if locked and not lock_val:
+            print("ERROR: locked status=True and lock_val=None, a locked door must have a key")
         self.Name = name
         self.Contents = []
         self.Desc = desc
         self._LockVal = lock_val
         self.Locked = locked
-        self.Location = location
 
     def get_lock_val(self):
         return self._LockVal
 
-    def use(self, key):
+    def use(self, input):
+        key = input.KeyVal
         if self.Locked and key is self._LockVal:
+            print("Success! The " + key.Name + " opens the " + self.Name)
             self.Locked = False
+            self.examine()
+            return 1
+        else:
+            print("That doesn't seem to do anything.")
+            return 0
 
-    def search(self):
+    def examine(self):
         if self.Locked:
             return 0
         else:
             print("The " + self.Name + " contains:")
             for item in self.Contents:
                 print(item.get_name())
+            return 1
 
 
 class Trap:
-    def __init__(self, name, desc, s_desc, lock_val, destination, lethal):
+    # a trap that can spring when the player moves through the room it's in, killing them or sending them to a different
+    # room. Initializes with a name, description, description of what happens to the player when the trap is sprung,
+    # key value expected to disarm the trap, and the room the player is sent to when the trap is sprung.
+    # if no destination is given, the trap simply kills the player.
+    def __init__(self, name, desc, s_desc, lock_val, destination=None):
         self.Name = name
         self.Desc = desc
         self.Spring_desc = s_desc
         self._LockVal = lock_val
         self.Destination = destination
         self.Locked = True
-        self.Lethal = lethal
 
     def get_lock_val(self):
         return self._LockVal
@@ -258,25 +308,16 @@ class Trap:
 
     def use(self, input):
         key = input.getKeyVal()
-        if self.Locked and key is self._LockVal:
-            output = "It works! The " + input.get_name() + " disarms the " + self.Name + \
-                     ", it should be safe to pass now"
-            print(output)
-            self.Locked = False
-
-
-def game():
-    if __name__ == '__main__':
-        tr = Room("Test Room", "a very boring white room")
-        tp = Player(tr)
-        i1 = Item("test1", "the 1st test object", "red")
-        i2 = Item("test2", "The 2nd test object", "blue")
-        i3 = Item("test3", "The 3rd test object", "green")
-        tp.Bag.append(i1)
-        tp.Bag.append(i2)
-        tp.Bag.append(i3)
-        tp.look("test2")
-
-
-if __name__ == '__main__':
-    game()
+        if self.Locked:
+            if key is self._LockVal:
+                output = "It works! The " + input.get_name() + " disarms the " + self.Name + \
+                         ", it should be safe to pass now"
+                print(output)
+                self.Locked = False
+                return 1
+            else:
+                print("That doesn't seem to do anything")
+                return 0
+        else:
+            print("This trap is already disarmed.")
+            return 0

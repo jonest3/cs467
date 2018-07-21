@@ -168,9 +168,10 @@ class Player:
 class Room:
     # Represents the discrete spaces found within the dungeon. Initializes with a name and a description, as well as
     # empty lists to contain the Items, Doors, Shelves, Traps, and other Rooms that can be accessed from this room
-    def __init__(self, name, desc):
+    def __init__(self, name, long_desc, short_desc):
         self.Name = name
-        self.Desc = desc
+        self.LongDesc = long_desc
+	self.ShortDesc = short_desc
         self.Floor = []
         self.Doors = []
         self.Shelves = []
@@ -194,7 +195,11 @@ class Room:
         self.Neighbors.append(room)
 
     def examine(self):
-        print(self.Desc + " through nearby doorways, you see: ")
+        if self.Visited:
+		print(self.ShortDesc)
+	else:
+		print(self.LongDesc)
+	print("Through nearby doorways, you can see: ")
         for room in self.Neighbors:
             print(room.Name)
         if len(self.Doors) > 0:
@@ -213,8 +218,8 @@ class Room:
 
     def enter(self):
         print("You enter the " + self.Name)
+	self.examine()
         if not self.Visited:
-            self.examine()
             self.Visited = True
 
 

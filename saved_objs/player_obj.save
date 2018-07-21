@@ -1,0 +1,15 @@
+(igameEngine
+Player
+p0
+(dp1
+S'Bag'
+p2
+(lp3
+sS'_Location'
+p4
+S'Basement'
+p5
+sS'Turns_Left'
+p6
+I12
+sb.

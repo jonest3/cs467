@@ -1,9 +1,12 @@
 {
-   "name": ,
-   "longDesc": ,
-   "shortDesc": ,
+   "name": "Crypt",
+   "longDesc": "long",
+   "shortDesc": "short",
    "doors": [],
-   "shelves": [],
+   "items": {
+	"shelves": ["goldenKey"],
+	"floor": ["brokenSword"],
+   }
    "traps": [],
-   "neighbors": [],
+   "neighbors": ["cave"]
 }

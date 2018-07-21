@@ -1,9 +1,12 @@
 {
-   "name": ,
-   "longDesc": ,
-   "shortDesc": ,
+   "name": "Bridge Room",
+   "longDesc": "long",
+   "shortDesc": "short",
    "doors": [],
-   "shelves": [],
    "traps": [],
-   "neighbors": [],
+   "items": {
+	"shelves": [],
+	"floor": ["woodenKey"]
+   }
+   "neighbors": ["cave", "rootRoom", "library"]
 }

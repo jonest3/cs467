@@ -1,9 +1,12 @@
 {
-   "name": ,
-   "longDesc": ,
-   "shortDesc": ,
+   "name": "Torture Chamber",
+   "longDesc": "long",
+   "shortDesc": "short",
    "doors": [],
-   "shelves": [],
+   "items": {
+	"shelves": ["rope"],
+	"floor": ["wood"],
+   }
    "traps": [],
-   "neighbors": [],
+   "neighbors": ["cave"],
 }

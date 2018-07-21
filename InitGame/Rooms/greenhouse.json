@@ -1,9 +1,12 @@
 {
-   "name": ,
-   "longDesc": ,
-   "shortDesc": ,
+   "name": "Over-grown Greenhouse",
+   "longDesc": "long",
+   "shortDesc": "short",
    "doors": [],
-   "shelves": [],
+   "items": {
+	"shelves": ["yellowPlant"],
+	"floor": ["purplePlant"],
+   }
    "traps": [],
-   "neighbors": [],
+   "neighbors": ["nexus"]
 }

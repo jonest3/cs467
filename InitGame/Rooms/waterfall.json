@@ -1,9 +1,12 @@
 {
-   "name": ,
-   "longDesc": ,
-   "shortDesc": ,
+   "name": "",
+   "longDesc": "long",
+   "shortDesc": "short",
    "doors": [],
-   "shelves": [],
+   "items": {
+	"shelves": [],
+	"floor": ["pebbles"],
+   }
    "traps": [],
-   "neighbors": [],
+   "neighbors": ["rootRoom"],
 }

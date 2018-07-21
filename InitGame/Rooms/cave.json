@@ -1,9 +1,12 @@
 {
-   "name": ,
-   "longDesc": ,
-   "shortDesc": ,
+   "name": "Cave",
+   "longDesc": "long",
+   "shortDesc": "short",
    "doors": [],
-   "shelves": [],
+   "items": {
+	"shelves": [],
+	"floor": ["rocks", "lantern"],
+   }
    "traps": [],
-   "neighbors": [],
+   "neighbors": ["crypt", "tortureRoom", "bridgeRoom"]
 }

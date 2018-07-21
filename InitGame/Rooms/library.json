@@ -1,12 +1,12 @@
 {
-   "name": "Old Library",
-   "longDesc": "long",
-   "shortDesc": "short",
-   "doors": [],
-   "items": {
+ "name": "Old Library",
+ "longDesc": "long",
+ "shortDesc": "short",
+ "doors": [],
+ "items": {
 	"shelves": ["spell", "notes"],
-	"floor": [],
-   }
-   "traps": [],
-   "neighbors": ["nexus", "bridgeRoom"],
+	"floor": []
+ },
+ "traps": [],
+ "neighbors": ["nexus", "bridgeRoom"]
 }

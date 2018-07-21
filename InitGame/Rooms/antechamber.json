@@ -1,12 +1,12 @@
 {
-   "name": "Antechamber",
-   "longDesc": "long desc",
-   "shortDesc": "short desc",
-   "doors": [],
-   "items:" {
+ "name": "Antechamber",
+ "longDesc": "long desc",
+ "shortDesc": "short desc",
+ "doors": [],
+ "items": {
 	"shelves": ["torch"],
 	"floor": ["wedge"]
-   },
-   "traps": [],
-   "neighbors": ["helicopterPad", "nexus"]
+ },
+ "traps": [],
+ "neighbors": ["helicopterPad", "nexus"]
 }

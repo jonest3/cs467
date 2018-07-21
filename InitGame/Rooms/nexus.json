@@ -1,12 +1,12 @@
 {
-   "name": "",
-   "longDesc": "long",
-   "shortDesc": "short",
-   "doors": [],
-   "items": {
-	"shelves": [],
-	"floor": [],
-   }
-   "traps": [],
-   "neighbors": [],
+ "name":"Nexus",
+ "longDesc":"long",
+ "shortDesc":"short",
+ "doors":[],
+ "items":{
+	"shelves":[],
+	"floor":[]
+ },
+ "traps":[],
+ "neighbors":[]
 }

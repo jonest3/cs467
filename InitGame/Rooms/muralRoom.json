@@ -1,12 +1,12 @@
 {
-   "name": "Room of Murals",
-   "longDesc": "long",
-   "shortDesc": "short",
-   "doors": [],
-   "items": {
+ "name": "Room of Murals",
+ "longDesc": "long",
+ "shortDesc": "short",
+ "doors": [],
+ "items": {
 	"shelves": [],
-	"floor": ["water"],
-   }
-   "traps": [],
-   "neighbors": ["nexus"],
+	"floor": ["water"]
+ },
+ "traps": [],
+ "neighbors": ["nexus"]
 }

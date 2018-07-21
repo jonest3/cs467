@@ -1,12 +1,12 @@
 {
-   "name": "",
-   "longDesc": "long",
-   "shortDesc": "short",
-   "doors": [],
-   "items": {
+ "name": "Waterfall",
+ "longDesc": "long",
+ "shortDesc": "short",
+ "doors": [],
+ "items": {
 	"shelves": [],
-	"floor": ["pebbles"],
-   }
-   "traps": [],
-   "neighbors": ["rootRoom"],
+	"floor": ["pebbles"]
+ },
+ "traps": [],
+ "neighbors": ["rootRoom"]
 }

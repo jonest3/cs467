@@ -1,12 +1,12 @@
 {
-   "name": "",
-   "longDesc": "long",
-   "shortDesc": "short",
-   "doors": [],
-   "items": {
+ "name": "Potions Room",
+ "longDesc": "long",
+ "shortDesc": "short",
+ "doors": [],
+ "items": {
 	"shelves": [],
-	"floor": [],
-   }
-   "traps": [],
-   "neighbors": [],
+	"floor": []
+ },
+ "traps": [],
+ "neighbors": []
 }

@@ -1,12 +1,12 @@
 {
-   "name": "Root Room",
-   "longDesc": "long",
-   "shortDesc": "short",
-   "doors": [],
-   "items": {
-	"shelves": [],
-	"floor": [],
-   }
-   "traps": [],
-   "neighbors": ["bridgeRoom", "waterfall"],
+ "name": "Root Room",
+ "longDesc": "long",
+ "shortDesc": "short",
+ "doors": [],
+ "items": {
+	"shelves":[],
+	"floor":[]
+ },
+ "traps": [],
+ "neighbors": ["bridgeRoom", "waterfall"]
 }

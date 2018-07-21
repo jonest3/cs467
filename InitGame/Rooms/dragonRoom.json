@@ -1,12 +1,12 @@
 {
-   "name": "Dragon's Den",
-   "longDesc": "long",
-   "shortDesc": "short",
-   "doors": [],
-   "items": {
+ "name": "Dragon's Den",
+ "longDesc": "long",
+ "shortDesc": "short",
+ "doors": [],
+ "items": {
 	"shelves": [],
-	"floor": ["dragonDrool"],
-   }
-   "traps": [],
-   "neighbors": ["nexus", "treasureRoom"]
+	"floor": ["dragonDrool"]
+ },
+ "traps": [],
+ "neighbors": ["nexus", "treasureRoom"]
 }

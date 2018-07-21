@@ -42,11 +42,11 @@ class GameComponents:
 		path = self.basePath + "{directory}/{fname}".format(directory=directory, fname=filename)
 		if os.path.exists(path):
 			try:
-				if self.loadSaved:
-					return pickle.load(open(path, 'rb'))
-				else:
-					return json.load(open(path, 'rb'))
-						
+				with open(path, 'rb') as data_file:
+					if self.loadSaved:
+						return pickle.load(data_file)
+					else:
+						return json.load(data_file)	 
 			except:
 				print("Error: Could not load from {path}.".format(path=path))
 		else:

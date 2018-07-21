@@ -1,12 +1,12 @@
 {
-   "name": "Helicopter Pad",
-   "longDesc": "long",
-   "shortDesc": "short",
-   "doors": [],
-   "items": {
+ "name": "Helicopter Pad",
+ "longDesc": "long",
+ "shortDesc": "short",
+ "doors": [],
+ "items": {
 	"shelves": [],
-	"floor": ["rustyKey", "machete"],
-   }
-   "traps": [],
-   "neighbors": ["Antechamber"]
+	"floor": ["rustyKey", "machete"]
+ },
+ "traps": [],
+ "neighbors": ["Antechamber"]
 }

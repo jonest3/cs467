@@ -214,7 +214,7 @@ class Room:
         if len(self.Floor) > 0:
             print("There are a few items scattered about: ")
             for item in self.Floor:
-                print(item.name)
+                print(item.Name)
 
     def enter(self):
         print("You enter the " + self.Name)

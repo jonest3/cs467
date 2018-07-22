@@ -3,31 +3,30 @@ import pickle
 import json
 import os
 
-MAX_MOVES = 12
 
-#def load(path)
+MAX_MOVES = 30
 
 
 class GameComponents:
 	def __init__(self, loadSaved=False):
 		self.loadSaved = loadSaved
-		# self.player = Player(location, MAX_MOVES)
 		self.basePath = "./SavedGame/" if loadSaved else "./InitGame/"
-		self.rooms = self.loadRooms()
 		self.items = self.loadItems()
-#		self.doors = self.getFiles("Doors");
-#		self.shelves = self.getFiles("Shelf");
-#		self.traps = self.getFiles("Traps");
+#		self.doors = self.loadDoors()
+#		self.traips = self.loadTraps()
+		self.rooms = self.loadRooms()
+		self.player = Player(self.getRoom("helicopterPad"), MAX_MOVES)
 
-	def getFiles(self, directory):
+
+	def getFilesInDir(self, directory):
 		path = self.basePath + "{directory}/".format(directory=directory)
 		files = []
 		try:
 			files = os.listdir(path)	
 		except:
 			print("Error: Could not read files from path: {path}.".format(path=path))
-		
 		return files
+
 
 	def getFileObj(self, directory, filename):
 		path = self.basePath + "{directory}/{fname}".format(directory=directory, fname=filename)
@@ -42,12 +41,12 @@ class GameComponents:
 				print("Error: Could not load from {path}.".format(path=path))
 		else:
 			print("Error: No such path: {path}.".format(path=path))
-		
 		return None
+
 
 	def loadRooms(self):
 		roomDict = {}
-		room_files = self.getFiles("Rooms")
+		room_files = self.getFilesInDir("Rooms")
 		for filename in room_files:
 			room = self.getFileObj("Rooms", filename)
 			if room:
@@ -56,13 +55,32 @@ class GameComponents:
 				longDesc = room["longDesc"]
 				shortDesc = room["shortDesc"]
 				neighbors = room["neighbors"]
+				shelves = room["items"]["shelves"]
+				floor = room["items"]["floor"]
 				roomDict[key] = Room(name, longDesc, shortDesc)
 				roomDict[key].Neighbors = neighbors
+				
+				for item in floor:
+					if self.items[item]:
+						itemObj = self.items[item]
+						roomDict[key].add_item(itemObj)
+						print(roomDict[key].Floor[len(roomDict[key].Floor) - 1].Name)
+					else:
+						print("Error: {item} does not exist.".format(item=item))
+
+				for item in shelves:
+					if self.items[item]:
+						itemObj = self.items[item]	
+						roomDict[key].add_shelf(itemObj)
+						print(roomDict[key].Shelves[len(roomDict[key].Shelves) - 1].Name)
+					else:
+						print("Error: {item} does not exist.".format(item=item))
 		return roomDict
+
 
 	def loadItems(self):
 		itemDict = {}
-		item_files = self.getFiles("Items")
+		item_files = self.getFilesInDir("Items")
 		for filename in item_files:
 			item = self.getFileObj("Items", filename)
 			if item:
@@ -71,6 +89,7 @@ class GameComponents:
 				key = item["key_val"]
 				itemDict[key] = Item(name, desc, key)
 		return itemDict
+
 
 	def getNeighbors(self):
 		rooms_list = list(self.rooms)
@@ -84,21 +103,47 @@ class GameComponents:
 					roomObj.add_neighbor(neighborObj)
 		
 
+	def getRoom(self, room_name):
+		if self.rooms[room_name]:
+			return self.rooms[room_name]
+		else:
+			return None
 
 game = GameComponents()
 game.getNeighbors()
 
+"""
 rooms = list(game.rooms)
 for room in rooms:
-   print("------------")
+#   print("------------")
    rObj = game.rooms[room]
-   print("Room: {name}".format(name=rObj.Name))
+#   print("Room: {name}".format(name=rObj.Name))
    neighbors = rObj.Neighbors
    for neighbor in neighbors:
-	print(neighbor.Name)
+	break
+#	print(neighbor.Name)
 
 items = list(game.items)
 for item in items:
-   print("____________")
+#   print("____________")
    iObj = game.items[item]
-   print("Item: {name}".format(name=iObj.Name))
+#   print("Item: {name}".format(name=iObj.Name))
+
+game.rooms["nexus"].Visited = True
+
+neighbors = game.rooms["library"].Neighbors
+for room in neighbors:
+	if room.Name == "Nexus":
+		print("Nexus Visited: {visited}".format(visited=room.Visited))
+
+game.rooms["treasureRoom"].enter()
+game.rooms["treasureRoom"].enter()
+"""
+
+currentRoom = game.player._Location
+currentRoom.enter()
+print("-- Test Taking Item --")
+item = raw_input("Enter Item: ")
+game.player.take(item)
+currentRoom.enter()
+

@@ -1,4 +1,5 @@
 {
+ "key": "greenhouse",
  "name": "Over-grown Greenhouse",
  "longDesc": "long",
  "shortDesc": "short",
@@ -7,6 +8,6 @@
 	"shelves": ["yellowPlant"],
 	"floor": ["purplePlant"]
  },
- "traps": [],
+ "traps": ["prickFinger"],
  "neighbors": ["nexus"]
 }

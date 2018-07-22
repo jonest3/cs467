@@ -1,4 +1,4 @@
-from gameEngine import Player
+from gameEngine import Player, Room, Item
 import pickle
 import json
 import os
@@ -12,29 +12,20 @@ class GameComponents:
 	def __init__(self, loadSaved=False):
 		self.loadSaved = loadSaved
 		# self.player = Player(location, MAX_MOVES)
-		'''
-		self.roomList = ['helicopterPad', 'treasureRoom', 'bridgeRoom', 
-				 'antechamber', 'waterfall', 'nexus', 'crypt', 
-				 'tortureRoom', 'library','potionsRoom', 'greenhouse',
-				 'muralRoom', 'rootRoom', 'dragonRoom', 'cave']
-		'''
 		self.basePath = "./SavedGame/" if loadSaved else "./InitGame/"
-		self.roomFiles = self.getFiles("Rooms");
-#		self.itemFiles = self.getFiles("Items");
-#		self.doorFiles = self.getFiles("Doors");
-#		self.shelfFiles = self.getFiles("Shelf");
-#		self.trapFiles = self.getFiles("Traps");
-
-
+		self.rooms = self.loadRooms()
+		self.items = self.loadItems()
+#		self.doors = self.getFiles("Doors");
+#		self.shelves = self.getFiles("Shelf");
+#		self.traps = self.getFiles("Traps");
 
 	def getFiles(self, directory):
 		path = self.basePath + "{directory}/".format(directory=directory)
+		files = []
 		try:
-			files = os.listdir(path)# [f for f in os.listdir(path) if isfile(join(path, f))]
-			print(files)
+			files = os.listdir(path)	
 		except:
 			print("Error: Could not read files from path: {path}.".format(path=path))
-			files = []
 		
 		return files
 
@@ -53,27 +44,61 @@ class GameComponents:
 			print("Error: No such path: {path}.".format(path=path))
 		
 		return None
-'''
+
 	def loadRooms(self):
-		for name in self.roomList:
-			room_path = self.getPath("Rooms", name);
-			if os.path.exists(room_path):
-				
-			else: 
+		roomDict = {}
+		room_files = self.getFiles("Rooms")
+		for filename in room_files:
+			room = self.getFileObj("Rooms", filename)
+			if room:
+				key = room["key"]
+				name = room["name"]
+				longDesc = room["longDesc"]
+				shortDesc = room["shortDesc"]
+				neighbors = room["neighbors"]
+				roomDict[key] = Room(name, longDesc, shortDesc)
+				roomDict[key].Neighbors = neighbors
+		return roomDict
 
-	def getPath(self, className, filename):
-		if self.loadSaved:
-			return "./SavedGame/{className}/{filename}.save".format(className=className, filename=filename)
-		else:
-			return "./{className}/{filename}.json".format(className=className, filename=filename)
-'''
+	def loadItems(self):
+		itemDict = {}
+		item_files = self.getFiles("Items")
+		for filename in item_files:
+			item = self.getFileObj("Items", filename)
+			if item:
+				name = item["name"]
+				desc = item["desc"]
+				key = item["key_val"]
+				itemDict[key] = Item(name, desc, key)
+		return itemDict
 
-game = GameComponents();
+	def getNeighbors(self):
+		rooms_list = list(self.rooms)
+		if len(rooms_list):
+			for room in rooms_list:
+				roomObj = self.rooms[room]
+				neighbors = roomObj.Neighbors
+				roomObj.Neighbors = []
+				for neighbor in neighbors:
+					neighborObj = self.rooms[neighbor]
+					roomObj.add_neighbor(neighborObj)
+		
 
-for filename in game.roomFiles:
-	print(filename)
-	obj = game.getFileObj("Rooms", filename)
-	if obj:
-		print(obj["name"]);
 
+game = GameComponents()
+game.getNeighbors()
 
+rooms = list(game.rooms)
+for room in rooms:
+   print("------------")
+   rObj = game.rooms[room]
+   print("Room: {name}".format(name=rObj.Name))
+   neighbors = rObj.Neighbors
+   for neighbor in neighbors:
+	print(neighbor.Name)
+
+items = list(game.items)
+for item in items:
+   print("____________")
+   iObj = game.items[item]
+   print("Item: {name}".format(name=iObj.Name))

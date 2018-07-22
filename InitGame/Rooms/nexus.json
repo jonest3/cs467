@@ -1,12 +1,13 @@
 {
- "name":"Nexus",
- "longDesc":"long",
- "shortDesc":"short",
- "doors":[],
- "items":{
-	"shelves":[],
-	"floor":[]
+ "key": "nexus",
+ "name": "Nexus",
+ "longDesc": "long",
+ "shortDesc": "short",
+ "doors": [],
+ "items": {
+	"shelves":["copperKey"],
+	"floor":["bucket"]
  },
- "traps":[],
- "neighbors":[]
+ "traps": [],
+ "neighbors": ["antechamber", "library", "dragonRoom", "greenhouse", "muralRoom", "potionsRoom"]
 }

@@ -57,7 +57,7 @@ class Player:
     # Item with a matching name. If found, adds the Item to the player's Bag construct
     def take(self, item):
         for thing in self._Location.Floor:
-            if thing.Name is item:
+            if thing.Name == item:
                 self.Bag.append(thing)
                 self._Location.Floor.remove(thing)
                 print("You pick up the " + item + "and put it in your bag")
@@ -65,7 +65,7 @@ class Player:
         for shelf in self._Location.Shelves:
             if not shelf.Locked:
                 for thing in shelf.Contents:
-                        if thing.Name is item:
+                        if thing.Name == item:
                             self.Bag.append(thing)
                             self._Location.Floor.remove(thing)
                             print("You pick up the " + item + "and put it in your bag")
@@ -80,18 +80,18 @@ class Player:
         lock = None
         key = None
         for thing in self.Bag:
-            if thing.Name is item:
+            if thing.Name == item:
                 key = thing
-            elif thing.Name is target:
+            elif thing.Name == target:
                 lock = thing
         for thing in self._Location.Doors:
-            if thing.Name is target:
+            if thing.Name == target:
                 lock = thing
         for thing in self._Location.Traps:
-            if thing.Name is target:
+            if thing.Name == target:
                 lock = thing
         for thing in self._Location.Shelves:
-            if thing.Name is target:
+            if thing.Name == target:
                 lock = thing
         if lock and key:
             if lock.use(key) == 1:
@@ -104,27 +104,27 @@ class Player:
     # takes as argument the name of an object the player wishes to examine more closely. If the object is found, prints
     # the description of that object
     def look(self, target):
-        if self._Location.Name is target:
+        if self._Location.Name == target:
             self._Location.examine()
             return 1
         for thing in self.Bag:
-            if thing.Name is target:
+            if thing.Name == target:
                 thing.examine()
                 return 1
         for thing in self._Location.Floor:
-            if thing.Name is target:
+            if thing.Name == target:
                 thing.examine()
                 return 1
         for thing in self._Location.Shelves:
-            if thing.Name is target:
+            if thing.Name == target:
                 thing.examine()
                 return 1
         for thing in self._Location.Traps:
-            if thing.Name is target:
+            if thing.Name == target:
                 thing.examine()
                 return 1
         for thing in self._Location.Doors:
-            if thing.Name is target:
+            if thing.Name == target:
                 thing.examine()
                 return 1
         print("There is no " + target + " here.")
@@ -137,9 +137,9 @@ class Player:
     # takes as argument the name of an Item the player wishes to remove from their bag
     def drop(self, item):
         for thing in self.Bag:
-            if thing.Name is item:
+            if thing.Name == item:
                 print("You drop your " + item + " on the floor")
-                self._Location.additem(thing)
+                self._Location.add_item(thing)
                 self.Bag.remove(thing)
                 return 1
         print("You do not have a " + item)
@@ -149,7 +149,7 @@ class Player:
     # and there are no traps preventing it)
     def move(self, room):
         for thing in self._Location.Neighbors:
-            if thing.Name is room:
+            if thing.Name == room:
                 for trap in self._Location.Traps:
                     if trap.Locked is True:
                         trap.spring()
@@ -171,7 +171,7 @@ class Room:
     def __init__(self, name, long_desc, short_desc):
         self.Name = name
         self.LongDesc = long_desc
-	self.ShortDesc = short_desc
+        self.ShortDesc = short_desc
         self.Floor = []
         self.Doors = []
         self.Shelves = []
@@ -196,10 +196,10 @@ class Room:
 
     def examine(self):
         if self.Visited:
-		print(self.ShortDesc)
-	else:
-		print(self.LongDesc)
-	print("Through nearby doorways, you can see: ")
+                print(self.ShortDesc)
+        else:
+                print(self.LongDesc)
+        print("Through nearby doorways, you can see: ")
         for room in self.Neighbors:
             print(room.Name)
         if len(self.Doors) > 0:
@@ -218,7 +218,7 @@ class Room:
 
     def enter(self):
         print("You enter the " + self.Name)
-	self.examine()
+        self.examine()
         if not self.Visited:
             self.Visited = True
 
@@ -280,7 +280,7 @@ class Shelf:
 
     def use(self, input):
         key = input.KeyVal
-        if self.Locked and key is self._LockVal:
+        if self.Locked and key == self._LockVal:
             print("Success! The " + key.Name + " opens the " + self.Name)
             self.Locked = False
             self.examine()
@@ -328,7 +328,7 @@ class Trap:
     def use(self, input):
         key = input.getKeyVal()
         if self.Locked:
-            if key is self._LockVal:
+            if key == self._LockVal:
                 output = "It works! The " + input.get_name() + " disarms the " + self.Name + \
                          ", it should be safe to pass now"
                 print(output)

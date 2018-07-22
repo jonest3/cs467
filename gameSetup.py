@@ -1,4 +1,5 @@
 from gameEngine import Player, Room, Item
+from testGame import TestGame
 import pickle
 import json
 import os
@@ -18,6 +19,10 @@ class GameComponents:
 		self.player = Player(self.getRoom("helicopterPad"), MAX_MOVES)
 
 
+	
+	# @param:  directory - the name of the directory to get all files in
+	# 
+ 	# returns: list of files in parsed directory.  Will return empty list if error occurs 
 	def getFilesInDir(self, directory):
 		path = self.basePath + "{directory}/".format(directory=directory)
 		files = []
@@ -28,11 +33,15 @@ class GameComponents:
 		return files
 
 
+	# @param: directory - directory file is in
+	# @param: filename - the name of the file to retreive object from
+	#
+	# returns: object loaded from file or 'None' if error occurs
 	def getFileObj(self, directory, filename):
 		path = self.basePath + "{directory}/{fname}".format(directory=directory, fname=filename)
 		if os.path.exists(path):
 			try:
-				with open(path, 'rb') as data_file:
+				with open(path, 'r') as data_file:
 					if self.loadSaved:
 						return pickle.load(data_file)
 					else:
@@ -44,6 +53,9 @@ class GameComponents:
 		return None
 
 
+	# @param: None
+	#
+	# returns: dict of instantiated Room objects for every room file stored in the rooms directory
 	def loadRooms(self):
 		roomDict = {}
 		room_files = self.getFilesInDir("Rooms")
@@ -64,7 +76,6 @@ class GameComponents:
 					if self.items[item]:
 						itemObj = self.items[item]
 						roomDict[key].add_item(itemObj)
-						print(roomDict[key].Floor[len(roomDict[key].Floor) - 1].Name)
 					else:
 						print("Error: {item} does not exist.".format(item=item))
 
@@ -72,12 +83,15 @@ class GameComponents:
 					if self.items[item]:
 						itemObj = self.items[item]	
 						roomDict[key].add_shelf(itemObj)
-						print(roomDict[key].Shelves[len(roomDict[key].Shelves) - 1].Name)
 					else:
 						print("Error: {item} does not exist.".format(item=item))
 		return roomDict
 
 
+
+	# @param: None
+	#
+	# returns: dict of instantiated Item objects for every item file stored in the items directory
 	def loadItems(self):
 		itemDict = {}
 		item_files = self.getFilesInDir("Items")
@@ -90,7 +104,13 @@ class GameComponents:
 				itemDict[key] = Item(name, desc, key)
 		return itemDict
 
+	
 
+	# @param: None
+	#
+	# returns: None
+	#
+	# Used to link neighbors and rooms
 	def getNeighbors(self):
 		rooms_list = list(self.rooms)
 		if len(rooms_list):
@@ -103,47 +123,18 @@ class GameComponents:
 					roomObj.add_neighbor(neighborObj)
 		
 
+	# @param: room_name - name of room to return
+	#
+	# returns: room if it exists, else 'None'
 	def getRoom(self, room_name):
-		if self.rooms[room_name]:
+		try:
 			return self.rooms[room_name]
-		else:
+		except:
 			return None
+
 
 game = GameComponents()
 game.getNeighbors()
 
-"""
-rooms = list(game.rooms)
-for room in rooms:
-#   print("------------")
-   rObj = game.rooms[room]
-#   print("Room: {name}".format(name=rObj.Name))
-   neighbors = rObj.Neighbors
-   for neighbor in neighbors:
-	break
-#	print(neighbor.Name)
-
-items = list(game.items)
-for item in items:
-#   print("____________")
-   iObj = game.items[item]
-#   print("Item: {name}".format(name=iObj.Name))
-
-game.rooms["nexus"].Visited = True
-
-neighbors = game.rooms["library"].Neighbors
-for room in neighbors:
-	if room.Name == "Nexus":
-		print("Nexus Visited: {visited}".format(visited=room.Visited))
-
-game.rooms["treasureRoom"].enter()
-game.rooms["treasureRoom"].enter()
-"""
-
-currentRoom = game.player._Location
-currentRoom.enter()
-print("-- Test Taking Item --")
-item = raw_input("Enter Item: ")
-game.player.take(item)
-currentRoom.enter()
-
+tester = TestGame(game)
+tester.main()

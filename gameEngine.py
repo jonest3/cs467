@@ -232,7 +232,7 @@ class Room:
 
 class Door:
     # init door with name, description, key value that will unlock it
-    def __init__(self, name, desc, direction, lock_val, destination, locked=False, unlock_desc=None):
+    def __init__(self, name, desc, direction, destination, locked=False, lock_val=None, unlock_desc=None):
         self.Name = name
         self.Desc = desc
         self.UnlockDesc = unlock_desc

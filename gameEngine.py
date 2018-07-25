@@ -154,25 +154,26 @@ class Player:
     # takes as argument the name of a room the player wishes to move to, and attempts to move there (if it can be found
     # and there are no traps preventing it)
     def move(self, room):
-        for thing in self._Location.Neighbors:
-            if thing.Name == room:
-                if thing == self.Last_Loc:
-                    thing.enter()
+        for door in self._Location.Doors:
+            if not door.Locked:
+                if door.Destination.Name == room or door.Direction == room or door.Name == room:
+                    if door.Destination == self.Last_Loc:
+                        door.Destination.enter()
+                        self.Last_Loc = self._Location
+                        self._Location = door.Destination
+                        return 1
+                    for trap in self._Location.Traps:
+                        if trap.Locked is True:
+                            trap.spring()
+                            if trap.Destination:
+                                self._Location = trap.Destination
+                            else:
+                                self.Turns_Remaining = 0
+                            return 2
+                    door.Destination.enter()
                     self.Last_Loc = self._Location
-                    self._Location = thing
+                    self._Location = door.Destination
                     return 1
-                for trap in self._Location.Traps:
-                    if trap.Locked is True:
-                        trap.spring()
-                        if trap.Destination:
-                            self._Location = trap.Destination
-                        else:
-                            self.Turns_Remaining = 0
-                        return 2
-                thing.enter()
-                self.Last_Loc = self._Location
-                self._Location = thing
-                return 1
         print("You cannot get to " + room + " from here.")
         return 0
 
@@ -180,14 +181,14 @@ class Player:
 class Room:
     # Represents the discrete spaces found within the dungeon. Initializes with a name and a description, as well as
     # empty lists to contain the Items, Doors, Shelves, Traps, and other Rooms that can be accessed from this room
-    def __init__(self, name, desc):
+    def __init__(self, name, desc, short_desc):
         self.Name = name
         self.Desc = desc
+        self.ShortDesc = short_desc
         self.Floor = []
         self.Doors = []
         self.Shelves = []
         self.Traps = []
-        self.Neighbors = []
         self.Visited = False
 
     def add_item(self, item):
@@ -202,16 +203,13 @@ class Room:
     def add_trap(self, trap):
         self.Traps.append(trap)
 
-    def add_neighbor(self, room):
-        self.Neighbors.append(room)
-
     def examine(self):
-        print(self.Desc + " through nearby doorways, you see: ")
-        for room in self.Neighbors:
-            print(room.Name)
-        if len(self.Doors) > 0:
-            for door in self.Doors:
-                print("There is a " + door.Name + " here.")
+        if self.Visited:
+            print(self.Desc)
+        else:
+            print(self.ShortDesc)
+        for door in self.Doors:
+            door.examine()
         if len(self.Shelves) > 0:
             for shelf in self.Shelves:
                 print("There is a " + shelf.Name + " here.")
@@ -224,31 +222,30 @@ class Room:
                 print(item.name)
 
     def enter(self):
-        print("You come upon " + self.Name)
+        print("You enter ")
         if not self.Visited:
             self.examine()
             self.Visited = True
+        else:
+            self.examine()
 
 
 class Door:
-    # init door with name, description, key value that will unlock it, and the room the door is located in
-    def __init__(self, name, location, desc, lock_val, neighbor):
+    # init door with name, description, key value that will unlock it
+    def __init__(self, name, desc, direction, lock_val, destination, locked=False, unlock_desc=None):
         self.Name = name
-        self.Location = location
         self.Desc = desc
+        self.UnlockDesc = unlock_desc
+        self.Direction = direction
         self._LockVal = lock_val
-        self.neighbor = neighbor
-        self.Locked = True
+        self.neighbor = destination
+        self.Locked = locked
 
     def get_lock_val(self):
         return self._LockVal
 
     def examine(self):
-        print(self.Desc)
-        if self.Locked:
-            print("It appears impassable")
-        else:
-            print("You have unlocked this door and are free to pass")
+            print(self.Desc + " lies to the " + self.Direction)
 
     # takes an Item as input, if the door is locked it compares the key value of the item passed against the key it
     # expects. If they match, it adds the room it stores (leads to) to the list of Rooms accessible from the room set as
@@ -258,14 +255,15 @@ class Door:
         key = input.KeyVal
         if self.Locked:
             if key == self._LockVal:
-                print("Success! The door opens, and you can see that it leads to " + self.neighbor.Name)
-                self.Location.add_neighbor(self.neighbor)
                 self.Locked = False
+                self.Desc = self.UnlockDesc
+                print("Success! The passage opens to reveal: ")
+                self.examine()
                 return 1
             else:
                 return 0
         else:
-            print("That's already unlocked. It leads to " + self.neighbor.Name)
+            print("That's already open.")
             return 0
 
 

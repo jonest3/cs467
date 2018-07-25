@@ -1,7 +1,7 @@
 {
  "key": "cave",
  "name": "Cave",
- "longDesc": "long",
+ "longDesc": "A damp cave, it's ceiling low enough that you have to hunch over to be able to walk. Some bones crunch underfoot as you pass- some animal? Or a less fortunate fellow explorer?",
  "shortDesc": "short",
  "doors": [],
  "items": {

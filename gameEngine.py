@@ -5,12 +5,14 @@ class Item:
     # key_val = the value the item has as a key, passed to an object if this item is used on it
     # lock_val = the value compared with a given key value to see if this item reacts with an item being used on it
     # trans_id = an item that this item becomes after the correct key has been applied to it
-    def __init__(self, name, desc, key_val, lock_val=None, trans_id=None):
+    def __init__(self, name, desc, key_val, lock_val=None, trans_id=None, destination=None, trap_desc=None):
         self.Name = name
         self.Desc = desc
         self.KeyVal = key_val
         self._LockVal = lock_val
         self._TransID = trans_id
+        self.Destination = destination
+        self.Trap_Desc = trap_desc
 
     def get_lock_val(self):
         return self._LockVal
@@ -48,7 +50,8 @@ class Player:
     def __init__(self, location, time):
         self.Bag = []
         self._Location = location
-        self.Turns_Left = time
+        self.Turns_Remaining = time
+        self.Last_Loc = None
 
     def add_item(self, item):
         self.Bag.append(item)
@@ -57,7 +60,7 @@ class Player:
     # Item with a matching name. If found, adds the Item to the player's Bag construct
     def take(self, item):
         for thing in self._Location.Floor:
-            if thing.Name is item:
+            if thing.Name == item:
                 self.Bag.append(thing)
                 self._Location.Floor.remove(thing)
                 print("You pick up the " + item + "and put it in your bag")
@@ -65,10 +68,13 @@ class Player:
         for shelf in self._Location.Shelves:
             if not shelf.Locked:
                 for thing in shelf.Contents:
-                        if thing.Name is item:
+                        if thing.Name == item:
                             self.Bag.append(thing)
                             self._Location.Floor.remove(thing)
                             print("You pick up the " + item + "and put it in your bag")
+                            if thing.destination is not None:
+                                print(thing.Trap_Desc)
+                                self._Location = thing.Destination
                             return 1
         print("There is no " + item + " here.")
         return 0
@@ -80,18 +86,18 @@ class Player:
         lock = None
         key = None
         for thing in self.Bag:
-            if thing.Name is item:
+            if thing.Name == item:
                 key = thing
-            elif thing.Name is target:
+            elif thing.Name == target:
                 lock = thing
         for thing in self._Location.Doors:
-            if thing.Name is target:
+            if thing.Name == target:
                 lock = thing
         for thing in self._Location.Traps:
-            if thing.Name is target:
+            if thing.Name == target:
                 lock = thing
         for thing in self._Location.Shelves:
-            if thing.Name is target:
+            if thing.Name == target:
                 lock = thing
         if lock and key:
             if lock.use(key) == 1:
@@ -104,27 +110,27 @@ class Player:
     # takes as argument the name of an object the player wishes to examine more closely. If the object is found, prints
     # the description of that object
     def look(self, target):
-        if self._Location.Name is target:
+        if self._Location.Name == target:
             self._Location.examine()
             return 1
         for thing in self.Bag:
-            if thing.Name is target:
+            if thing.Name == target:
                 thing.examine()
                 return 1
         for thing in self._Location.Floor:
-            if thing.Name is target:
+            if thing.Name == target:
                 thing.examine()
                 return 1
         for thing in self._Location.Shelves:
-            if thing.Name is target:
+            if thing.Name == target:
                 thing.examine()
                 return 1
         for thing in self._Location.Traps:
-            if thing.Name is target:
+            if thing.Name == target:
                 thing.examine()
                 return 1
         for thing in self._Location.Doors:
-            if thing.Name is target:
+            if thing.Name == target:
                 thing.examine()
                 return 1
         print("There is no " + target + " here.")
@@ -137,7 +143,7 @@ class Player:
     # takes as argument the name of an Item the player wishes to remove from their bag
     def drop(self, item):
         for thing in self.Bag:
-            if thing.Name is item:
+            if thing.Name == item:
                 print("You drop your " + item + " on the floor")
                 self._Location.additem(thing)
                 self.Bag.remove(thing)
@@ -149,19 +155,25 @@ class Player:
     # and there are no traps preventing it)
     def move(self, room):
         for thing in self._Location.Neighbors:
-            if thing.Name is room:
+            if thing.Name == room:
+                if thing == self.Last_Loc:
+                    thing.enter()
+                    self.Last_Loc = self._Location
+                    self._Location = thing
+                    return 1
                 for trap in self._Location.Traps:
                     if trap.Locked is True:
                         trap.spring()
                         if trap.Destination:
                             self._Location = trap.Destination
                         else:
-                            self.Turns_Left = 0
+                            self.Turns_Remaining = 0
                         return 2
                 thing.enter()
+                self.Last_Loc = self._Location
                 self._Location = thing
                 return 1
-        print("You do not see a " + room + " to go to.")
+        print("You cannot get to " + room + " from here.")
         return 0
 
 
@@ -212,7 +224,7 @@ class Room:
                 print(item.name)
 
     def enter(self):
-        print("You enter the " + self.Name)
+        print("You come upon " + self.Name)
         if not self.Visited:
             self.examine()
             self.Visited = True

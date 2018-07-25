@@ -1,7 +1,7 @@
 {
  "key": "dragonRoom",
  "name": "Dragon's Den",
- "longDesc": "long",
+ "longDesc": "a fearsome sight, a dragon. One you had not hoped to see from this close up. It rests fitfully here in this large, domed chamber, smoke trailing from it's glowing nostrils.",
  "shortDesc": "short",
  "doors": [],
  "items": {

@@ -1,7 +1,7 @@
 {
  "key": "antechamber",
  "name": "Antechamber",
- "longDesc": "long desc",
+ "longDesc": "There is an ominous air to this room- rows of statues set here as if to guard this long-forgotten place seem to watch you disapprovingly.",
  "shortDesc": "short desc",
  "doors": [],
  "items": {

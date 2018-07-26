@@ -1,8 +1,8 @@
 {
  "key": "antechamber",
  "name": "Antechamber",
- "longDesc": "There is an ominous air to this room- rows of statues set here as if to guard this long-forgotten place seem to watch you disapprovingly.",
- "shortDesc": "short desc",
+ "longDesc": "A chamber of finely carved stone once designed to impress visitors now holds a distinctly ominous air. Rows of statues seem to stand guard over this long-forgotten place make it hard to shake the feeling of being watched, and send a clear message: you are not welcome here.",
+ "shortDesc": "A hall of ominous statues guarding the way into this forgotten ruin",
  "doors": [],
  "items": {
 	"shelves": ["torch"],

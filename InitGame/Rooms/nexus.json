@@ -1,8 +1,8 @@
 {
  "key": "nexus",
  "name": "Nexus",
- "longDesc": "long",
- "shortDesc": "short",
+ "longDesc": "This large, domed room clearly had some ceremonial purpose- in the center seems to be some sort of altar, and above it, at the top of the dome, seems to be a collapsed chimney to let in natural light. There are doors leading away from here in many directions- clearly this was once some sort of hub.",
+ "shortDesc": "A large, circular room with many paths leading away",
  "doors": [],
  "items": {
 	"shelves":["copperKey"],

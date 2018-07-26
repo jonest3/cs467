@@ -1,8 +1,8 @@
 {
  "key": "muralRoom",
  "name": "Room of Murals",
- "longDesc": "long",
- "shortDesc": "short",
+ "longDesc": "This room is long and narrow, with high celings. On each wall there are strikingly detailed, if faded, murals depicting glorious military victories of whoever had built these ruins. Gold filigree is worked into the designs liberally, but you can't see any way of extracting the precious metal with the tools you have on you.",
+ "shortDesc": "A long, narrow room covered in murals.",
  "doors": [],
  "items": {
 	"shelves": [],

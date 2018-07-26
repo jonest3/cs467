@@ -1,8 +1,8 @@
 {
  "key": "greenhouse",
  "name": "Over-grown Greenhouse",
- "longDesc": "long",
- "shortDesc": "short",
+ "longDesc": "This area was clearly once used for cultivating plants- exotic and magical ones, if you had to guess. The lack of active cultivation doesn't seem to have done them much real harm- the room has a thick coating og dark green moss over every surface, a few bright floral blooms peak out between the leaves, and the air is thick with petrichor.",
+ "shortDesc": "An area covered in moss and a few bright flowers",
  "doors": [],
  "items": {
 	"shelves": ["yellowPlant"],

@@ -1,8 +1,8 @@
 {
  "key": "cave",
  "name": "Cave",
- "longDesc": "A damp cave, it's ceiling low enough that you have to hunch over to be able to walk. Some bones crunch underfoot as you pass- some animal? Or a less fortunate fellow explorer?",
- "shortDesc": "short",
+ "longDesc": "The cave's ceiling low enough that you have to hunch over to be able to walk. The smell of some beast is thick in the air here where some beast seems to have made it's den. Some bones crunch underfoot as you pass- some animal? Or a less fortunate fellow explorer? You get the feeling you should move along quickly, whatever lives here could return at any moment",
+ "shortDesc": "A low cave where something seems to have made it's den.",
  "doors": [],
  "items": {
 	"shelves": [],

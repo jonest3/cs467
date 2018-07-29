@@ -1,13 +1,27 @@
 {
  "key": "helicopterPad",
+
  "name": "Helicopter Pad",
+
  "longDesc": "The air is humid and full of buzzing insects here, deep in the jungle where you tracked down the forgotten ruins and landed your helicopter. Before you stands the imposing stone door to that leads to the find of your career.",
+
  "shortDesc": "A clearing in the deep jungle where you landed your helicopter",
- "doors": [],
+
  "items": {
 	"shelves": [],
 	"floor": ["rustyKey", "machete"]
  },
  "traps": [],
- "neighbors": ["antechamber"]
+
+ "doors": [
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "north",
+		"lock_val": "",
+		"neighbor": "antechamber",
+		"locked": "False"
+	}
+ ]
 }

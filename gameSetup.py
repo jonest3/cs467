@@ -1,4 +1,4 @@
-from gameEngine import Player, Room, Item
+from gameEngine import Player, Room, Item, Door, Shelf
 from testGame import TestGame
 import pickle
 import json
@@ -9,15 +9,12 @@ MAX_MOVES = 30
 
 
 class GameComponents:
-	def __init__(self, loadSaved=False):
-		self.loadSaved = loadSaved
-		self.basePath = "./SavedGame/" if loadSaved else "./InitGame/"
+	def __init__(self):
+		self.basePath = "./InitGame/"
 		self.items = self.loadItems()
-#		self.doors = self.loadDoors()
-#		self.traips = self.loadTraps()
+#		self.traps = self.loadTraps()
 		self.rooms = self.loadRooms()
 		self.player = Player(self.getRoom("helicopterPad"), MAX_MOVES)
-
 
 	
 	# @param:  directory - the name of the directory to get all files in
@@ -25,12 +22,16 @@ class GameComponents:
  	# returns: list of files in parsed directory.  Will return empty list if error occurs 
 	def getFilesInDir(self, directory):
 		path = self.basePath + "{directory}/".format(directory=directory)
-		files = []
-		try:
-			files = os.listdir(path)	
-		except:
-			print("Error: Could not read files from path: {path}.".format(path=path))
-		return files
+		if os.path.exists(path):
+			files = []
+			try:
+				files = os.listdir(path)	
+			except:
+				print("Error: Could not read files from path: {path}.".format(path=path))
+			return files
+		else:
+			print("Error: No such path: {path}.".format(path=path))
+			exit()
 
 
 	# @param: directory - directory file is in
@@ -42,10 +43,7 @@ class GameComponents:
 		if os.path.exists(path):
 			try:
 				with open(path, 'r') as data_file:
-					if self.loadSaved:
-						return pickle.load(data_file)
-					else:
-						return json.load(data_file)	 
+					return json.load(data_file)	 
 			except:
 				print("Error: Could not load from {path}.".format(path=path))
 		else:
@@ -64,27 +62,45 @@ class GameComponents:
 			if room:
 				key = room["key"]
 				name = room["name"]
-				longDesc = room["longDesc"]
+				desc = room["longDesc"]
 				shortDesc = room["shortDesc"]
-				neighbors = room["neighbors"]
-				shelves = room["items"]["shelves"]
-				floor = room["items"]["floor"]
-				roomDict[key] = Room(name, longDesc, shortDesc)
-				roomDict[key].Neighbors = neighbors
+				roomDict[key] = Room(name, desc, shortDesc)
 				
-				for item in floor:
+				for item in room["items"]["floor"]:
 					if self.items[item]:
 						itemObj = self.items[item]
 						roomDict[key].add_item(itemObj)
 					else:
 						print("Error: {item} does not exist.".format(item=item))
 
-				for item in shelves:
-					if self.items[item]:
-						itemObj = self.items[item]	
-						roomDict[key].add_shelf(itemObj)
-					else:
-						print("Error: {item} does not exist.".format(item=item))
+				for shelf in room["items"]["shelves"]:
+					sName = shelf["name"]
+					sDesc = shelf["desc"]
+					sLocked = True if shelf["locked"] == "True" else False
+					sLockVal = shelf["lock_val"]
+					contents = shelf["contents"]
+					shelfObj = Shelf(sName, sDesc, sLocked, sLockVal)					
+	
+					for item in contents:
+						if self.items[item]:
+							itemObj = self.items[item]		
+							shelfObj.add_item(itemObj)
+						else:
+							print("Error: {item} does not exist.".format(item=item))
+
+				roomDict[key].add_shelf(shelfObj)
+				for door in room["doors"]:
+					dName = door["name"]
+					dDesc = door["desc"]
+					unlock_desc = door["unlock_desc"]
+					direction = door["direction"]
+					lock_val = door["lock_val"]
+					destination = door["neighbor"]
+					locked = True if door["locked"] == "True" else False
+					doorObj = Door(dName, dDesc, direction, destination, locked, lock_val, unlock_desc)
+					roomDict[key].add_door(doorObj)
+
+
 		return roomDict
 
 
@@ -105,36 +121,45 @@ class GameComponents:
 		return itemDict
 
 	
-
-	# @param: None
-	#
-	# returns: None
-	#
-	# Used to link neighbors and rooms
-	def getNeighbors(self):
-		rooms_list = list(self.rooms)
-		if len(rooms_list):
-			for room in rooms_list:
-				roomObj = self.rooms[room]
-				neighbors = roomObj.Neighbors
-				roomObj.Neighbors = []
-				for neighbor in neighbors:
-					neighborObj = self.rooms[neighbor]
-					roomObj.add_neighbor(neighborObj)
-		
-
 	# @param: room_name - name of room to return
 	#
 	# returns: room if it exists, else 'None'
-	def getRoom(self, room_name):
+	def getRoom(self, room_key):
 		try:
-			return self.rooms[room_name]
+			return self.rooms[room_key]
 		except:
 			return None
 
+	def getDoorDestinations(self):
+		for room in list(self.rooms):
+			roomObj = self.rooms[room]
+			print(roomObj.Name)
+			for door in list(roomObj.Doors):
+				neighbor_key = door.Destination
+				neighbor = self.getRoom(neighbor_key)
+				door.Destination = neighbor
 
-game = GameComponents()
-game.getNeighbors()
+	
+	def saveGame(self, game):
+		directory = "./SavedGame"
+		path = "{directory}/Game.save".format(directory=directory)
+		if not os.path.exists(directory):
+			os.makedirs(directory)
+		pickle.dump(game, open(path, 'wb'))
 
-tester = TestGame(game)
-tester.main()
+cont_game = 1
+while cont_game:
+	gameState = input("Enter 'loadgame' or 'savegame': ")
+	directory = "./SavedGame"
+	path = "{directory}/Game.save".format(directory=directory)
+
+	if gameState == "loadgame":
+		game = pickle.load(open(path, 'rb'))			
+	else:
+		game = GameComponents()
+		game.getDoorDestinations()
+	if gameState == "savegame":
+		 game.saveGame(game)
+	tester = TestGame(game)
+	cont_game = tester.main()
+

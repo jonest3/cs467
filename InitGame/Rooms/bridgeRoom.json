@@ -1,13 +1,46 @@
 {
  "key": "bridgeRoom",
+
  "name": "Bridge Room",
+
  "longDesc": "a narrow bridge of rope and weathered wood spans across a dark chasm. You aren't sure how it manages to support it's own weight after all these years since it was in active use, but it looks like it should be able to support your crossing... probably? Though you cannot see the bottom of the chasm, you can faintly hear the sound of rushing water from far below.",
+
  "shortDesc": "A narrow rope bridge over a chasm",
- "doors": [],
+
  "traps": [],
+
  "items": {
 	"shelves": [],
 	"floor": ["woodenKey"]
  },
- "neighbors": ["cave", "rootRoom", "library"]
+
+ "doors": [
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "north",
+		"lock_val": "",
+		"neighbor": "cave",
+		"locked": "False"
+	},
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "east",
+		"lock_val": "Rope",
+		"neighbor": "rootRoom",
+		"locked": "True"
+	},
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "upstairs",
+		"lock_val": "Rope",
+		"neighbor": "library",
+		"locked": "True"
+	}
+ ]
 }

@@ -1,13 +1,45 @@
 {
  "key": "antechamber",
+
  "name": "Antechamber",
+
  "longDesc": "A chamber of finely carved stone once designed to impress visitors now holds a distinctly ominous air. Rows of statues seem to stand guard over this long-forgotten place make it hard to shake the feeling of being watched, and send a clear message: you are not welcome here.",
+
  "shortDesc": "A hall of ominous statues guarding the way into this forgotten ruin",
- "doors": [],
+
  "items": {
-	"shelves": ["torch"],
+	"shelves": [
+		{	
+			"name": "",
+			"desc": "",
+			"locked": "",
+			"lock_val": "",
+			"contents": ["torch"]
+		}
+	],
 	"floor": ["wedge"]
  },
+
  "traps": [],
- "neighbors": ["helicopterPad", "nexus"]
+
+ "doors": [
+	{ 
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "south",
+		"lock_val": "",
+		"neighbor": "helicopterPad",
+		"locked": "False"
+	}, 
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "north",
+		"lock_val": "",
+		"neighbor": "nexus",
+		"locked": "False"
+	}
+  ]
 }

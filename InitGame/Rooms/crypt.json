@@ -1,13 +1,36 @@
 {
  "key": "crypt",
+
  "name": "Crypt",
+
  "longDesc": "Statues stand vigil, halberds extended and crossed over a sealed sarcophagus bearing the face of someone dead so long the memory of their name has joined them. You've heard all sorts of terrible things about curses that befall those who disturb such graves but... what wealth might lie inside, undiscovered?",
+
  "shortDesc": "An ancient crypt where someone of importance was buried.",
- "doors": [],
+
  "items": {
-	"shelves": ["goldenKey"],
+	"shelves": [
+		{
+			"name": "",
+			"desc": "",
+			"locked": "",
+			"lock_val": "",
+			"contents": ["goldenKey"]
+		}
+	],
 	"floor": ["brokenSword"]
  },
+
  "traps": [],
- "neighbors": ["cave"]
+
+ "doors": [
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "east",
+		"lock_val": "",
+		"neighbor": "cave",
+		"locked": "False"
+	}
+ ]
 }

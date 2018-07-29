@@ -1,13 +1,37 @@
 {
  "key": "rootRoom",
- "name": "Root Room",
+
+ "name": "Room of Roots",
+
  "longDesc": "long",
+
  "shortDesc": "short",
- "doors": [],
+
  "items": {
 	"shelves":[],
 	"floor":[]
  },
+
  "traps": ["rootTrap"],
- "neighbors": ["bridgeRoom", "waterfall"]
+
+ "doors": [
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "west",
+		"lock_val": "",
+		"neighbor": "bridgeRoom",
+		"locked": "False"
+	},
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "east",
+		"lock_val": "",
+		"neighbor": "waterfall",
+		"locked": "False"
+	}
+ ]
 }

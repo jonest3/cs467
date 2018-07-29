@@ -1,13 +1,28 @@
 {
  "key": "waterfall",
+
  "name": "Waterfall",
+
  "longDesc": "long",
+
  "shortDesc": "short",
- "doors": [],
+
  "items": {
 	"shelves": [],
 	"floor": ["pebbles"]
  },
+
  "traps": [],
- "neighbors": ["rootRoom"]
+
+ "doors": [
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "west",
+		"lock_val": "",
+		"neighbor": "rootRoom",
+		"locked": "False"
+	}
+ ]
 }

@@ -31,11 +31,11 @@ class Item:
             output = "It works! The " + input.get_name() + " and the " + self.Name + " become a " \
                      + self._TransID.getName()
             print(output)
-            self.Name = self._TransID.getName()
-            self.Desc = self._TransID.getDesc()
-            self.KeyVal = self._TransID.getKeyVal()
-            self._LockVal = self._TransID.getTransKey()
-            self._TransID = self._TransID.getTransID()
+            self.Name = self._TransID.Name()
+            self.Desc = self._TransID.Desc()
+            self.KeyVal = self._TransID.KeyVal()
+            self._LockVal = self._TransID.get_lock_val()
+            self._TransID = self._TransID.get_trans_id()
             return 1
         else:
             return 0
@@ -311,11 +311,12 @@ class Trap:
     # room. Initializes with a name, description, description of what happens to the player when the trap is sprung,
     # key value expected to disarm the trap, and the room the player is sent to when the trap is sprung.
     # if no destination is given, the trap simply kills the player.
-    def __init__(self, name, desc, s_desc, lock_val, destination=None):
+    def __init__(self, name, desc, s_desc, lock_val, d_desc, destination=None):
         self.Name = name
         self.Desc = desc
         self.Spring_desc = s_desc
         self._LockVal = lock_val
+        self.DisarmDesc = d_desc
         self.Destination = destination
         self.Locked = True
 
@@ -325,7 +326,7 @@ class Trap:
     def examine(self):
         print(self.Desc)
         if not self.Locked:
-            print("It appears to be disarmed and safe to pass")
+            print("It appears to be safe to pass")
 
     def spring(self):
         print(self.Spring_desc)
@@ -333,9 +334,8 @@ class Trap:
     def use(self, input):
         key = input.getKeyVal()
         if self.Locked:
-            if key is self._LockVal:
-                output = "It works! The " + input.get_name() + " disarms the " + self.Name + \
-                         ", it should be safe to pass now"
+            if key == self._LockVal:
+                output = "input.DisarmDesc"
                 print(output)
                 self.Locked = False
                 return 1

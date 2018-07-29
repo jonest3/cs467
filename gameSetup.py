@@ -15,7 +15,8 @@ class GameComponents:
 #		self.traps = self.loadTraps()
 		self.rooms = self.loadRooms()
 		self.player = Player(self.getRoom("helicopterPad"), MAX_MOVES)
-
+		self.getDoorDestinations()
+		self.getItemDestinations()
 	
 	# @param:  directory - the name of the directory to get all files in
 	# 
@@ -88,7 +89,7 @@ class GameComponents:
 						else:
 							print("Error: {item} does not exist.".format(item=item))
 
-				roomDict[key].add_shelf(shelfObj)
+					roomDict[key].add_shelf(shelfObj)
 				for door in room["doors"]:
 					dName = door["name"]
 					dDesc = door["desc"]
@@ -117,7 +118,11 @@ class GameComponents:
 				name = item["name"]
 				desc = item["desc"]
 				key = item["key_val"]
-				itemDict[key] = Item(name, desc, key)
+				lock = item["lock_val"]
+				trans_id = item["trans_id"]
+				trap_desc = item["trap_desc"]
+				destination = item["destination"]
+				itemDict[key] = Item(name, desc, key, lock, trans_id, trap_desc, destination)
 		return itemDict
 
 	
@@ -133,11 +138,18 @@ class GameComponents:
 	def getDoorDestinations(self):
 		for room in list(self.rooms):
 			roomObj = self.rooms[room]
-			print(roomObj.Name)
 			for door in list(roomObj.Doors):
 				neighbor_key = door.Destination
 				neighbor = self.getRoom(neighbor_key)
 				door.Destination = neighbor
+
+
+	def getItemDestinations(self):
+		for item in list(self.items):
+			itemObj = self.items[item]
+			if itemObj.Destination:
+				room = itemObj.Destination
+				itemObj.Destination = self.rooms[room]
 
 	
 	def saveGame(self, game):
@@ -157,7 +169,8 @@ while cont_game:
 		game = pickle.load(open(path, 'rb'))			
 	else:
 		game = GameComponents()
-		game.getDoorDestinations()
+#		game.getDoorDestinations()
+#		game.getItemDestinations()
 	if gameState == "savegame":
 		 game.saveGame(game)
 	tester = TestGame(game)

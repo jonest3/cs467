@@ -1,7 +1,7 @@
 {
-   "name": "Copper Key",
+   "name": "Rope Ladder",
    "desc": "desc",
-   "key_val": "copperKey",
+   "key_val": "ladder",
    "lock_val": "",
    "trans_id": "",
    "destination": "",

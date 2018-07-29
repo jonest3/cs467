@@ -1,5 +1,9 @@
 {
    "name": "Vial",
    "desc": "desc",
-   "key_val": "vial"
+   "key_val": "vial",
+   "lock_val": "potion",
+   "trans_id": "fullVial",
+   "destination": "",
+   "trap_desc": ""
 }

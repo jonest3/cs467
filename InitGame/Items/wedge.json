@@ -1,5 +1,9 @@
 {
    "name": "Wedge",
    "desc": "desc",
-   "key_val": "wedge"
+   "key_val": "wedge",
+   "lock_val": "",
+   "trans_id": "",
+   "destination": "",
+   "trap_desc": ""
 }

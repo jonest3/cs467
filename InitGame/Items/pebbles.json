@@ -1,5 +1,9 @@
 {
    "name": "Pebbles",
    "desc": "desc",
-   "key_val": "pebbles"
+   "key_val": "pebbles",
+   "lock_val": "",
+   "trans_id": "",
+   "destination": "",
+   "trap_desc": ""
 }

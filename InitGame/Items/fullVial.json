@@ -1,7 +1,7 @@
 {
-   "name": "Copper Key",
+   "name": "Vial of Sleeping Potion",
    "desc": "desc",
-   "key_val": "copperKey",
+   "key_val": "fullVial",
    "lock_val": "",
    "trans_id": "",
    "destination": "",

@@ -1,5 +1,9 @@
 {
    "name": "Lantern",
    "desc": "desc",
-   "key_val": "lantern"
+   "key_val": "lantern",
+   "lock_val": "",
+   "trans_id": "",
+   "destination": "",
+   "trap_desc": ""
 }

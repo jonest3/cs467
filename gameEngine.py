@@ -5,14 +5,14 @@ class Item:
     # key_val = the value the item has as a key, passed to an object if this item is used on it
     # lock_val = the value compared with a given key value to see if this item reacts with an item being used on it
     # trans_id = an item that this item becomes after the correct key has been applied to it
-    def __init__(self, name, desc, key_val, lock_val=None, trans_id=None, destination=None, trap_desc=None):
+    def __init__(self, name, desc, key_val, lock_val=None, trans_id=None, trap_desc=None, destination=None):
         self.Name = name
         self.Desc = desc
         self.KeyVal = key_val
         self._LockVal = lock_val
         self._TransID = trans_id
-        self.Destination = destination
         self.Trap_Desc = trap_desc
+        self.Destination = destination
 
     def get_lock_val(self):
         return self._LockVal
@@ -28,14 +28,16 @@ class Item:
     def use(self, input):
         key = input.KeyVal
         if self._LockVal is not None and key == self._LockVal:
-            output = "It works! The " + input.get_name() + " and the " + self.Name + " become a " \
-                     + self._TransID.getName()
+            output = "It works! The " + input.Name + " and the " + self.Name + " become a " \
+                     + self._TransID.Name
             print(output)
-            self.Name = self._TransID.getName()
-            self.Desc = self._TransID.getDesc()
-            self.KeyVal = self._TransID.getKeyVal()
-            self._LockVal = self._TransID.getTransKey()
-            self._TransID = self._TransID.getTransID()
+            self.Name = self._TransID.Name
+            self.Desc = self._TransID.Desc
+            self.KeyVal = self._TransID.KeyVal
+            self._LockVal = self._TransID.get_lock_val()
+            self._TransID = self._TransID.get_trans_id()
+            self.Trap_Desc = self._TransID.Trap_Desc
+            self.Destination = self._TransID.Destination
             return 1
         else:
             return 0
@@ -72,9 +74,13 @@ class Player:
                             self.Bag.append(thing)
                             self._Location.Floor.remove(thing)
                             print("You pick up the " + item + "and put it in your bag")
-                            if thing.destination is not None:
+                            if thing.Trap_Desc is not None:
                                 print(thing.Trap_Desc)
-                                self._Location = thing.Destination
+                                if thing.destination is not None:
+                                    self.Turns_Remaining = 12
+                                    self.move(thing.Destination)
+                                else:
+                                    self.Turns_Remaining = 0
                             return 1
         print("There is no " + item + " here.")
         return 0
@@ -313,11 +319,12 @@ class Trap:
     # room. Initializes with a name, description, description of what happens to the player when the trap is sprung,
     # key value expected to disarm the trap, and the room the player is sent to when the trap is sprung.
     # if no destination is given, the trap simply kills the player.
-    def __init__(self, name, desc, s_desc, lock_val, destination=None):
+    def __init__(self, name, desc, s_desc, lock_val, d_desc, destination=None):
         self.Name = name
         self.Desc = desc
         self.Spring_desc = s_desc
         self._LockVal = lock_val
+        self.DisarmDesc = d_desc
         self.Destination = destination
         self.Locked = True
 

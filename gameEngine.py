@@ -5,14 +5,14 @@ class Item:
     # key_val = the value the item has as a key, passed to an object if this item is used on it
     # lock_val = the value compared with a given key value to see if this item reacts with an item being used on it
     # trans_id = an item that this item becomes after the correct key has been applied to it
-    def __init__(self, name, desc, key_val, lock_val=None, trans_id=None, destination=None, trap_desc=None):
+    def __init__(self, name, desc, key_val, lock_val=None, trans_id=None, trap_desc=None, destination=None):
         self.Name = name
         self.Desc = desc
         self.KeyVal = key_val
         self._LockVal = lock_val
         self._TransID = trans_id
-        self.Destination = destination
         self.Trap_Desc = trap_desc
+        self.Destination = destination
 
     def get_lock_val(self):
         return self._LockVal
@@ -36,6 +36,8 @@ class Item:
             self.KeyVal = self._TransID.KeyVal()
             self._LockVal = self._TransID.get_lock_val()
             self._TransID = self._TransID.get_trans_id()
+            self.Trap_Desc = self._TransID.Trap_Desc()
+            self.Destination = self._TransID.Destination
             return 1
         else:
             return 0
@@ -64,6 +66,12 @@ class Player:
                 self.Bag.append(thing)
                 self._Location.Floor.remove(thing)
                 print("You pick up the " + item + "and put it in your bag")
+                if thing.Trap_Desc is not None:
+                    print(thing.Trap_Desc)
+                    if thing.Destination is not None:
+                        self._Location = thing.Destination
+                    else:
+                        self.Turns_Remaining = 0                
                 return 1
         for shelf in self._Location.Shelves:
             if not shelf.Locked:
@@ -72,9 +80,12 @@ class Player:
                             self.Bag.append(thing)
                             self._Location.Floor.remove(thing)
                             print("You pick up the " + item + "and put it in your bag")
-                            if thing.destination is not None:
+                            if thing.Trap_Desc is not None:
                                 print(thing.Trap_Desc)
-                                self._Location = thing.Destination
+                                if thing.Destination is not None:
+                                    self._Location = thing.Destination
+                                else:
+                                    self.Turns_Remaining = 0
                             return 1
         print("There is no " + item + " here.")
         return 0
@@ -99,9 +110,16 @@ class Player:
         for thing in self._Location.Shelves:
             if thing.Name == target:
                 lock = thing
-        if lock and key:
-            if lock.use(key) == 1:
+        if lock and key: 
+            useResult = lock.use(key)
+            if useResult == 1
                 self.Bag.remove(key)
+            if lock.Trap_Desc is not None:
+                print(lock.Trap_Desc)
+                if lock.Destination is not None:
+                    self._Location = lock.Destination
+                else:
+                    self.Turns_Remaining = 0                
         if not key:
             print("You do not have a " + item)
         elif not lock:

@@ -1,0 +1,9 @@
+{
+   "name": "Sleeping Potion",
+   "desc": "desc",
+   "key_val": "potion",
+   "lock_val": "vial",
+   "trans_id": "fullVial",
+   "destination": "",
+   "trap_desc": ""
+}

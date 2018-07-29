@@ -1,0 +1,36 @@
+{
+ "key": "treasureRoom",
+
+ "name": "Room of Treasures",
+
+ "longDesc": "As the door opens, you are blinded by the shimmering light gleaming off of the Golden Scepter of Ma-go'Faan that is seemingly floating in its glass case in the middle of the dark room.  You notice the case sits upon a hexagonal pillar carved with images of the great Ma-go'Faan himself, wielding the might scepter.  If it were not for the light streaming in from the crack in the castle's celing, the room would have been completely dark.  As you step into the room, you feel the castle begin to shake and it starts to feel as if the floor were going to crumble away from under your feet.",
+
+ "shortDesc": "You re-enter the grand room where the scepter is kept safely in its glass case.  For some reason, the floor seems even less stable than before to you.",
+
+ "items": {
+	"shelves": [
+		{
+			"name": "",
+			"desc": "",
+			"locked": "",
+			"lock_val": "",
+			"contents": ["scepter"]
+		}
+	],
+	"floor": []
+ },
+
+ "traps": ["floorCrumbles"],
+
+ "doors": [
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "south",
+		"lock_val": "",
+		"neighbor": "dragonRoom",
+		"locked": "False"
+	}
+ ]
+}

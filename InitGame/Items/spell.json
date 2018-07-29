@@ -1,0 +1,9 @@
+{
+   "name": "Sleeping Spell",
+   "desc": "desc",
+   "key_val": "spell",
+   "lock_val": "purpleMush",
+   "trans_id": "potion",
+   "destination": "",
+   "trap_desc": ""
+}

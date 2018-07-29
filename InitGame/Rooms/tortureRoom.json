@@ -1,0 +1,36 @@
+{
+ "key": "tortureChamber",
+
+ "name": "Torture Chamber",
+
+ "longDesc": "long",
+
+ "shortDesc": "short",
+
+ "items": {
+	"shelves": [
+		{
+			"name": "",
+			"desc": "",
+			"locked": "",
+			"lock_val": "",
+			"contents": ["rope"]
+		}
+	],
+	"floor": ["wood"]
+ },
+
+ "traps": [],
+
+ "doors": [
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "south",
+		"lock_val": "",
+		"neighbor": "cave",
+		"locked": "False"
+	}
+ ]
+}

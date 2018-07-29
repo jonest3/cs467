@@ -1,0 +1,9 @@
+{
+   "name": "Water",
+   "desc": "desc",
+   "key_val": "water",
+   "lock_val": "bucket",
+   "trans_id": "fullBucket",
+   "destination": "",
+   "trap_desc": ""
+}

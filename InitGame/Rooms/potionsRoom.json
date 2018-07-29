@@ -1,0 +1,28 @@
+{
+ "key": "potionRoom",
+
+ "name": "Potion Room",
+ 
+"longDesc": "long",
+
+ "shortDesc": "short",
+
+ "items": {
+	"shelves": [],
+	"floor": []
+ },
+
+ "traps": ["wrongPlant"],
+
+ "doors": [
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "northeast",
+		"lock_val": "",
+		"neighbor": "nexus",
+		"locked": "False"
+	}
+ ]
+}

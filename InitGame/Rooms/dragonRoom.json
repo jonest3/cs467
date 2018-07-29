@@ -1,0 +1,37 @@
+{
+ "key": "dragonRoom",
+
+ "name": "Dragon's Den",
+
+ "longDesc": "A fearsome sight, a dragon. One you had not hoped to see from this close up. It rests fitfully here in this large, domed chamber, smoke trailing from it's glowing nostrils. It must have been here a while, it certainly looks to have grown too large to fit through any of the doors.",
+
+ "shortDesc": "A room where a dragon slumbers",
+
+ "items": {
+	"shelves": [],
+	"floor": ["dragonDrool"]
+ },
+
+ "traps": [],
+
+ "doors": [
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "south",
+		"lock_val": "",
+		"neighbor": "nexus",
+		"locked": "False"
+	},
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "north",
+		"lock_val": "",
+		"neighbor": "treasureRoom",
+		"locked": "True"
+	}
+ ]
+}

@@ -1,0 +1,9 @@
+{
+   "name": "Rusty Key",
+   "desc": "A small, rusty skeleton key",
+   "key_val": "rustyKey",
+   "lock_val": "",
+   "trans_id": "",
+   "destination": "",
+   "trap_desc": ""
+}

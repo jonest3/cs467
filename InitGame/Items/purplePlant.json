@@ -1,0 +1,9 @@
+{
+   "name": "Purple Plant",
+   "desc": "desc",
+   "key_val": "purplePlant",
+   "lock_val": "fullBucket",
+   "trans_id": "purpleMush",
+   "destination": "",
+   "trap_desc": ""
+}

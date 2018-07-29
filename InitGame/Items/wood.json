@@ -1,0 +1,9 @@
+{
+   "name": "Wood",
+   "desc": "desc",
+   "key_val": "wood",
+   "lock_val": "rope",
+   "trans_id": "ladder",
+   "destination": "",
+   "trap_desc": ""
+}

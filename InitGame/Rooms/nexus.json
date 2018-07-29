@@ -1,0 +1,81 @@
+{
+ "key": "nexus",
+
+ "name": "Nexus",
+
+ "longDesc": "This large, domed room clearly had some ceremonial purpose- in the center seems to be some sort of altar, and above it, at the top of the dome, seems to be a collapsed chimney to let in natural light. There are doors leading away from here in many directions- clearly this was once some sort of hub.",
+
+ "shortDesc": "A large, circular room with many paths leading away",
+
+ "items": {
+	"shelves": [
+		{
+			"name": "",
+			"desc": "",
+			"locked": "",
+			"lock_val": "",
+			"contents": ["copperKey"]
+		}
+	],
+	"floor":["bucket"]
+ },
+
+ "traps": [],
+
+ "doors": [
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "south",
+		"lock_val": "",
+		"neighbor": "antechamber",
+		"locked": "False"
+	},
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "southeast",
+		"lock_val": "",
+		"neighbor": "library",
+		"locked": "False"
+	},
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "north",
+		"lock_val": "",
+		"neighbor": "dragonRoom",
+		"locked": "False"
+	},
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "northeast",
+		"lock_val": "",
+		"neighbor": "greenhouse",
+		"locked": "False"
+	},
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "northwest",
+		"lock_val": "",
+		"neighbor": "muralRoom",
+		"locked": "False"
+	},
+	{
+		"name": "",
+		"desc": "",
+		"unlock_desc": "",
+		"direction": "southwest",
+		"lock_val": "",
+		"neighbor": "potionRoom",
+		"locked": "False"
+	}
+ ]
+}

@@ -160,20 +160,18 @@ class GameComponents:
 			os.makedirs(directory)
 		pickle.dump(game, open(path, 'wb'))
 
-cont_game = 1
-while cont_game:
-	gameState = input("Enter 'loadgame' or 'savegame': ")
-	directory = "./SavedGame"
-	path = "{directory}/Game.save".format(directory=directory)
+gameState = input("Enter 'loadgame' or 'savegame': ")
+directory = "./SavedGame"
+path = "{directory}/Game.save".format(directory=directory)
 
-	if gameState == "loadgame":
-		game = pickle.load(open(path, 'rb'))
-	else:
-		game = GameComponents()
+if gameState == "loadgame":
+	game = pickle.load(open(path, 'rb'))
+else:
+	game = GameComponents()
 #		game.getDoorDestinations()
 #		game.getItemDestinations()
-	if gameState == "savegame":
-		 game.saveGame(game)
+if gameState == "savegame":
+	 game.saveGame(game)
 
-	parser = inputParser(game)
-	parser.run()
+parser = inputParser(game)
+parser.run()

@@ -10,8 +10,8 @@
  "items": {
 	"shelves": [
 		{
-			"name": "",
-			"desc": "",
+			"name": "Glass Terrarium",
+			"desc": "On one of the tables, you make out what appears to be a glass terrarium. The terrarium's edges are plated in copper and the top comes to a diamond-like point.  Inside the terrarium, you see an exotic looking plant.",
 			"locked": "",
 			"lock_val": "",
 			"contents": ["yellowPlant"]
@@ -20,12 +20,12 @@
 	"floor": ["purplePlant"]
  },
 
- "traps": ["prickFinger"],
+ "traps": [],
 
  "doors": [
 	{
-		"name": "",
-		"desc": "",
+		"name": "Pruned Plants",
+		"desc": "The remains of the ivy and vines dance in the self-made doorway.",
 		"unlock_desc": "",
 		"direction": "northeast",
 		"lock_val": "",

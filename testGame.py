@@ -104,6 +104,7 @@ class TestGame:
 		room = self.game.player._Location
 		for door in room.Doors:
 			door.examine()
+			print(door.Direction)
 		move_to = input("\n\nEnter where to move to: ")
 		self.game.player.move(move_to)
 

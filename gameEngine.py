@@ -72,14 +72,15 @@ class Player:
                 for thing in shelf.Contents:
                         if thing.Name == item:
                             self.Bag.append(thing)
-                            self._Location.Floor.remove(thing)
+                            shelf.Contents.remove(thing)
                             print("You pick up the " + item + "and put it in your bag")
                             if thing.Trap_Desc is not None:
                                 print(thing.Trap_Desc)
-                                if thing.destination is not None:
-                                    self.Turns_Remaining = 12
-                                    self.move(thing.Destination)
-                                else:
+                                try:
+                                    if thing.destination: # is not None:
+                                        self.Turns_Remaining = 12
+                                        self.move(thing.Destination)
+                                except:
                                     self.Turns_Remaining = 0
                             return 1
         print("There is no " + item + " here.")
@@ -162,10 +163,13 @@ class Player:
 
     # takes as argument the name of a room the player wishes to move to, and attempts to move there (if it can be found
     # and there are no traps preventing it)
-    def move(self, room):
+    def move(self, user_input):
         for door in self._Location.Doors:
-            if not door.Locked:
-                if door.Destination.Name == room or door.Direction == room or door.Name == room:
+#            if not door.Locked:
+            if door.Destination.Name == user_input or door.Direction == user_input or door.Name == user_input: 
+                if door.Locked: 
+                    print("{name} seems to be locked.  You will need to find a key to get through this way.".format(name=door.Name))
+                else: 
                     if not door.Destination.Visited:
                         for trap in self._Location.Traps:
                             if trap.Locked is True:
@@ -175,12 +179,13 @@ class Player:
                                     self.Turns_Remaining = 12
                                 else:
                                     self.Turns_Remaining = 0
-                                return 2
-                    door.Destination.enter()
+                                return 2                   
                     self.Last_Loc = self._Location
                     self._Location = door.Destination
+                    self._Location.enter()
                     return 1
-        print("You cannot get to " + room + " from here.")
+            else:
+                print("You cannot get to {room} from here".format(room=user_input))
         return 0
 
 
@@ -249,7 +254,8 @@ class Door:
         return self._LockVal
 
     def examine(self):
-            print(self.Desc + " lies to the " + self.Direction)
+            print(self.Desc)
+            print("The " + self.Destination.Name + " lies " + self.Direction + " through the " + self.Name)
 
     # takes an Item as input, if the door is locked it compares the key value of the item passed against the key it
     # expects. If they match, it adds the room it stores (leads to) to the list of Rooms accessible from the room set as
@@ -310,7 +316,7 @@ class Shelf:
         else:
             print("The " + self.Name + " contains:")
             for item in self.Contents:
-                print(item.get_name())
+                print(item.Name)
             return 1
 
 

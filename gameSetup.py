@@ -78,7 +78,7 @@ class GameComponents:
 					sName = shelf["name"]
 					sDesc = shelf["desc"]
 					sLocked = True if shelf["locked"] == "True" else False
-					sLockVal = shelf["lock_val"]
+					sLockVal = shelf["lock_val"] if shelf["lock_val"] != "" else None
 					contents = shelf["contents"]
 					shelfObj = Shelf(sName, sDesc, sLocked, sLockVal)					
 	
@@ -93,9 +93,9 @@ class GameComponents:
 				for door in room["doors"]:
 					dName = door["name"]
 					dDesc = door["desc"]
-					unlock_desc = door["unlock_desc"]
+					unlock_desc = door["unlock_desc"] if door["unlock_desc"] != "" else None
 					direction = door["direction"]
-					lock_val = door["lock_val"]
+					lock_val = door["lock_val"] if door["lock_val"] != "" else None
 					destination = door["neighbor"]
 					locked = True if door["locked"] == "True" else False
 					doorObj = Door(dName, dDesc, direction, destination, locked, lock_val, unlock_desc)
@@ -118,10 +118,10 @@ class GameComponents:
 				name = item["name"]
 				desc = item["desc"]
 				key = item["key_val"]
-				lock = item["lock_val"]
-				trans_id = item["trans_id"]
-				trap_desc = item["trap_desc"]
-				destination = item["destination"]
+				lock = item["lock_val"] if item["lock_val"] != "" else None
+				trans_id = item["trans_id"] if item["trans_id"] != "" else None
+				trap_desc = item["trap_desc"] if item["trap_desc"] != "" else None
+				destination = item["destination"] if item["destination"] != "" else None
 				itemDict[key] = Item(name, desc, key, lock, trans_id, trap_desc, destination)
 		return itemDict
 
@@ -132,6 +132,12 @@ class GameComponents:
 	def getRoom(self, room_key):
 		try:
 			return self.rooms[room_key]
+		except:
+			return None
+
+	def getItem(self, item_key):
+		try:
+			return self.items[item_key]
 		except:
 			return None
 
@@ -161,18 +167,15 @@ class GameComponents:
 
 cont_game = 1
 while cont_game:
-	gameState = input("Enter 'loadgame' or 'savegame': ")
-	directory = "./SavedGame"
-	path = "{directory}/Game.save".format(directory=directory)
+#	gameState = input("Enter 'loadgame' or 'savegame': ")
+#	directory = "./SavedGame"
+#	path = "{directory}/Game.save".format(directory=directory)
 
-	if gameState == "loadgame":
-		game = pickle.load(open(path, 'rb'))			
-	else:
-		game = GameComponents()
-#		game.getDoorDestinations()
-#		game.getItemDestinations()
-	if gameState == "savegame":
-		 game.saveGame(game)
+#	if gameState == "loadgame":
+#		game = pickle.load(open(path, 'rb'))			
+#	else:
+	game = GameComponents()
+#	if gameState == "savegame":
+#		 game.saveGame(game)
 	tester = TestGame(game)
 	cont_game = tester.main()
-

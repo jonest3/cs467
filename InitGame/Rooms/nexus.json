@@ -10,8 +10,8 @@
  "items": {
 	"shelves": [
 		{
-			"name": "",
-			"desc": "",
+			"name": "Altar",
+			"desc": "A large, stone altar in the center of the room.  An old, cooper box lays open atop the altar.",
 			"locked": "",
 			"lock_val": "",
 			"contents": ["copperKey"]
@@ -24,8 +24,8 @@
 
  "doors": [
 	{
-		"name": "",
-		"desc": "",
+		"name": "Stone Archway",
+		"desc": "The large stone archway you remember passing through when you first entered the castle.  Maybe the enscribing was meant to be a warning?  Maybe you should have listened....",
 		"unlock_desc": "",
 		"direction": "south",
 		"lock_val": "",
@@ -33,17 +33,17 @@
 		"locked": "False"
 	},
 	{
-		"name": "",
-		"desc": "",
-		"unlock_desc": "",
+		"name": "Glass, Double Doors",
+		"desc": "A once beautiful pair of stained-glass doors framed in dark cherry wood.  Some of the glass has broken and is laying in front of them and threw the missing pieces, you can see what appears to be hundreds of books.",
+		"unlock_desc": "The double doors sway gently from the breeze that finds its way down the remains of the chimney.  The smell of old books fils the room.",
 		"direction": "southeast",
 		"lock_val": "",
 		"neighbor": "library",
 		"locked": "False"
 	},
 	{
-		"name": "",
-		"desc": "",
+		"name": "Stone Door",
+		"desc": "A large stone door with iron details stands before you.  Smoke bellows out from the edges as it tries to escape from whatever is hidden inside.  You can feel heat radiating from the door as you ask yourself: 'Should I even try to open this door?'",
 		"unlock_desc": "",
 		"direction": "north",
 		"lock_val": "",
@@ -51,13 +51,13 @@
 		"locked": "False"
 	},
 	{
-		"name": "",
-		"desc": "",
-		"unlock_desc": "",
+		"name": "Ivy and Vines",
+		"desc": "What you thought was a door was actually overgrown vines and ivy.  You try to get through them, but they have grown to be tightly too intertwined.",
+		"unlock_desc": "You have cut through the ivy and vines that blocked your way into this room.",
 		"direction": "northeast",
-		"lock_val": "",
+		"lock_val": "machete",
 		"neighbor": "greenhouse",
-		"locked": "False"
+		"locked": "True"
 	},
 	{
 		"name": "",

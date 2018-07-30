@@ -1,5 +1,6 @@
 from gameEngine import Player, Room, Item, Door, Shelf
 from testGame import TestGame
+from input_parsing import inputParser
 import pickle
 import json
 import os
@@ -17,16 +18,16 @@ class GameComponents:
 		self.player = Player(self.getRoom("helicopterPad"), MAX_MOVES)
 		self.getDoorDestinations()
 		self.getItemDestinations()
-	
+
 	# @param:  directory - the name of the directory to get all files in
-	# 
- 	# returns: list of files in parsed directory.  Will return empty list if error occurs 
+	#
+ 	# returns: list of files in parsed directory.  Will return empty list if error occurs
 	def getFilesInDir(self, directory):
 		path = self.basePath + "{directory}/".format(directory=directory)
 		if os.path.exists(path):
 			files = []
 			try:
-				files = os.listdir(path)	
+				files = os.listdir(path)
 			except:
 				print("Error: Could not read files from path: {path}.".format(path=path))
 			return files
@@ -44,7 +45,7 @@ class GameComponents:
 		if os.path.exists(path):
 			try:
 				with open(path, 'r') as data_file:
-					return json.load(data_file)	 
+					return json.load(data_file)
 			except:
 				print("Error: Could not load from {path}.".format(path=path))
 		else:
@@ -66,7 +67,7 @@ class GameComponents:
 				desc = room["longDesc"]
 				shortDesc = room["shortDesc"]
 				roomDict[key] = Room(name, desc, shortDesc)
-				
+
 				for item in room["items"]["floor"]:
 					if self.items[item]:
 						itemObj = self.items[item]
@@ -80,11 +81,11 @@ class GameComponents:
 					sLocked = True if shelf["locked"] == "True" else False
 					sLockVal = shelf["lock_val"]
 					contents = shelf["contents"]
-					shelfObj = Shelf(sName, sDesc, sLocked, sLockVal)					
-	
+					shelfObj = Shelf(sName, sDesc, sLocked, sLockVal)
+
 					for item in contents:
 						if self.items[item]:
-							itemObj = self.items[item]		
+							itemObj = self.items[item]
 							shelfObj.add_item(itemObj)
 						else:
 							print("Error: {item} does not exist.".format(item=item))
@@ -125,7 +126,7 @@ class GameComponents:
 				itemDict[key] = Item(name, desc, key, lock, trans_id, trap_desc, destination)
 		return itemDict
 
-	
+
 	# @param: room_name - name of room to return
 	#
 	# returns: room if it exists, else 'None'
@@ -151,7 +152,7 @@ class GameComponents:
 				room = itemObj.Destination
 				itemObj.Destination = self.rooms[room]
 
-	
+
 	def saveGame(self, game):
 		directory = "./SavedGame"
 		path = "{directory}/Game.save".format(directory=directory)
@@ -166,13 +167,13 @@ while cont_game:
 	path = "{directory}/Game.save".format(directory=directory)
 
 	if gameState == "loadgame":
-		game = pickle.load(open(path, 'rb'))			
+		game = pickle.load(open(path, 'rb'))
 	else:
 		game = GameComponents()
 #		game.getDoorDestinations()
 #		game.getItemDestinations()
 	if gameState == "savegame":
 		 game.saveGame(game)
-	tester = TestGame(game)
-	cont_game = tester.main()
 
+	parser = inputParser(game)
+	parser.run()

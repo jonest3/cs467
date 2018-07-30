@@ -1,82 +1,108 @@
 
+'''
+Class to parse and interpret input from command line
+When taking input, first argument is always an action
+(use, go, take, etc.). This should match a function call
+via dicitionary. The remaining input will be interpreted
+by the function logic.
 
+'''
 
 class inputParser:
-    def __init__(self, raw_input):
-        args = raw_input.split(" ")
-        try:
-            self.command = args[0].upper()
-            self.direct_object = args[1].upper()
-        except IndexError:
-            print ("Not enough arguments!")
-        #TODO: add indirect object (optional)
-        #TODO: skip or read preposition types (from, to, down, etc)
 
-        self.valid_commands = {
+    def __init__(self, game):
+        self.game = game
 
-            # Inventory verbs
-            "USE": self.inventory,
-            "CONSUME": self.inventory,
-            "SPEND": self.inventory,
-            "EXPEND": self.inventory,
-            "THROW": self.inventory,
-            "GIVE": self.inventory,
+    def run(self):
+        game_cont = 1
+        while game_cont:
+            raw_input = input("Input a command: ")
+            args = raw_input.split(" ")
+            action = self.parse(args[0].upper())
+            try:
+                game_cont = action(args)
+            except KeyError:
+                game_cont = self.badInput()
 
-            # Travel verbs
-            "GO": self.travel,
-            "MOVE": self.travel,
+    def parse(self, action):
 
-            # Observe
-            "LOOK": self.observe,
-            "EXAMINE": self.observe,
+        valid_commands = {
 
-            # Interact
-            "TAKE": self.interact,
-            "STEAL": self.interact,
-            "OBTAIN": self.interact,
-            "MAKE": self.interact,
 
-            # Save
+            # Player.use(item) verbs
+            "USE": self.use,
+            "CONSUME": self.use,
 
+            # Player.take(item) verbs
+            "TAKE": self.take,
+            "STEAL": self.take,
+            "OBTAIN": self.take,
+
+            # Player.look(item) and Player.look_arount() verbs
+            "LOOK": self.look,
+            "EXAMINE": self.look,
+
+            # Player.drop(item) verbs
+            "DROP": self.drop,
+
+            # Player.move(item) verbs
+            "GO": self.move,
+            "MOVE": self.move,
+
+            # GameSetup.saveGame(game) verbs
             "SAVE": self.save,
 
             # Quit
             "QUIT": self.quit,
         }
 
-    def observe(self):
-        print("observe")
+        return valid_commands.get(action, self.badInput)
 
-    def inventory(self):
-        print("inventory")
+    def look(self, args):
+        if args[1] == "around":
+            self.game.player.look_around()
 
-    def travel(self):
-        print("travel")
+        elif args[1] == 'at':
+            target = " ".join(args[2:])
+            self.game.player.look(target)
 
-    def interact(self):
-        print("interact")
+        else:
+            target = " ".join(args[1:])
+            self.game.player.look(target)
 
-    def quit(self):
-        print("quit")
+        return 1
 
-    def save(self):
-        print("save")
+    def use(self, args):
+        target =  " ".join(args[1:])
+        self.game.player.use(target)
+        return 1
 
-    def badInput(self):
-        print ("Bad Input!")
+    def move(self, args):
+        if args[1] == 'to':
+            target = " ".join(args[2:])
+            self.game.player.move(target)
+        else:
+            target = " ".join(args[1:])
+            self.game.player.move(target)
+        return 1
 
-    def run(self):
-        self.valid_commands.get(self.command, self.badInput)()
+    def take(self, args):
+        target = " ".join(args[1:])
+        self.game.player.take(target)
+        return 1
 
+    def drop(self, args):
+        target = " ".join(args[1:])
+        self.game.player.drop(target)
+        return 1
 
-def main():
-    command = ''
-    while command.upper() != "QUIT":
-        command = input("Input a command: ")
-        parser = inputParser(command)
-        parser.run()
+    def quit(self, args):
+        return 0
 
+    def save(self, args):
+        self.game.saveGame(self.game)
+        return 1
 
-
-if __name__ == "__main__":
-    main()
+    def badInput(self, args):
+        print("Bad input")
+        return 1

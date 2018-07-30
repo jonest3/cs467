@@ -109,7 +109,7 @@ class Player:
             if lock.use(key) == 1:
                 self.Bag.remove(key)
             else:
-                print("You cannot use " + key.Name + " on " + lock.Name +".") 
+                print("You cannot use " + key.Name + " on " + lock.Name +".")
         if not key:
             print("You do not have a " + item)
         elif not lock:
@@ -148,7 +148,7 @@ class Player:
     def look_around(self):
         print("\n")
         print(self._Location.Desc)
-	
+
     # takes as argument the name of an Item the player wishes to remove from their bag
     def drop(self, item):
         for thing in self.Bag:
@@ -230,7 +230,7 @@ class Room:
     def enter(self):
         print("You enter ")
         self.examine()
-        if not self.Visited: 
+        if not self.Visited:
             self.Visited = True
 
 
@@ -263,7 +263,7 @@ class Door:
                 self.Desc = self.UnlockDesc
                 print("Success! The passage opens to reveal: ")
                 self.examine()
-                return 1            
+                return 1
             else:
                 print("That doesn't seem to do anything.")
                 return 0

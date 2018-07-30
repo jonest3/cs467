@@ -112,7 +112,7 @@ class Player:
                 lock = thing
         if lock and key: 
             useResult = lock.use(key)
-            if useResult == 1
+            if useResult == 1:
                 self.Bag.remove(key)
             if lock.Trap_Desc is not None:
                 print(lock.Trap_Desc)

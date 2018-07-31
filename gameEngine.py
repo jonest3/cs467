@@ -124,6 +124,10 @@ class Player:
             print("You do not have a " + item)
         elif not lock:
             print("There is no " + target + " to use your " + item + " on.")
+            
+    def inventory(self):
+        for item in self.Bag:
+            print(item.Name)
 
     # takes as argument the name of an object the player wishes to examine more closely. If the object is found, prints
     # the description of that object

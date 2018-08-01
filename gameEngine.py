@@ -126,6 +126,7 @@ class Player:
             print("There is no " + target + " to use your " + item + " on.")
             
     def inventory(self):
+        print("You are carrying: ")
         for item in self.Bag:
             print(item.Name)
 

@@ -3,15 +3,15 @@
 
  "name": "Torture Chamber",
 
- "longDesc": "long",
+ "longDesc": "a room full of gruesome metal implements- the particualrs of their use fortunately obscured by years of age and rust. It's clear that the purpose of this room was not to welcome honored guests. ",
 
- "shortDesc": "short",
+ "shortDesc": "a room full of gruseome implements of torture.",
 
  "items": {
 	"shelves": [
 		{
-			"name": "",
-			"desc": "",
+			"name": "rusted chest",
+			"desc": "a half-rotted chest with rusted hardward- better not to think about what sort of things it once held.",
 			"locked": "",
 			"lock_val": "",
 			"contents": ["rope"]
@@ -24,8 +24,8 @@
 
  "doors": [
 	{
-		"name": "",
-		"desc": "",
+		"name": "bloodstained arch",
+		"desc": "a stone archway to the south bears disturbing stains of a dark brownish red.",
 		"unlock_desc": "",
 		"direction": "south",
 		"lock_val": "",

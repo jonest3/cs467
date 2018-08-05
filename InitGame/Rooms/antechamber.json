@@ -10,9 +10,9 @@
  "items": {
 	"shelves": [
 		{	
-			"name": "",
-			"desc": "",
-			"locked": "",
+			"name": "Torch Mount",
+			"desc": "A metal torch mount hanging along one of the walls by the entrance to the room",
+			"locked": "False",
 			"lock_val": "",
 			"contents": ["torch"]
 		}
@@ -24,17 +24,17 @@
 
  "doors": [
 	{ 
-		"name": "",
-		"desc": "",
-		"unlock_desc": "",
+		"name": "Opened Stone Gate",
+		"desc": "The large stone gate that opened the gateway to this hidden castle",
+		"unlock_desc": "The gate has already been opened.",
 		"direction": "south",
 		"lock_val": "",
 		"neighbor": "helicopterPad",
 		"locked": "False"
 	}, 
 	{
-		"name": "",
-		"desc": "",
+		"name": "Stone Archway",
+		"desc": "Leading to the Nexus is a large, stone archway.  Enscribed in the stones are words that don't appear to be from any language you know.",
 		"unlock_desc": "",
 		"direction": "north",
 		"lock_val": "",

@@ -10,8 +10,8 @@
  "items": {
 	"shelves": [
 		{
-			"name": "",
-			"desc": "",
+			"name": "sarcophagus",
+			"desc": "a golden sarcophagus- clearly belonging to someone important- probably holding riches, and probably cursed.",
 			"locked": "",
 			"lock_val": "",
 			"contents": ["goldenKey"]
@@ -24,8 +24,8 @@
 
  "doors": [
 	{
-		"name": "",
-		"desc": "",
+		"name": "narrow passage",
+		"desc": "a narrow passage- tight enough you have to hold you breath to squeeze through- leads off to the east",
 		"unlock_desc": "",
 		"direction": "east",
 		"lock_val": "",

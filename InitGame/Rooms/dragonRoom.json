@@ -16,20 +16,20 @@
 
  "doors": [
 	{
-		"name": "",
-		"desc": "",
-		"unlock_desc": "",
+		"name": "Scorched Door",
+		"desc": "The heavy, stone door is completely scorched on the inside from the dragon's fiery breath.  The iron, shining brightly as it drips to the floor.",
+		"unlock_desc": "The door is open and you can see the Nexus safely on the otherside.",
 		"direction": "south",
 		"lock_val": "",
 		"neighbor": "nexus",
 		"locked": "False"
 	},
 	{
-		"name": "",
-		"desc": "",
-		"unlock_desc": "",
+		"name": "Golden Stone Door",
+		"desc": "Another stone door lays in front of you. Gold inlay once adorning the door has melted and burned deeper into the stone. Fortunately, the keyhole that also forged out of gold and stone has remained intact.  Now if only you had the key.",
+		"unlock_desc": "You push the door ever-so-slowly trying to be as quiet as possible.  You know the dragon is sleeping, but you aren't sure how long your spell will hold.",
 		"direction": "north",
-		"lock_val": "",
+		"lock_val": "goldenKey",
 		"neighbor": "treasureRoom",
 		"locked": "True"
 	}

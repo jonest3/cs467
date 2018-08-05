@@ -3,9 +3,9 @@
 
  "name": "Potion Room",
  
-"longDesc": "long",
+"longDesc": "clearly an alchemy lab, long ago. The stone tables are discolored by whatever concoctions were once spilled on them, but the glassware seems to have held up well under the assault of time.",
 
- "shortDesc": "short",
+ "shortDesc": "once an alchemy lab, glass beakers lie scattered about.",
 
  "items": {
 	"shelves": [],
@@ -16,8 +16,8 @@
 
  "doors": [
 	{
-		"name": "",
-		"desc": "",
+		"name": "jade archway",
+		"desc": "an archway lies to the northeast, constructed of dark jade carved into the likeness of twisting serpents.",
 		"unlock_desc": "",
 		"direction": "northeast",
 		"lock_val": "",

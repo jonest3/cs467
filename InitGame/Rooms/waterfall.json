@@ -3,9 +3,9 @@
 
  "name": "Waterfall",
 
- "longDesc": "long",
+ "longDesc": "A large waterfall plummets from an unseen origin into a fast-moving underground river, and then on further into the distance.",
 
- "shortDesc": "short",
+ "shortDesc": "a large waterfall lands here and becomes a swift river",
 
  "items": {
 	"shelves": [],
@@ -16,8 +16,8 @@
 
  "doors": [
 	{
-		"name": "",
-		"desc": "",
+		"name": "slick stones",
+		"desc": "a path of water-slicked stones leads off to the west, towards the sound of a waterfall",
 		"unlock_desc": "",
 		"direction": "west",
 		"lock_val": "",

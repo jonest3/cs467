@@ -16,8 +16,8 @@
 
  "doors": [
 	{
-		"name": "",
-		"desc": "",
+		"name": "winding stairs",
+		"desc": "well-worn, dusty stairs wind away to the southeast",
 		"unlock_desc": "",
 		"direction": "southeast",
 		"lock_val": "",

@@ -3,9 +3,9 @@
 
  "name": "Room of Roots",
 
- "longDesc": "long",
+ "longDesc": "This room hangs thick with moisture. Clearly you're deep underground, as the roots of the many trees descend from the jungle above and hang from the ceiling.",
 
- "shortDesc": "short",
+ "shortDesc": "a room with walls made of thick, entwined roots",
 
  "items": {
 	"shelves":[],
@@ -16,8 +16,8 @@
 
  "doors": [
 	{
-		"name": "",
-		"desc": "",
+		"name": "steep cliff",
+		"desc": "a steep cliff lies to the west- the rope you used to descend still hangs here to enable your egress.",
 		"unlock_desc": "",
 		"direction": "west",
 		"lock_val": "",
@@ -25,8 +25,8 @@
 		"locked": "False"
 	},
 	{
-		"name": "",
-		"desc": "",
+		"name": "slick stones",
+		"desc": "a path of water-slicked stones leads off to the east, towards the sound of a waterfall",
 		"unlock_desc": "",
 		"direction": "east",
 		"lock_val": "",

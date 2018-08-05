@@ -10,9 +10,9 @@
  "items": {
 	"shelves": [
 		{
-			"name": "",
-			"desc": "",
-			"locked": "",
+			"name": "pile of bones",
+			"desc": "a piles of clean-picked bones, piled haphazard in a corner",
+			"locked": "False",
 			"lock_val": "",
 			"contents": ["lantern"]
 		}
@@ -24,8 +24,8 @@
 
  "doors": [
 	{
-		"name": "",
-		"desc": "",
+		"name": "narrow passage",
+		"desc": "a narrow passage- tight enough you have to hold you breath to squeeze through- leads off to the west",
 		"unlock_desc": "",
 		"direction": "west",
 		"lock_val": "",
@@ -33,8 +33,8 @@
 		"locked": "False"
 	},
 	{
-		"name": "",
-		"desc": "",
+		"name": "bloodstained arch",
+		"desc": "a stone archway to the north bears disturbing stains of a dark brownish red.",
 		"unlock_desc": "",
 		"direction": "north",
 		"lock_val": "",
@@ -42,8 +42,8 @@
 		"locked": "False"
 	},
 	{
-		"name": "",
-		"desc": "",
+		"name": "rotted planks",
+		"desc": "to the south, a few rotted planks remain of what was once a door, now offering only the most token effort at blocking egress to the bridge room beyond",
 		"unlock_desc": "",
 		"direction": "south",
 		"lock_val": "",

@@ -16,8 +16,8 @@
 
  "doors": [
 	{
-		"name": "",
-		"desc": "",
+		"name": "rotted planks",
+		"desc": "to the north, a few rotted planks remain of what was once a door, now offering only the most token effort at blocking egress to the cave beyond",
 		"unlock_desc": "",
 		"direction": "north",
 		"lock_val": "",
@@ -25,19 +25,19 @@
 		"locked": "False"
 	},
 	{
-		"name": "",
-		"desc": "",
-		"unlock_desc": "",
+		"name": "steep cliff",
+		"desc": "a steep cliff lies to the east, made slick by the dampness of the air in this room- definitely a health and safety violation.",
+		"unlock_desc": "You secure the rope near the top of the cliff. It should be safe to descend to the space below.",
 		"direction": "east",
 		"lock_val": "Rope",
 		"neighbor": "rootRoom",
 		"locked": "True"
 	},
 	{
-		"name": "",
-		"desc": "",
-		"unlock_desc": "",
-		"direction": "upstairs",
+		"name": "hole in the ceiling",
+		"desc": "a dark hole in the ceiling leads up to something out of sight above",
+		"unlock_desc": "after a few attempts, you manage to get the rope to catch on something in the hole. You're now able to ascend to the library above!",
+		"direction": "up",
 		"lock_val": "Rope",
 		"neighbor": "library",
 		"locked": "True"

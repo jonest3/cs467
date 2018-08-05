@@ -60,8 +60,8 @@
 		"locked": "True"
 	},
 	{
-		"name": "",
-		"desc": "",
+		"name": "winding stairs",
+		"desc": "well-worn, dusty stairs wind away to the northwest",
 		"unlock_desc": "",
 		"direction": "northwest",
 		"lock_val": "",
@@ -69,8 +69,8 @@
 		"locked": "False"
 	},
 	{
-		"name": "",
-		"desc": "",
+		"name": "jade archway",
+		"desc": "an archway lies to the northeast, constructed of dark jade carved into the likeness of twisting serpents.",
 		"unlock_desc": "",
 		"direction": "southwest",
 		"lock_val": "",

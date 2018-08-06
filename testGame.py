@@ -131,9 +131,9 @@ class TestGame:
 			1: self.playerDetails,
 			2: self.itemsDetails,
 			3: self.roomsDetails,
-			4: self.testPlayerTake,
-			5: self.testEnteringAllRooms,
-			6: self.testRoomEnter,
+			4: self.testEnteringAllRooms,
+			5: self.testRoomEnter,
+			6: self.testPlayerTake,
 			7: self.testPlayerDrop,
 			8: self.testPlayerMove,
 			9: self.testPlayerUse,
@@ -153,9 +153,9 @@ class TestGame:
 			print(" 1 -- See Player's Details")
 			print(" 2 -- See All Items' Details")
 			print(" 3 -- See All Rooms' Details")
-			print(" 4 -- Test Player.take")
-			print(" 5 -- Test Entering All Rooms")
-			print(" 6 -- Test Entering Player's Current Room")
+			print(" 4 -- Test Entering All Rooms")
+			print(" 5 -- Test Entering Player's Current Room")
+			print(" 6 -- Test Player.take")
 			print(" 7 -- Test Player.drop")
 			print(" 8 -- Test Player.move")
 			print(" 9 -- Test Player.use")

@@ -308,14 +308,16 @@ class Shelf:
             return 0
 
     def examine(self):
+        print(self.Desc)
         if self.Locked:
-            print(self.Desc)
             print("It seems like there may something in this, but you can't seem to get inside it.")
             return 0
         else:
             print("The " + self.Name + " contains:")
-            for item in self.Contents:
-                print(item.Name)
+            contents = (item.Name for item in self.Contents)
+#            for item in self.Contents:
+#               contents.append(item.Name)
+            print(', '.join(contents))
             return 1
 
 

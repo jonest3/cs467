@@ -8,7 +8,22 @@
  "shortDesc": "A long, narrow room covered in murals.",
 
  "items": {
-	"shelves": [],
+	"shelves": [
+		{
+                        "name": "Mural of a Dragon",
+                        "desc": "On one of the walls a beautiful, red dragon is depicted flying into battle with Ma-go'Faan on its back wielding the scepter.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": []
+		},
+		{
+                        "name": "Mural of a Waterfall",
+                        "desc": "Towards the back of the room is a mural of a waterfall that appears so real you think you can hear the rushing water for yourself.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": []
+		}
+	],
 	"floor": ["water"]
  },
 
@@ -16,8 +31,8 @@
 
  "doors": [
 	{
-		"name": "winding stairs",
-		"desc": "well-worn, dusty stairs wind away to the southeast",
+		"name": "Winding Stairs",
+		"desc": "Well-worn, dusty stairs wind away to the southeast.",
 		"unlock_desc": "",
 		"direction": "southeast",
 		"lock_val": "",

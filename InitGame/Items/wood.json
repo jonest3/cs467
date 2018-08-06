@@ -1,6 +1,6 @@
 {
    "name": "Wood",
-   "desc": "desc",
+   "desc": "A stack of wooden planks.",
    "key_val": "wood",
    "lock_val": "rope",
    "trans_id": "ladder",

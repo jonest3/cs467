@@ -5,14 +5,29 @@
 
  "longDesc": "A fearsome sight, a dragon. One you had not hoped to see from this close up. It rests fitfully here in this large, domed chamber, smoke trailing from it's glowing nostrils. It must have been here a while, it certainly looks to have grown too large to fit through any of the doors.",
 
- "shortDesc": "A room where a dragon slumbers",
+ "shortDesc": "A room where a dragon slumbers.",
 
  "items": {
-	"shelves": [],
+	"shelves": [
+		{
+                        "name": "Charred Boots",
+                        "desc": "A pair of charred boots stand in front of the wall where the outline of a person remains scortched on the stone.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": []
+		},
+		{
+                        "name": "Dragon's Egg Shell",
+                        "desc": "The broken remains of the dragon's egg.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": []
+		}
+	],
 	"floor": ["dragonDrool"]
  },
 
- "traps": [],
+ "traps": ["dragon"],
 
  "doors": [
 	{

@@ -57,7 +57,7 @@ To Compile & Run: "python3 gameSetup.py"
 ------------------------------------------------------------------------------------------------------------------
 Project Status:
 
-Currentl, we are able to load data, instantiate Room, Item, Player, ang Game classes.  We are storing 
+Currently, we are able to load data, instantiate Room, Item, Player, ang Game classes.  We are storing 
 the data that will be used in our text game as json files and loading them into the GameComponent class.  
 The data helps us isntantiate the different classes for us to use in our game play.  
 

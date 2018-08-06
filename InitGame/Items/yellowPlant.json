@@ -1,6 +1,6 @@
 {
    "name": "Yellow Plant",
-   "desc": "desc",
+   "desc": "A tiny yellow plant with bright red veins and thorns.", 
    "key_val": "yellowPlant",
    "lock_val": "",
    "trans_id": "",

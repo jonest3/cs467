@@ -1,6 +1,6 @@
 {
    "name": "Wedge",
-   "desc": "desc",
+   "desc": "A wooden door wedge.", 
    "key_val": "wedge",
    "lock_val": "",
    "trans_id": "",

@@ -5,16 +5,23 @@
 
  "longDesc": "A chamber of finely carved stone once designed to impress visitors now holds a distinctly ominous air. Rows of statues seem to stand guard over this long-forgotten place make it hard to shake the feeling of being watched, and send a clear message: you are not welcome here.",
 
- "shortDesc": "A hall of ominous statues guarding the way into this forgotten ruin",
+ "shortDesc": "A hall of ominous statues guarding the way into this forgotten ruin.",
 
  "items": {
 	"shelves": [
 		{	
 			"name": "Torch Mount",
-			"desc": "A metal torch mount hanging along one of the walls by the entrance to the room",
+			"desc": "A metal torch mount hanging along one of the walls by the entrance to the room.",
 			"locked": "False",
 			"lock_val": "",
 			"contents": ["torch"]
+		}, 
+		{
+			"name": "Tattered Carpet",
+			"desc": "A Persian carpet with an elaborate design, fading away into shreds of nothing.",
+			"locked": "False",
+			"lock_val": "",
+			"contents": []
 		}
 	],
 	"floor": ["wedge"]
@@ -25,7 +32,7 @@
  "doors": [
 	{ 
 		"name": "Opened Stone Gate",
-		"desc": "The large stone gate that opened the gateway to this hidden castle",
+		"desc": "The large stone gate that opened the gateway to this hidden castle.",
 		"unlock_desc": "The gate has already been opened.",
 		"direction": "south",
 		"lock_val": "",

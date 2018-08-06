@@ -1,6 +1,6 @@
 {
    "name": "Sleeping Potion",
-   "desc": "desc",
+   "desc": "Bubbling, purple potion with a sweet smelling aroma.",
    "key_val": "potion",
    "lock_val": "vial",
    "trans_id": "fullVial",

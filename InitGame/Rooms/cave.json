@@ -3,18 +3,25 @@
 
  "name": "Cave",
 
- "longDesc": "The cave's ceiling low enough that you have to hunch over to be able to walk. The smell of some beast is thick in the air here where some beast seems to have made it's den. Some bones crunch underfoot as you pass- some animal? Or a less fortunate fellow explorer? You get the feeling you should move along quickly, whatever lives here could return at any moment",
+ "longDesc": "The cave's ceiling low enough that you have to hunch over to be able to walk. The smell of some beast is thick in the air here where some beast seems to have made it's den. Some bones crunch underfoot as you pass- some animal? Or a less fortunate fellow explorer? You get the feeling you should move along quickly, whatever lives here could return at any moment.",
 
  "shortDesc": "A low cave where something seems to have made it's den.",
 
  "items": {
 	"shelves": [
 		{
-			"name": "pile of bones",
+			"name": "Pile of Bones",
 			"desc": "a piles of clean-picked bones, piled haphazard in a corner",
 			"locked": "False",
 			"lock_val": "",
 			"contents": ["lantern"]
+		},
+		{
+			"name": "Spider's Web",
+			"desc": "A giant spider web entangles the edge of the walls.",
+			"locked": "False",
+			"lock_val": "",
+			"contents": []
 		}
 	],
 	"floor": ["rocks"]
@@ -24,8 +31,8 @@
 
  "doors": [
 	{
-		"name": "narrow passage",
-		"desc": "a narrow passage- tight enough you have to hold you breath to squeeze through- leads off to the west",
+		"name": "Narrow Passage",
+		"desc": "a narrow passage- tight enough you have to hold your breath to squeeze through- leads off to the west.",
 		"unlock_desc": "",
 		"direction": "west",
 		"lock_val": "",
@@ -33,8 +40,8 @@
 		"locked": "False"
 	},
 	{
-		"name": "bloodstained arch",
-		"desc": "a stone archway to the north bears disturbing stains of a dark brownish red.",
+		"name": "Blood-stained Arch",
+		"desc": "A stone archway to the north bears disturbing stains of a dark brownish red.",
 		"unlock_desc": "",
 		"direction": "north",
 		"lock_val": "",
@@ -42,8 +49,8 @@
 		"locked": "False"
 	},
 	{
-		"name": "rotted planks",
-		"desc": "to the south, a few rotted planks remain of what was once a door, now offering only the most token effort at blocking egress to the bridge room beyond",
+		"name": "Rotted Planks",
+		"desc": "To the south, a few rotted planks remain of what was once a door, now offering only the most token effort at blocking egress to the bridge room beyond.",
 		"unlock_desc": "",
 		"direction": "south",
 		"lock_val": "",

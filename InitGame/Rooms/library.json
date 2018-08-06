@@ -5,7 +5,7 @@
 
  "longDesc": "This was clearly a library, once. Rows upon rows of what were once books quietly moulder on what were once bookshelves. Here and there, under the petina of age, you can make out some of the words, but mostly you have to wonder: what secrets rest, never again to be disturbed, in this sepulcher of knowledge?",
 
- "shortDesc": "A mouldering library",
+ "shortDesc": "A mouldering library.",
 
  "items": {
 	"shelves": [
@@ -33,7 +33,7 @@
 	{
 		"name": "Glass, Double Doors",
 		"desc": "Hints of red beam from the dark, cherry wood as light from the Nexus reflects onto the doors.  The still remaining glass casts rainbows along the ceiling of the room.",
-		"unlock_desc": "The opened doors lead back to the Nexus",
+		"unlock_desc": "The opened doors lead back to the Nexus.",
 		"direction": "northwest",
 		"lock_val": "",
 		"neighbor": "nexus",

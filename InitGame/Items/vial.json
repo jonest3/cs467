@@ -1,6 +1,6 @@
 {
    "name": "Vial",
-   "desc": "desc",
+   "desc": "Circular glass tube with a crystal-shaped cork as a stopper.",
    "key_val": "vial",
    "lock_val": "potion",
    "trans_id": "fullVial",

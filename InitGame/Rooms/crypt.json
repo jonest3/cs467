@@ -10,11 +10,18 @@
  "items": {
 	"shelves": [
 		{
-			"name": "sarcophagus",
-			"desc": "a golden sarcophagus- clearly belonging to someone important- probably holding riches, and probably cursed.",
-			"locked": "",
+			"name": "Sarcophagus",
+			"desc": "A golden sarcophagus- clearly belonging to someone important- probably holding riches, and probably cursed.",
+			"locked": "False",
 			"lock_val": "",
 			"contents": ["goldenKey"]
+		},
+		{
+			"name": "Broken Tomb",
+			"desc": "The top of a stone tomb lies broken in half.  Did that happen when the floor crumbled?  Or did someone break out?",
+			"locked": "False",
+			"lock_val": "",
+			"contents": []
 		}
 	],
 	"floor": ["brokenSword"]
@@ -24,8 +31,8 @@
 
  "doors": [
 	{
-		"name": "narrow passage",
-		"desc": "a narrow passage- tight enough you have to hold you breath to squeeze through- leads off to the east",
+		"name": "Narrow Passage",
+		"desc": "A narrow passage- tight enough you have to hold you breath to squeeze through- leads off to the east.",
 		"unlock_desc": "",
 		"direction": "east",
 		"lock_val": "",

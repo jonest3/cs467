@@ -1,6 +1,6 @@
 {
    "name": "Vial of Sleeping Potion",
-   "desc": "desc",
+   "desc": "A tiny vial filled with the purple Sleeping Potion.",
    "key_val": "fullVial",
    "lock_val": "",
    "trans_id": "",

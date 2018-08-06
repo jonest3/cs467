@@ -15,6 +15,13 @@
 			"locked": "",
 			"lock_val": "",
 			"contents": ["scepter"]
+		},
+		{
+			"name": "Throne",
+			"desc": "A giant throne sits alone.  A red, velvet seat warn into a dark maroon looks like someone used this throne to sit and admire the scepter for quite some time.",
+			"locked": "",
+			"lock_val": "",
+			"contents": []
 		}
 	],
 	"floor": []

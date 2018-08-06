@@ -5,11 +5,26 @@
 
  "longDesc": "The air is humid and full of buzzing insects here, deep in the jungle where you tracked down the forgotten ruins and landed your helicopter. Before you stands the imposing stone gate that leads to the find of your career.",
 
- "shortDesc": "A clearing in the deep jungle where you landed your helicopter",
+ "shortDesc": "A clearing in the deep jungle where you landed your helicopter.",
 
  "items": {
-	"shelves": [],
-	"floor": ["rustyKey", "machete"]
+	"shelves": [
+		{
+                        "name": "Your Helicopter",
+                        "desc": "A one-person helicopter painted black with a green roof.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": ["machete", "rustyKey"]
+		},
+		{
+                        "name": "Nearby Bush",
+                        "desc": "A shaggy bush with bright blue berries.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": []
+		}
+	],
+	"floor": []
  },
  "traps": [],
 

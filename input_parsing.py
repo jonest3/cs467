@@ -1,4 +1,4 @@
-
+from enum import Enum
 '''
 Class to parse and interpret input from command line
 When taking input, first argument is always an action
@@ -7,6 +7,12 @@ via dicitionary. The remaining input will be interpreted
 by the function logic.
 
 '''
+
+class ErrorType(Enum):
+    key_error = 1
+    value_error = 2
+    unknown_error = 3
+
 
 class inputParser:
 
@@ -22,16 +28,25 @@ class inputParser:
             try:
                 game_cont = action(args)
             except KeyError:
-                game_cont = self.badInput()
+                print ("Not sufficient number of arguments.")
+            except ValueError as e:
+                print (str(e))
+            except Exception as e:
+                print ("Unkown error occured.")
 
     def parse(self, action):
 
         valid_commands = {
 
 
-            # Player.use(item) verbs
+            # Player.use(item, target) verbs
             "USE": self.use,
-            "CONSUME": self.use,
+            "EXPEND": self.use,
+            "SPEND": self.use,
+            "COMBINE": self.use,
+            "MIX": self.use,
+            "PUT": self.use,
+
 
             # Player.take(item) verbs
             "TAKE": self.take,
@@ -44,10 +59,23 @@ class inputParser:
 
             # Player.drop(item) verbs
             "DROP": self.drop,
+            "DUMP": self.drop,
+            "ABANDON": self.drop,
 
             # Player.move(item) verbs
             "GO": self.move,
             "MOVE": self.move,
+            "PASS": self.move,
+            "TRAVEL": self.move,
+
+            "NORTH": self.move,
+            "SOUTH": self.move,
+            "EAST": self.move,
+            "WEST": self.move,
+            "NORHTWEST": self.move,
+            "NORTHEAST": self.move,
+            "SOUTHWEST": self.move,
+            "SOUTHEAST": self.move,
 
             # GameSetup.saveGame(game) verbs
             "SAVE": self.save,
@@ -73,17 +101,32 @@ class inputParser:
         return 1
 
     def use(self, args):
-        target =  " ".join(args[1:])
-        self.game.player.use(target)
+        pronoun = None
+        if 'on' in args:
+            pronoun = 'on'
+        elif 'with' in args:
+            pronoun = 'with'
+        else:
+            print ("Usage: {verb} [item] on|with [target]".format(verb=args[0]))
+            return 1
+
+        index = args.index(pronoun)
+        item = " ".join(args[1:index])
+        target =  " ".join(args[index+1:])
+        self.game.player.use(item, target)
         return 1
 
     def move(self, args):
-        if args[1] == 'to':
+        directions = ["NORTH", "SOUTH", "WEST", "EAST",
+            "NORTHWEST", "NORTHEAST", "SOUTHWEST", "SOUTHEAST"]
+
+        if args[0].upper() in directions:
+            target = args[0]
+        elif args[1] == 'to':
             target = " ".join(args[2:])
-            self.game.player.move(target)
         else:
             target = " ".join(args[1:])
-            self.game.player.move(target)
+        self.game.player.move(target)
         return 1
 
     def take(self, args):
@@ -104,5 +147,5 @@ class inputParser:
         return 1
 
     def badInput(self, args):
-        print("Bad input")
+        print("'{verb}' not valid command".format(verb=args[0]))
         return 1

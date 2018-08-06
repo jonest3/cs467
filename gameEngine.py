@@ -65,7 +65,7 @@ class Player:
             if thing.Name == item:
                 self.Bag.append(thing)
                 self._Location.Floor.remove(thing)
-                print("You pick up the " + item + "and put it in your bag")
+                print("You pick up the " + item + " and put it in your bag")
                 return 1
         for shelf in self._Location.Shelves:
             if not shelf.Locked:
@@ -73,7 +73,7 @@ class Player:
                         if thing.Name == item:
                             self.Bag.append(thing)
                             shelf.Contents.remove(thing)
-                            print("You pick up the " + item + "and put it in your bag")
+                            print("You pick up the " + item + " and put it in your bag")
                             if thing.Trap_Desc is not None:
                                 print(thing.Trap_Desc)
                                 try:
@@ -166,10 +166,10 @@ class Player:
     def move(self, user_input):
         for door in self._Location.Doors:
 #            if not door.Locked:
-            if door.Destination.Name == user_input or door.Direction == user_input or door.Name == user_input: 
-                if door.Locked: 
+            if door.Destination.Name == user_input or door.Direction == user_input or door.Name == user_input:
+                if door.Locked:
                     print("{name} seems to be locked.  You will need to find a key to get through this way.".format(name=door.Name))
-                else: 
+                else:
                     if not door.Destination.Visited:
                         for trap in self._Location.Traps:
                             if trap.Locked is True:
@@ -179,7 +179,7 @@ class Player:
                                     self.Turns_Remaining = 12
                                 else:
                                     self.Turns_Remaining = 0
-                                return 2                   
+                                return 2
                     self.Last_Loc = self._Location
                     self._Location = door.Destination
                     self._Location.enter()

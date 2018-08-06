@@ -20,6 +20,7 @@
 			"name": "Wooden Planter",
 			"desc": "Next to one of the windows is a rotting, wooden planter where a range of bizarre-looking plants are growing.",
 			"locked": "",
+			"lock_val": "",
 			"contents": ["purplePlant"]
 		}
 	],

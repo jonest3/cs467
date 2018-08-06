@@ -147,7 +147,8 @@ class GameComponents:
 				lock_val = trap["lock_val"]
 				d_desc = trap["d_desc"]
 				destination = trap["destination"] if trap['destination'] != "" else None
-				itemDict[name] = Trap(name, desc, s_desc, lock_val, d_desc, destination)
+				trapDict[name] = Trap(name, desc, s_desc, lock_val, d_desc, destination)
+		return trapDict
 
 
 	# @param: room_name - name of room to return

@@ -343,7 +343,7 @@ class Trap:
 
     def spring(self):
         print(self.Spring_desc)
-	self.Locked = False
+        self.Locked = False
 
     def use(self, input):
         key = input.getKeyVal()

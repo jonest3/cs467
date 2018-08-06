@@ -1,4 +1,4 @@
-from enum import Enum
+import os
 '''
 Class to parse and interpret input from command line
 When taking input, first argument is always an action
@@ -7,11 +7,6 @@ via dicitionary. The remaining input will be interpreted
 by the function logic.
 
 '''
-
-class ErrorType(Enum):
-    key_error = 1
-    value_error = 2
-    unknown_error = 3
 
 
 class inputParser:
@@ -22,6 +17,7 @@ class inputParser:
     def run(self):
         game_cont = 1
         while game_cont:
+            _=os.system("clear")
             raw_input = input("Input a command: ")
             args = raw_input.split(" ")
             action = self.parse(args[0].upper())
@@ -32,7 +28,7 @@ class inputParser:
             except ValueError as e:
                 print (str(e))
             except Exception as e:
-                print ("Unkown error occured.")
+                print (str(e))
 
     def parse(self, action):
 

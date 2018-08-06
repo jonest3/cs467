@@ -170,20 +170,19 @@ class Player:
                 if door.Locked: 
                     print("{name} seems to be locked.  You will need to find a key to get through this way.".format(name=door.Name))
                 else: 
-                    if not door.Destination.Visited:
-                        for trap in self._Location.Traps:
-                            if trap.Locked is True:
-                                trap.spring()
-                                if trap.Destination:
-                                    self._Location = trap.Destination
-                                    self.Turns_Remaining = 12
-                                else:
-                                    self.Turns_Remaining = 0
-                                return 2                   
-                    self.Last_Loc = self._Location
-                    self._Location = door.Destination
-                    self._Location.enter()
-                    return 1
+                    for trap in self._Location.Traps:
+                        if trap.Locked is True:
+                            trap.spring()
+                            if trap.Destination:
+                                self._Location = trap.Destination
+                                self.Turns_Remaining = 12
+                            else:
+                                self.Turns_Remaining = 0
+                            return 2                   
+                self.Last_Loc = self._Location
+                self._Location = door.Destination
+                self._Location.enter()
+                return 1
             else:
                 print("You cannot get to {room} from here".format(room=user_input))
         return 0
@@ -344,6 +343,7 @@ class Trap:
 
     def spring(self):
         print(self.Spring_desc)
+	self.Locked = False
 
     def use(self, input):
         key = input.getKeyVal()

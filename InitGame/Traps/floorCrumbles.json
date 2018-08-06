@@ -1,0 +1,8 @@
+{
+   "name": "floorCrumbles",
+   "desc": "The ground here does not seem very stable.  You can feel the earth shifting underneath your feet.",
+   "s_desc": "As you grab the scepter, the floor starts to shake even harder.  Soon things are falling off of the walls around you.  You try to run towards the exit but you the floor starts to fall away from your feet and, soon, it is not the only thing falling.",
+   "lock_val": "scepter", 
+   "d_desc": "The floor has disappeared in this room.  The only thing that is left of it is the rubble that you can see below.",
+   "destination": "cave"
+}

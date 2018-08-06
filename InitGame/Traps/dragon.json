@@ -1,0 +1,8 @@
+{
+   "name": "dragon",
+   "desc": "The mighty dragon keeping guard of something that must be... important.",
+   "s_desc": "The giant, red dragon locks eyes on you when you try and move.  Before your next breathe you are blanketed by the warmth of the dragon's fiery breathe. It happened so fast that you did not even realize you had become the dragon's next poor victim.",
+   "lock_val": "fullVial", 
+   "d_desc": "You open the vial of Sleeping Potion and throw it in the direction of the dragon.  As it hits the floor, it breaks and the dragon's curious snout breathes in the enticing aroma of sleep.  You wait and watch as the dragon's eyelids seem to get heavier.  In a final attempt to avoid the inevitable, the dragon shakes its mighty head before passing out.",
+   "destination": ""
+}

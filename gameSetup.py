@@ -1,4 +1,4 @@
-from gameEngine import Player, Room, Item, Door, Shelf
+from gameEngine import Player, Room, Item, Door, Shelf, Trap
 from testGame import TestGame
 import pickle
 import json
@@ -12,11 +12,12 @@ class GameComponents:
 	def __init__(self):
 		self.basePath = "./InitGame/"
 		self.items = self.loadItems()
-#		self.traps = self.loadTraps()
+		self.traps = self.loadTraps()
 		self.rooms = self.loadRooms()
 		self.player = Player(self.getRoom("helicopterPad"), MAX_MOVES)
 		self.getDoorDestinations()
 		self.getItemDestinations()
+		self.getTrapDestinations()
 	
 	# @param:  directory - the name of the directory to get all files in
 	# 
@@ -101,6 +102,12 @@ class GameComponents:
 					doorObj = Door(dName, dDesc, direction, destination, locked, lock_val, unlock_desc)
 					roomDict[key].add_door(doorObj)
 
+				for trap in room["traps"]:
+					if self.traps[trap]:
+						trapObj = self.traps[trap]
+						roomDict[key].add_trap(trapObj)
+					else:
+						print("Error: {trap} does not exist.".format(trap=trap))
 
 		return roomDict
 
@@ -125,7 +132,24 @@ class GameComponents:
 				itemDict[key] = Item(name, desc, key, lock, trans_id, trap_desc, destination)
 		return itemDict
 
-	
+	# @param: None
+	#
+	# returns: dict of instantiated Trap objects for every trap file stored in the traps directory
+	def loadTraps(self):
+		trapDict = {}
+		trap_files = self.getFilesInDir("Traps")
+		for filename in trap_files:
+			trap = self.getFileObj("Traps", filename)
+			if trap:
+				name = trap["name"]
+				desc = trap["desc"]
+				s_desc = trap["s_desc"]
+				lock_val = trap["lock_val"]
+				d_desc = trap["d_desc"]
+				destination = trap["destination"] if trap['destination'] != "" else None
+				itemDict[name] = Trap(name, desc, s_desc, lock_val, d_desc, destination)
+
+
 	# @param: room_name - name of room to return
 	#
 	# returns: room if it exists, else 'None'
@@ -138,6 +162,12 @@ class GameComponents:
 	def getItem(self, item_key):
 		try:
 			return self.items[item_key]
+		except:
+			return None
+
+	def getTrap(self, trap_key):
+		try:
+			return self.traps[trap_key]
 		except:
 			return None
 
@@ -157,6 +187,13 @@ class GameComponents:
 				room = itemObj.Destination
 				itemObj.Destination = self.rooms[room]
 
+
+	def getTrapDestinations(self):
+		for trap in list(self.traps):
+			trapObj = self.traps[trap]
+			if trapObj.Destination:
+				room = trapObj.Destination
+				trapObj.Destination = self.traps[trap]
 	
 	def saveGame(self, game):
 		directory = "./SavedGame"

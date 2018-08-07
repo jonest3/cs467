@@ -1,0 +1,9 @@
+{
+   "name": "Golden Scepter of Ma-go'Faan",
+   "desc": "A beautiful golden scepter with a large diamond at the end.",
+   "key_val": "scepter",
+   "lock_val": "",
+   "trans_id": "",
+   "destination": "cave",
+   "trap_desc": "As you remove the scepter from it's case, the ground begins to shake with an ominous rumble. Before you can react, the dias you are on crumbles away beneath you, and you fall through the floor, landing in a dark new place."
+}

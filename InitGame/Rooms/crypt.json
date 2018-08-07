@@ -1,0 +1,43 @@
+{
+ "key": "crypt",
+
+ "name": "Crypt",
+
+ "longDesc": "Statues stand vigil, halberds extended and crossed over a sealed sarcophagus bearing the face of someone dead so long the memory of their name has joined them. You've heard all sorts of terrible things about curses that befall those who disturb such graves but... what wealth might lie inside, undiscovered?",
+
+ "shortDesc": "An ancient crypt where someone of importance was buried.",
+
+ "items": {
+	"shelves": [
+		{
+			"name": "Sarcophagus",
+			"desc": "A golden sarcophagus- clearly belonging to someone important- probably holding riches, and probably cursed.",
+			"locked": "False",
+			"lock_val": "",
+			"contents": []
+		},
+		{
+			"name": "Broken Tomb",
+			"desc": "The top of a stone tomb lies broken in half.  Did that happen when the floor crumbled?  Or did someone break out?",
+			"locked": "False",
+			"lock_val": "",
+			"contents": []
+		}
+	],
+	"floor": ["brokenSword"]
+ },
+
+ "traps": [],
+
+ "doors": [
+	{
+		"name": "Narrow Passage",
+		"desc": "A narrow passage- tight enough you have to hold you breath to squeeze through- leads off to the east.",
+		"unlock_desc": "",
+		"direction": "east",
+		"lock_val": "",
+		"neighbor": "cave",
+		"locked": "False"
+	}
+ ]
+}

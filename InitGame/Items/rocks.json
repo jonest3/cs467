@@ -1,0 +1,9 @@
+{
+   "name": "Rocks",
+   "desc": "Large, heavy rocks.",
+   "key_val": "rocks",
+   "lock_val": "",
+   "trans_id": "",
+   "destination": "",
+   "trap_desc": ""
+}

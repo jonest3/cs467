@@ -1,0 +1,9 @@
+{
+   "name": "Purple Plant",
+   "desc": "A short plant with light purple leaves with dark purple veins. Has a mellow smell like lavendar.",
+   "key_val": "purplePlant",
+   "lock_val": "fullBucket",
+   "trans_id": "purpleMush",
+   "destination": "",
+   "trap_desc": ""
+}

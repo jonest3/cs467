@@ -1,0 +1,43 @@
+{
+ "key": "muralRoom",
+
+ "name": "Room of Murals",
+
+ "longDesc": "This room is long and narrow, with high celings. On each wall there are strikingly detailed, if faded, murals depicting glorious military victories of whoever had built these ruins. Gold filigree is worked into the designs liberally, but you can't see any way of extracting the precious metal with the tools you have on you.",
+
+ "shortDesc": "A long, narrow room covered in murals.",
+
+ "items": {
+	"shelves": [
+		{
+                        "name": "Mural of a Dragon",
+                        "desc": "On one of the walls a beautiful, red dragon is depicted flying into battle with Ma-go'Faan on its back wielding the scepter.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": []
+		},
+		{
+                        "name": "Mural of a Waterfall",
+                        "desc": "Towards the back of the room is a mural of a waterfall that appears so real you think you can hear the rushing water for yourself.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": []
+		}
+	],
+	"floor": ["water"]
+ },
+
+ "traps": [],
+
+ "doors": [
+	{
+		"name": "Winding Stairs",
+		"desc": "Well-worn, dusty stairs wind away to the southeast.",
+		"unlock_desc": "",
+		"direction": "southeast",
+		"lock_val": "",
+		"neighbor": "nexus",
+		"locked": "False"
+	}
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "key": "greenhouse",
+
+ "name": "Over-grown Greenhouse",
+
+ "longDesc": "This area was clearly once used for cultivating plants- exotic and magical ones, if you had to guess. The lack of active cultivation doesn't seem to have done them much real harm- the room has a thick coating og dark green moss over every surface, a few bright floral blooms peak out between the leaves, and the air is thick with petrichor.",
+
+ "shortDesc": "An area covered in moss and a few bright flowers.",
+
+ "items": {
+	"shelves": [
+		{
+			"name": "Glass Terrarium",
+			"desc": "On one of the tables, you make out what appears to be a glass terrarium. The terrarium's edges are plated in copper and the top comes to a diamond-like point.  Inside the terrarium, you see an exotic looking plant.",
+			"locked": "",
+			"lock_val": "",
+			"contents": ["yellowPlant"]
+		},
+		{
+			"name": "Wooden Planter",
+			"desc": "Next to one of the windows is a rotting, wooden planter where a range of bizarre-looking plants are growing.",
+			"locked": "",
+			"lock_val": "",
+			"contents": ["purplePlant"]
+		}
+	],
+	"floor": []
+ },
+
+ "traps": [],
+
+ "doors": [
+	{
+		"name": "Pruned Plants",
+		"desc": "The remains of the ivy and vines dance in the self-made doorway.",
+		"unlock_desc": "",
+		"direction": "northeast",
+		"lock_val": "",
+		"neighbor": "nexus",
+		"locked": "False"
+	}
+ ]
+}

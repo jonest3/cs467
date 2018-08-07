@@ -1,0 +1,9 @@
+{
+   "name": "Purple Mush",
+   "desc": "Globby, purple mush.",
+   "key_val": "purpleMush",
+   "lock_val": "spell",
+   "trans_id": "potion",
+   "destination": "",
+   "trap_desc": ""
+}

@@ -1,0 +1,42 @@
+{
+ "key": "helicopterPad",
+
+ "name": "Helicopter Pad",
+
+ "longDesc": "The air is humid and full of buzzing insects here, deep in the jungle where you tracked down the forgotten ruins and landed your helicopter. Before you stands the imposing stone gate that leads to the find of your career.",
+
+ "shortDesc": "A clearing in the deep jungle where you landed your helicopter.",
+
+ "items": {
+	"shelves": [
+		{
+                        "name": "Helicopter",
+                        "desc": "A one-person helicopter painted black with a green roof.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": ["machete", "rustyKey"]
+		},
+		{
+                        "name": "Nearby Bush",
+                        "desc": "A shaggy bush with bright blue berries.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": []
+		}
+	],
+	"floor": []
+ },
+ "traps": [],
+
+ "doors": [
+	{
+		"name": "Stone Gate",
+		"desc": "An ancient stone gate that stands 7 feet tall and 5 feet wide.  In the middle of the gate, there is intricate, metal symbols and what appears to be a rusty keyhole.",
+		"unlock_desc": "As you slide the key into the keyhole and rotate it to the left, you hear a loud clicking sound.  You push on the gate and it begins to slowly open reveiling the Antechamber inside.  You have made it into the castle.",
+		"direction": "north",
+		"lock_val": "rustyKey",
+		"neighbor": "antechamber",
+		"locked": "True"
+	}
+ ]
+}

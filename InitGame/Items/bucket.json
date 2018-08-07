@@ -1,0 +1,9 @@
+{
+   "name": "Bucket",
+   "desc": "A small, wooden bucket with a handle made from rope.",
+   "key_val": "bucket",
+   "lock_val": "water",
+   "trans_id": "fullBucket",
+   "destination": "",
+   "trap_desc": ""
+}

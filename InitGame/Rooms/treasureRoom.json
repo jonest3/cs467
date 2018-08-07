@@ -1,0 +1,43 @@
+{
+ "key": "treasureRoom",
+
+ "name": "Room of Treasures",
+
+ "longDesc": "As the door opens, you are blinded by the shimmering light gleaming off of the Golden Scepter of Ma-go'Faan that is seemingly floating in its glass case in the middle of the dark room.  You notice the case sits upon a hexagonal pillar carved with images of the great Ma-go'Faan himself, wielding the might scepter.  If it were not for the light streaming in from the crack in the castle's celing, the room would have been completely dark.  As you step into the room, you feel the castle begin to shake and it starts to feel as if the floor were going to crumble away from under your feet.",
+
+ "shortDesc": "You re-enter the grand room where the scepter is kept safely in its glass case.  For some reason, the floor seems even less stable than before to you.",
+
+ "items": {
+	"shelves": [
+		{
+			"name": "Glass Case",
+			"desc": "A seemingly seamless glass case holding the golden scepter.",
+			"locked": "",
+			"lock_val": "",
+			"contents": ["scepter"]
+		},
+		{
+			"name": "Throne",
+			"desc": "A giant throne sits alone.  A red, velvet seat warn into a dark maroon looks like someone used this throne to sit and admire the scepter for quite some time.",
+			"locked": "",
+			"lock_val": "",
+			"contents": []
+		}
+	],
+	"floor": []
+ },
+
+ "traps": ["floorCrumbles"],
+
+ "doors": [
+	{
+		"name": "Stone Door",
+		"desc": "The gold in the door shines from the light that is cast inside through the crack.  You can hear the dragon stir from behind it.",
+		"unlock_desc": " The smell of brimstone floods the room leading from the Dragon's Den now that the stone door has been opened.",
+		"direction": "south",
+		"lock_val": "",
+		"neighbor": "dragonRoom",
+		"locked": "False"
+	}
+ ]
+}

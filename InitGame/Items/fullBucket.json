@@ -1,0 +1,9 @@
+{
+   "name": "Bucket of Water",
+   "desc": "A wooden bucket full of water.",
+   "key_val": "fullBucket",
+   "lock_val": "purplePlant",
+   "trans_id": "purpleMush",
+   "destination": "",
+   "trap_desc": ""
+}

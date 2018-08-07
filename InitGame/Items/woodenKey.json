@@ -1,0 +1,9 @@
+{
+   "name": "Wooden Key",
+   "desc": "A sturdy key carved from the oldest oak tree.",
+   "key_val": "woodenKey",
+   "lock_val": "",
+   "trans_id": "",
+   "destination": "",
+   "trap_desc": ""
+}

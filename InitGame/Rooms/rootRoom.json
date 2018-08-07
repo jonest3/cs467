@@ -1,0 +1,52 @@
+{
+ "key": "rootRoom",
+
+ "name": "Room of Roots",
+
+ "longDesc": "This room hangs thick with moisture. Clearly you're deep underground, as the roots of the many trees descend from the greenhouse and jungle above and hang from the ceiling.",
+
+ "shortDesc": "A room with walls made of thick, entwined roots.",
+
+ "items": {
+	"shelves":[
+		{
+                        "name": "Hedera Hibernica",
+                        "desc": "A lush, green ivy with small white flowers.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": []
+		},
+		{
+                        "name": "Climbing Hydrangea",
+                        "desc": "A more floral-like vine with bunches of tiny flowers.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": []
+		}
+	],
+	"floor":[]
+ },
+
+ "traps": ["rootTrap"],
+
+ "doors": [
+	{
+		"name": "Steep Cliff",
+		"desc": "A steep cliff lies to the west- the ladder you used to descend still hangs here to enable your egress.",
+		"unlock_desc": "",
+		"direction": "west",
+		"lock_val": "",
+		"neighbor": "bridgeRoom",
+		"locked": "False"
+	},
+	{
+		"name": "Slick Stones",
+		"desc": "A path of water-slicked stones leads off to the east, towards the sound of a waterfall.",
+		"unlock_desc": "",
+		"direction": "east",
+		"lock_val": "",
+		"neighbor": "waterfall",
+		"locked": "False"
+	}
+ ]
+}

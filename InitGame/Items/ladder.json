@@ -1,0 +1,9 @@
+{
+   "name": "Rope Ladder",
+   "desc": "A make-shift ladder made from planks of wood and rope.",
+   "key_val": "ladder",
+   "lock_val": "",
+   "trans_id": "",
+   "destination": "",
+   "trap_desc": ""
+}

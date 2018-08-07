@@ -1,0 +1,43 @@
+{
+ "key": "tortureChamber",
+
+ "name": "Torture Chamber",
+
+ "longDesc": "A room full of gruesome metal implements- the particualrs of their use fortunately obscured by years of age and rust. It's clear that the purpose of this room was not to welcome honored guests. ",
+
+ "shortDesc": "A room full of gruseome implements of torture.",
+
+ "items": {
+	"shelves": [
+		{
+			"name": "Rusted Chest",
+			"desc": "A half-rotted chest with rusted hardward- better not to think about what sort of things it once held.",
+			"locked": "",
+			"lock_val": "",
+			"contents": ["rope"]
+		},
+		{
+			"name": "The Tub",
+			"desc": "A huge, wooden tub in the center of the room that smells of decay.  You remember reading about this medieval torture device while researching this castle.",
+			"locked": "",
+			"lock_val": "",
+			"contents": []
+		}
+	],
+	"floor": ["wood"]
+ },
+
+ "traps": [],
+
+ "doors": [
+	{
+		"name": "Blood-stained arch",
+		"desc": "A stone archway to the south bears disturbing stains of a dark brownish red.",
+		"unlock_desc": "",
+		"direction": "south",
+		"lock_val": "",
+		"neighbor": "cave",
+		"locked": "False"
+	}
+ ]
+}

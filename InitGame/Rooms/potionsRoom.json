@@ -1,0 +1,43 @@
+{
+ "key": "potionRoom",
+
+ "name": "Potion Room",
+ 
+"longDesc": "Clearly an alchemy lab, long ago. The stone tables are discolored by whatever concoctions were once spilled on them, but the glassware seems to have held up well under the assault of time.",
+
+ "shortDesc": "Once an alchemy lab, glass beakers lie scattered about.",
+
+ "items": {
+	"shelves": [
+		{
+                        "name": "Dusty Cabinet",
+                        "desc": "A dusty cabinet at the back of the room.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": ["vial"]
+		},
+		{
+                        "name": "Cauldren",
+                        "desc": "A crusty, black cauldren sits over-turned in the middle of the room.",
+                        "locked": "False",
+			"lock_val": "",
+			"contents": []		
+		}
+	],
+	"floor": []
+ },
+
+ "traps": [],
+
+ "doors": [
+	{
+		"name": "Jade Archway",
+		"desc": "An archway lies to the northeast, constructed of dark jade carved into the likeness of twisting serpents.",
+		"unlock_desc": "",
+		"direction": "northeast",
+		"lock_val": "",
+		"neighbor": "nexus",
+		"locked": "False"
+	}
+ ]
+}

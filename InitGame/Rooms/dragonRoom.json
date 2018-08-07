@@ -21,7 +21,7 @@
                         "desc": "The broken remains of the dragon's egg.",
                         "locked": "False",
 			"lock_val": "",
-			"contents": []
+			"contents": ["goldenKey"]
 		}
 	],
 	"floor": ["dragonDrool"]

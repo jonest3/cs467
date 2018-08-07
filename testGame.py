@@ -125,6 +125,9 @@ class TestGame:
 	def testPlayerLookAround(self):
 		self.game.player.look_around()
 
+	def testPlayerInventory(self):
+		self.game.player.inventory()
+	
 
 	def numToTest(self, argument):
 		switcher = {
@@ -138,7 +141,8 @@ class TestGame:
 			8: self.testPlayerMove,
 			9: self.testPlayerUse,
 			10: self.testPlayerLook,
-			11: self.testPlayerLookAround
+			11: self.testPlayerLookAround,
+			12: self.testPlayerInventory
 		}
 		func = switcher.get(argument, lambda: "Invalid Input")
 		func()
@@ -161,8 +165,9 @@ class TestGame:
 			print(" 9 -- Test Player.use")
 			print("10 -- Test Player.look")
 			print("11 -- Test Player.look_around")
+			print("12 -- Test Player.inventory")
 
 			user_input = int(input("\nEnter the corresponding number for the test you would like to run: "))
-			if user_input and user_input <= 11:
+			if user_input and user_input <= 12:
 				self.numToTest(user_input)
 		return user_input

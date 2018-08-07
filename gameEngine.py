@@ -28,14 +28,14 @@ class Item:
     def use(self, obj):
         key = obj.KeyVal
         if self._LockVal is not None and key == self._LockVal:
-            print("It works! The {objName) and the {sName} become a {transName}.".format(objName=obj.Name, sName=self.Name, transName=self._TransID.Name))
+            print("It works! The {objName} and the {sName} become a {transName}.".format(objName=obj.Name, sName=self.Name, transName=self._TransID.Name))
             self.Name = self._TransID.Name
             self.Desc = self._TransID.Desc
             self.KeyVal = self._TransID.KeyVal
             self._LockVal = self._TransID.get_lock_val()
-            self._TransID = self._TransID.get_trans_id()
-            self.Trap_Desc = self._TransID.Trap_Desc
+            self.Trap_Desc = self._TransID.Trap_Desc if self._TransID is not None else None
             self.Destination = self._TransID.Destination
+            self._TransID = self._TransID.get_trans_id()
             return 1
         else:
             return 0
@@ -120,8 +120,8 @@ class Player:
             print("There is no " + target + " to use your " + item + " on.")
 
     def inventory(self):
-        content = ", ".join(self.Bag)
-        print("You are carrying: {content}.".format(content=content))
+        content = (item.Name for item in self.Bag)
+        print("You are carrying: {content}.".format(content=", ".join(content)))
 
     # takes as argument the name of an object the player wishes to examine more closely. If the object is found, prints
     # the description of that object
@@ -195,8 +195,7 @@ class Player:
                 self._Location = next_location
                 self._Location.enter()
                 return 1
-            else:
-                print("You cannot get to {room} from here.".format(room=user_input))
+        print("You cannot get to {room} from here.".format(room=user_input))
         return 0
 
 
@@ -322,14 +321,15 @@ class Shelf:
         if self.Locked:
             print("It seems like something might be in this, but you can't seem to get inside it.")
             return 0
-        else:
+        elif len(self.Contents) > 0:
             print("The " + self.Name + " contains:")
             contents = (item.Name for item in self.Contents)
 #            for item in self.Contents:
 #               contents.append(item.Name)
             print(', '.join(contents))
             return 1
-
+        else:
+            return 0
 
 class Trap:
     # a trap that can spring when the player moves through the room it's in, killing them or sending them to a different
@@ -359,7 +359,7 @@ class Trap:
 
     def use(self, item):
         if self.Locked:
-            key = item._LockVal
+            key = item.KeyVal
             if key == self._LockVal:
                 output = "It works! The " + item.Name + " disarms the " + self.Name + \
                          ", it should be safe to pass now."

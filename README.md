@@ -1,5 +1,27 @@
 # cs467
 
+<<<<<<< HEAD
+SSH onto flip:
+  ssh <username>@access.engr.oregonstate.edu
+
+Install a virtual environment:
+  python3 -m venv venv
+
+Start the virtual environment
+  source venv/bin/activate
+
+Update pip (package installer):
+  pip install --upgrade pip
+
+Install libraries:
+  pip install <library>
+
+Save required libraries/versions:
+  pip freeze > requirements.txt
+
+Install requirements on another console/venv/machine:
+  pip install -r requirements.txt
+=======
 Group Name: Corvus
 Team Members: Jacob Skinner, Lane Holbrook, & Taylor Jones
 Project: CMD1
@@ -59,3 +81,4 @@ We feel good about where we are at with the code and should be able to have a fu
 of this week.
 
 All of our code can be found at: https://github.com/jonest3/cs467 
+>>>>>>> text_parsing

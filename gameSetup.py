@@ -1,5 +1,6 @@
 from gameEngine import Player, Room, Item, Door, Shelf, Trap
 from testGame import TestGame
+from input_parsing import inputParser
 import pickle
 import json
 import os
@@ -18,16 +19,16 @@ class GameComponents:
 		self.getDoorDestinations()
 		self.getItemDestinations()
 		self.getTrapDestinations()
-	
+
 	# @param:  directory - the name of the directory to get all files in
-	# 
- 	# returns: list of files in parsed directory.  Will return empty list if error occurs 
+	#
+ 	# returns: list of files in parsed directory.  Will return empty list if error occurs
 	def getFilesInDir(self, directory):
 		path = self.basePath + "{directory}/".format(directory=directory)
 		if os.path.exists(path):
 			files = []
 			try:
-				files = os.listdir(path)	
+				files = os.listdir(path)
 			except:
 				print("Error: Could not read files from path: {path}.".format(path=path))
 			return files
@@ -45,7 +46,7 @@ class GameComponents:
 		if os.path.exists(path):
 			try:
 				with open(path, 'r') as data_file:
-					return json.load(data_file)	 
+					return json.load(data_file)
 			except:
 				print("Error: Could not load from {path}.".format(path=path))
 		else:
@@ -67,7 +68,7 @@ class GameComponents:
 				desc = room["longDesc"]
 				shortDesc = room["shortDesc"]
 				roomDict[key] = Room(name, desc, shortDesc)
-				
+
 				for item in room["items"]["floor"]:
 					if self.items[item]:
 						itemObj = self.items[item]
@@ -81,11 +82,11 @@ class GameComponents:
 					sLocked = True if shelf["locked"] == "True" else False
 					sLockVal = shelf["lock_val"] if shelf["lock_val"] != "" else None
 					contents = shelf["contents"]
-					shelfObj = Shelf(sName, sDesc, sLocked, sLockVal)					
-	
+					shelfObj = Shelf(sName, sDesc, sLocked, sLockVal)
+
 					for item in contents:
 						if self.items[item]:
-							itemObj = self.items[item]		
+							itemObj = self.items[item]
 							shelfObj.add_item(itemObj)
 						else:
 							print("Error: {item} does not exist.".format(item=item))
@@ -200,7 +201,7 @@ class GameComponents:
 			if trapObj.Destination:
 				room = trapObj.Destination
 				trapObj.Destination = self.traps[trap]
-	
+
 	def saveGame(self, game):
 		directory = "./SavedGame"
 		path = "{directory}/Game.save".format(directory=directory)
@@ -208,17 +209,18 @@ class GameComponents:
 			os.makedirs(directory)
 		pickle.dump(game, open(path, 'wb'))
 
-cont_game = 1
-while cont_game:
-	gameState = input("Enter 'loadgame' or 'savegame': ")
-	directory = "./SavedGame"
-	path = "{directory}/Game.save".format(directory=directory)
+gameState = input("Enter 'loadgame' or 'savegame': ")
+directory = "./SavedGame"
+path = "{directory}/Game.save".format(directory=directory)
 
-	if gameState == "loadgame":
-		game = pickle.load(open(path, 'rb'))			
-	else:
-		game = GameComponents()
-	if gameState == "savegame":
-		 game.saveGame(game)
-	tester = TestGame(game)
-	cont_game = tester.main()
+if gameState == "loadgame":
+	game = pickle.load(open(path, 'rb'))
+else:
+	game = GameComponents()
+#		game.getDoorDestinations()
+#		game.getItemDestinations()
+if gameState == "savegame":
+	 game.saveGame(game)
+
+parser = inputParser(game)
+parser.run()

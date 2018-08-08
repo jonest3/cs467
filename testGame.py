@@ -108,6 +108,7 @@ class TestGame:
 		move_to = input("\n\nEnter where to move to: ")
 		self.game.player.move(move_to)
 
+
 	def testPlayerUse(self):
 		self.playerDetails()
 		item = input("\n\nItem to use: ")
@@ -122,8 +123,10 @@ class TestGame:
 		target = input("\n\nTarget to look at: ")
 		self.game.player.look(target)
 
+
 	def testPlayerLookAround(self):
 		self.game.player.look_around()
+
 
 	def testPlayerInventory(self):
 		self.game.player.inventory()

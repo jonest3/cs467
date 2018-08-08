@@ -10,7 +10,7 @@
  "items": {
 	"shelves": [
 		{
-                        "name": "Your Helicopter",
+                        "name": "Helicopter",
                         "desc": "A one-person helicopter painted black with a green roof.",
                         "locked": "False",
 			"lock_val": "",

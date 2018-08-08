@@ -202,25 +202,3 @@ class GameComponents:
 				room = trapObj.Destination
 				trapObj.Destination = self.traps[trap]
 
-	def saveGame(self, game):
-		directory = "./SavedGame"
-		path = "{directory}/Game.save".format(directory=directory)
-		if not os.path.exists(directory):
-			os.makedirs(directory)
-		pickle.dump(game, open(path, 'wb'))
-
-gameState = input("Enter 'loadgame' or 'savegame': ")
-directory = "./SavedGame"
-path = "{directory}/Game.save".format(directory=directory)
-
-if gameState == "loadgame":
-	game = pickle.load(open(path, 'rb'))
-else:
-	game = GameComponents()
-#		game.getDoorDestinations()
-#		game.getItemDestinations()
-if gameState == "savegame":
-	 game.saveGame(game)
-
-parser = inputParser(game)
-parser.run()

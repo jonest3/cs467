@@ -16,8 +16,9 @@ class ErrorType(Enum):
 
 class inputParser:
 
-    def __init__(self, game):
+    def __init__(self, game, handler):
         self.game = game
+        self.handler = handler
 
     def run(self):
         game_cont = 1
@@ -32,7 +33,7 @@ class inputParser:
             except ValueError as e:
                 print (str(e))
             except Exception as e:
-                print ("Unkown error occured.")
+                print ("Unknown error occured.")
 
     def parse(self, action):
 
@@ -77,8 +78,12 @@ class inputParser:
             "SOUTHWEST": self.move,
             "SOUTHEAST": self.move,
 
-            # GameSetup.saveGame(game) verbs
-            "SAVE": self.save,
+            # GameHandler.saveGame(game) verbs
+            "SAVEGAME": self.save,
+
+
+            # GameHandler.loadGame() verbs
+            "LOADGAME": self.load,
 
             # Quit
             "QUIT": self.quit,
@@ -143,7 +148,11 @@ class inputParser:
         return 0
 
     def save(self, args):
-        self.game.saveGame(self.game)
+        self.handler.saveGame(self.game)
+        return 1
+
+    def load(self, args):
+        self.game = self.handler.loadGame() or self.game
         return 1
 
     def badInput(self, args):

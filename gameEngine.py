@@ -161,7 +161,7 @@ class Player:
 
     # gives the player the more detailed text they receive upon first entering a room
     def look_around(self):
-        self._Location.look_around()
+        self._Location.examine()
 
     # takes as argument the name of an Item the player wishes to remove from their bag
     def drop(self, item):

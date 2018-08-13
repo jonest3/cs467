@@ -108,6 +108,7 @@ class TestGame:
 		move_to = input("\n\nEnter where to move to: ")
 		self.game.player.move(move_to)
 
+
 	def testPlayerUse(self):
 		self.playerDetails()
 		item = input("\n\nItem to use: ")
@@ -122,23 +123,29 @@ class TestGame:
 		target = input("\n\nTarget to look at: ")
 		self.game.player.look(target)
 
+
 	def testPlayerLookAround(self):
 		self.game.player.look_around()
 
+
+	def testPlayerInventory(self):
+		self.game.player.inventory()
+	
 
 	def numToTest(self, argument):
 		switcher = {
 			1: self.playerDetails,
 			2: self.itemsDetails,
 			3: self.roomsDetails,
-			4: self.testPlayerTake,
-			5: self.testEnteringAllRooms,
-			6: self.testRoomEnter,
+			4: self.testEnteringAllRooms,
+			5: self.testRoomEnter,
+			6: self.testPlayerTake,
 			7: self.testPlayerDrop,
 			8: self.testPlayerMove,
 			9: self.testPlayerUse,
 			10: self.testPlayerLook,
-			11: self.testPlayerLookAround
+			11: self.testPlayerLookAround,
+			12: self.testPlayerInventory
 		}
 		func = switcher.get(argument, lambda: "Invalid Input")
 		func()
@@ -153,16 +160,17 @@ class TestGame:
 			print(" 1 -- See Player's Details")
 			print(" 2 -- See All Items' Details")
 			print(" 3 -- See All Rooms' Details")
-			print(" 4 -- Test Player.take")
-			print(" 5 -- Test Entering All Rooms")
-			print(" 6 -- Test Entering Player's Current Room")
+			print(" 4 -- Test Entering All Rooms")
+			print(" 5 -- Test Entering Player's Current Room")
+			print(" 6 -- Test Player.take")
 			print(" 7 -- Test Player.drop")
 			print(" 8 -- Test Player.move")
 			print(" 9 -- Test Player.use")
 			print("10 -- Test Player.look")
 			print("11 -- Test Player.look_around")
+			print("12 -- Test Player.inventory")
 
 			user_input = int(input("\nEnter the corresponding number for the test you would like to run: "))
-			if user_input and user_input <= 11:
+			if user_input and user_input <= 12:
 				self.numToTest(user_input)
 		return user_input

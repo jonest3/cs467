@@ -14,7 +14,7 @@
 			"desc": "A golden sarcophagus- clearly belonging to someone important- probably holding riches, and probably cursed.",
 			"locked": "False",
 			"lock_val": "",
-			"contents": ["goldenKey"]
+			"contents": []
 		},
 		{
 			"name": "Broken Tomb",

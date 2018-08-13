@@ -41,7 +41,7 @@
 	},
 	{
 		"name": "Glass, Double Doors",
-		"desc": "A once beautiful pair of stained-glass doors framed in dark cherry wood.  Some of the glass has broken and is laying in front of them and threw the missing pieces, you can see what appears to be hundreds of books.",
+		"desc": "A once beautiful pair of stained-glass doors framed in dark cherry wood.  Some of the glass has broken and is laying in front of them and through the missing pieces, you can see what appears to be hundreds of books.",
 		"unlock_desc": "The double doors sway gently from the breeze that finds its way down the remains of the chimney.  The smell of old books fils the room.",
 		"direction": "southeast",
 		"lock_val": "",
@@ -59,7 +59,7 @@
 	},
 	{
 		"name": "Ivy and Vines",
-		"desc": "What you thought was a door was actually overgrown vines and ivy.  You try to get through them, but they have grown to be tightly too intertwined.",
+		"desc": "What you thought was a door was actually overgrown vines and ivy.  You try to get through them, but they have grown to be tightly intertwined.",
 		"unlock_desc": "You have cut through the ivy and vines that blocked your way into this room.",
 		"direction": "northeast",
 		"lock_val": "machete",
@@ -77,7 +77,7 @@
 	},
 	{
 		"name": "Jade Archway",
-		"desc": "An archway lies to the northeast, constructed of dark jade carved into the likeness of twisting serpents.",
+		"desc": "An archway, constructed of dark jade carved into the likeness of twisting serpents.",
 		"unlock_desc": "",
 		"direction": "southwest",
 		"lock_val": "",

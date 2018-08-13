@@ -131,6 +131,11 @@ class GameComponents:
 				trap_desc = item["trap_desc"] if item["trap_desc"] != "" else None
 				destination = item["destination"] if item["destination"] != "" else None
 				itemDict[key] = Item(name, desc, key, lock, trans_id, trap_desc, destination)
+		for prop, item in itemDict.items():
+			if item._TransID:
+				item_key = item._TransID
+				item._TransID = itemDict[item_key]
+
 		return itemDict
 
 	# @param: None
@@ -145,7 +150,7 @@ class GameComponents:
 				name = trap["name"]
 				desc = trap["desc"]
 				s_desc = trap["s_desc"]
-				lock_val = trap["lock_val"]
+				lock_val = trap["lock_val"] if trap["lock_val"] != "" else None
 				d_desc = trap["d_desc"]
 				destination = trap["destination"] if trap['destination'] != "" else None
 				trapDict[name] = Trap(name, desc, s_desc, lock_val, d_desc, destination)
@@ -196,26 +201,3 @@ class GameComponents:
 			if trapObj.Destination:
 				room = trapObj.Destination
 				trapObj.Destination = self.traps[trap]
-
-	def saveGame(self, game):
-		directory = "./SavedGame"
-		path = "{directory}/Game.save".format(directory=directory)
-		if not os.path.exists(directory):
-			os.makedirs(directory)
-		pickle.dump(game, open(path, 'wb'))
-
-gameState = input("Enter 'loadgame' or 'savegame': ")
-directory = "./SavedGame"
-path = "{directory}/Game.save".format(directory=directory)
-
-if gameState == "loadgame":
-	game = pickle.load(open(path, 'rb'))
-else:
-	game = GameComponents()
-#		game.getDoorDestinations()
-#		game.getItemDestinations()
-if gameState == "savegame":
-	 game.saveGame(game)
-game.player._Location.enter()
-parser = inputParser(game)
-parser.run()

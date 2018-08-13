@@ -11,8 +11,9 @@ by the function logic.
 
 class inputParser:
 
-    def __init__(self, game):
+    def __init__(self, game, handler):
         self.game = game
+        self.handler = handler
 
     def run(self):
         os.system("clear")
@@ -30,7 +31,11 @@ class inputParser:
             except ValueError as e:
                 print (str(e))
             except Exception as e:
+<<<<<<< HEAD
                 print (str(e))
+=======
+                print ("Unknown error occured.")
+>>>>>>> 5de36464316255dd7201f2e828ad0ad825ede841
 
     def parse(self, action):
 
@@ -76,8 +81,12 @@ class inputParser:
             "SOUTHWEST": self.move,
             "SOUTHEAST": self.move,
 
-            # GameSetup.saveGame(game) verbs
-            "SAVE": self.save,
+            # GameHandler.saveGame(game) verbs
+            "SAVEGAME": self.save,
+
+
+            # GameHandler.loadGame() verbs
+            "LOADGAME": self.load,
 
             # Quit
             "QUIT": self.quit,
@@ -142,7 +151,11 @@ class inputParser:
         return 0
 
     def save(self, args):
-        self.game.saveGame(self.game)
+        self.handler.saveGame(self.game)
+        return 1
+
+    def load(self, args):
+        self.game = self.handler.loadGame() or self.game
         return 1
 
     def badInput(self, args):

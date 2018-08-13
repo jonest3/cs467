@@ -216,6 +216,6 @@ else:
 #		game.getItemDestinations()
 if gameState == "savegame":
 	 game.saveGame(game)
-
+game.player._Location.enter()
 parser = inputParser(game)
 parser.run()

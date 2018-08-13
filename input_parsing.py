@@ -15,11 +15,13 @@ class inputParser:
         self.game = game
 
     def run(self):
+        os.system("clear")
         game_cont = 1
+        self.game.player._Location.enter()
         while game_cont:
-            _=os.system("clear")
             raw_input = input("Input a command: ")
             args = raw_input.split(" ")
+            os.system("clear")
             action = self.parse(args[0].upper())
             try:
                 game_cont = action(args)
@@ -42,6 +44,7 @@ class inputParser:
             "COMBINE": self.use,
             "MIX": self.use,
             "PUT": self.use,
+            "UNLOCK": self.use,
 
 
             # Player.take(item) verbs

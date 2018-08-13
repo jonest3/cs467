@@ -179,12 +179,12 @@ class Player:
                             else:
                                 self.Turns_Remaining = 0
                             return 2
-                self.Last_Loc = self._Location
-                self._Location = door.Destination
-                self._Location.enter()
-                return 1
-            else:
-                print("You cannot get to {room} from here".format(room=user_input))
+                    self.Last_Loc = self._Location
+                    self._Location = door.Destination
+                    self._Location.enter()
+                    return 1
+
+        print("You cannot get to {room} from here".format(room=user_input))
         return 0
 
 

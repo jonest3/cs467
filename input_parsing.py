@@ -31,11 +31,7 @@ class inputParser:
             except ValueError as e:
                 print (str(e))
             except Exception as e:
-<<<<<<< HEAD
-                print (str(e))
-=======
                 print ("Unknown error occured.")
->>>>>>> 5de36464316255dd7201f2e828ad0ad825ede841
 
     def parse(self, action):
 
@@ -56,6 +52,7 @@ class inputParser:
             "TAKE": self.take,
             "STEAL": self.take,
             "OBTAIN": self.take,
+            "PICK": self.take,
 
             # Player.look(item) and Player.look_arount() verbs
             "LOOK": self.look,
@@ -138,7 +135,11 @@ class inputParser:
         return 1
 
     def take(self, args):
-        target = " ".join(args[1:])
+        if args[1] == 'up':
+            target = " ".join(args[2:])
+        else:
+            target = " ".join(args[1:])
+
         self.game.player.take(target)
         return 1
 

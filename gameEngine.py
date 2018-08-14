@@ -70,6 +70,7 @@ class Player:
                     print(thing.Trap_Desc)
                     if thing.Destination is not None:
                         self._Location = thing.Destination
+                        self._Location.enter()
                     else:
                         self.Turns_Remaining = 0                
                 return 1
@@ -84,6 +85,7 @@ class Player:
                                 print(thing.Trap_Desc)
                                 if thing.Destination is not None:
                                     self._Location = thing.Destination
+                                    self._Location.enter()
                                 else:
                                     self.Turns_Remaining = 0
                             return 1
@@ -118,6 +120,7 @@ class Player:
                 print(lock.Trap_Desc)
                 if lock.Destination is not None:
                     self._Location = lock.Destination
+                    self._Location.enter()
                 else:
                     self.Turns_Remaining = 0                
         if not key:

@@ -1,3 +1,7 @@
+def highlight(name):
+    return ("\033[93m{}\033[00m" .format(name))
+
+
 class Item:
 
     # initializes the item. name = the name of the item
@@ -28,7 +32,7 @@ class Item:
     def use(self, obj):
         key = obj.KeyVal
         if self._LockVal is not None and key == self._LockVal:
-            print("It works! The {objName} and the {sName} become a {transName}.".format(objName=obj.Name, sName=self.Name, transName=self._TransID.Name))
+            print("It works! The {objName} and the {sName} become a {transName}.".format(objName=highlight(obj.Name), sName=highlight(self.Name), transName=highlight(self._TransID.Name)))
             self.Name = self._TransID.Name
             self.Desc = self._TransID.Desc
             self.KeyVal = self._TransID.KeyVal
@@ -73,11 +77,11 @@ class Player:
                             foundItem = thing
                             shelf.Contents.remove(thing)
         if foundItem is None:
-            print("There is no {item} here.".format(item=item))
+            print("There is no {item} here.".format(item=highlight(item)))
             return 0
         else:
             self.Bag.append(foundItem)
-            print("You pick up the {name} and put it in your bag.".format(name=foundItem.Name))
+            print("You pick up the {name} and put it in your bag.".format(name=highlight(foundItem.Name)))
             if foundItem.Trap_Desc is not None:
                 print(thing.Trap_Desc)
                 try:
@@ -113,14 +117,14 @@ class Player:
             if lock.use(key) == 1:
                 self.Bag.remove(key)
             else:
-                print("You cannot use " + key.Name + " on " + lock.Name +".")
+                print("You cannot use " + highlight(key.Name) + " on " + highlight(lock.Name) +".")
         if not key:
-            print("You do not have a {item}.".format(item=item))
+            print("You do not have a {item}.".format(item=highlight(item)))
         elif not lock:
-            print("There is no " + target + " to use your " + item + " on.")
+            print("There is no " + highlight(target) + " to use your " + highlight(item) + " on.")
 
     def inventory(self):
-        content = (item.Name for item in self.Bag)
+        content = (highlight(item.Name) for item in self.Bag)
         print("You are carrying: {content}.".format(content=", ".join(content)))
 
     # takes as argument the name of an object the player wishes to examine more closely. If the object is found, prints
@@ -154,22 +158,22 @@ class Player:
             if thing.Name == target:
                 thing.examine()
                 return 1
-        print("There is no " + target + " here.")
+        print("There is no " + highlight(target) + " here.")
         return 0
 
     # gives the player the more detailed text they receive upon first entering a room
     def look_around(self):
-        print(self._Location.Desc)
+        self._Location.examine()
 
     # takes as argument the name of an Item the player wishes to remove from their bag
     def drop(self, item):
         for thing in self.Bag:
             if thing.Name == item:
-                print("You drop your " + item + " on the floor.")
+                print("You drop your " + highlight(item) + " on the floor.")
                 self._Location.add_item(thing)
                 self.Bag.remove(thing)
                 return 1
-        print("You do not have a {item}.".format(item=item))
+        print("You do not have a {item}.".format(item=highlight(item)))
         return 0
 
     # takes as argument the name of a room the player wishes to move to, and attempts to move there (if it can be found
@@ -180,7 +184,7 @@ class Player:
             if user_input in options:
                 next_location = door.Destination
                 if door.Locked:
-                    print("{name} seems to be locked.  You will need to find something to help you get through.".format(name=door.Name))
+                    print("{name} seems to be locked.  You will need to find something to help you get through.".format(name=highlight(door.Name)))
                 else:
                     for trap in self._Location.Traps:
                         if trap.Locked:
@@ -196,7 +200,7 @@ class Player:
                     self._Location.enter()
                     return 1
 
-        print("You cannot get to {room} from here".format(room=user_input))
+        print("You cannot get to {room} from here".format(room=highlight(user_input)))
         return 0
 
 
@@ -234,13 +238,13 @@ class Room:
             door.examine()
         if len(self.Shelves) > 0:
             for shelf in self.Shelves:
-                print("There is a " + shelf.Name + " here.")
+                print("There is a " + highlight(shelf.Name) + " here.")
 #        if len(self.Traps) > 0:
 #            for trap in self.Traps:
 #                print("There is a " + trap.Name + " here.")
         if len(self.Floor) > 0:
             print("There are a few items scattered about: ")
-            items = (item.Name for item in self.Floor)
+            items = (highlight(item.Name) for item in self.Floor)
             print(', '.join(items))
 
     def enter(self):
@@ -265,7 +269,7 @@ class Door:
 
     def examine(self):
             print(self.Desc)
-            print("The {dest} lies {direction} through the {name}.".format(dest=self.Destination.Name, direction=self.Direction, name=self.Name))
+            print("The {dest} lies {direction} through the {name}.".format(dest=highlight(self.Destination.Name), direction=highlight(self.Direction), name=highlight(self.Name)))
 
     # takes an Item as input, if the door is locked it compares the key value of the item passed against the key it
     # expects. If they match, it adds the room it stores (leads to) to the list of Rooms accessible from the room set as
@@ -310,7 +314,7 @@ class Shelf:
     def use(self, item):
         key = item.KeyVal
         if self.Locked and key is self._LockVal:
-            print("Success! The {key} opens the {lock}.".format(key=key.Name,lock=self.Name))
+            print("Success! The {key} opens the {lock}.".format(key=highlight(key.Name), lock=highlight(self.Name)))
             self.Locked = False
             return 1
         else:
@@ -323,8 +327,8 @@ class Shelf:
             print("It seems like something might be in this, but you can't seem to get inside it.")
             return 0
         elif len(self.Contents) > 0:
-            print("The " + self.Name + " contains:")
-            contents = (item.Name for item in self.Contents)
+            print("The " + highlight(self.Name) + " contains:")
+            contents = (highlight(item.Name) for item in self.Contents)
 #            for item in self.Contents:
 #               contents.append(item.Name)
             print(', '.join(contents))
@@ -362,7 +366,7 @@ class Trap:
         if self.Locked:
             key = item.KeyVal
             if key == self._LockVal:
-                output = "It works! The " + item.Name + " disarms the " + self.Name + \
+                output = "It works! The " + highlight(item.Name) + " disarms the " + highlight(self.Name) + \
                          ", it should be safe to pass now."
                 print(output)
                 self.Locked = False

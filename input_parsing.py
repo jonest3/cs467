@@ -29,7 +29,7 @@ class inputParser:
             except KeyError:
                 print ("Not sufficient number of arguments.")
             except ValueError as e:
-                print (str(e))
+                self.badInput(args)
             except Exception as e:
                 print ("Unknown error occured.")
 
@@ -54,9 +54,10 @@ class inputParser:
             "OBTAIN": self.take,
             "PICK": self.take,
 
-            # Player.look(item) and Player.look_arount() verbs
+            # Player.look(item), Player.look_around(),  verbs
             "LOOK": self.look,
             "EXAMINE": self.look,
+            "READ": self.look,
 
             # Player.drop(item) verbs
             "DROP": self.drop,
@@ -92,17 +93,20 @@ class inputParser:
         return valid_commands.get(action, self.badInput)
 
     def look(self, args):
-        if args[1] == "around":
-            self.game.player.look_around()
-
-        elif args[1] == 'at':
+        if args[1] == 'at' or args[1] == 'in':
             target = " ".join(args[2:])
-            self.game.player.look(target)
-
         else:
             target = " ".join(args[1:])
-            self.game.player.look(target)
 
+        if target == 'around':
+            self.game.player.look_around()
+            return 1
+
+        elif target == 'bag' or target == 'inventory':
+            self.game.player.inventory()
+            return 1
+
+        self.game.player.look(target)
         return 1
 
     def use(self, args):

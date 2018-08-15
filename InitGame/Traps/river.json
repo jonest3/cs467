@@ -1,0 +1,8 @@
+{
+   "name": "river",
+   "desc": "A rolling river flowing away from the waterfall and into the jungle",
+   "s_desc": "You jump into the river...",
+   "lock_val": "jump",
+   "d_desc": "You jump into the river...",
+   "destination": "helicopterPad"
+}

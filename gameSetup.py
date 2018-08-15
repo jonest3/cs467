@@ -1,5 +1,4 @@
 from gameEngine import Player, Room, Item, Door, Shelf, Trap
-from testGame import TestGame
 from input_parsing import inputParser
 import pickle
 import json
@@ -200,4 +199,4 @@ class GameComponents:
 			trapObj = self.traps[trap]
 			if trapObj.Destination:
 				room = trapObj.Destination
-				trapObj.Destination = self.traps[trap]
+				trapObj.Destination = self.rooms[room]

@@ -2,6 +2,27 @@ def highlight(name):
     return ("\033[93m{}\033[00m" .format(name))
 
 
+def strong_match(input, target):
+    # remove case
+    target = target.lower()
+    input = input.lower()
+    if input == target:
+        return 1
+    return 0
+
+
+def weak_match(input, target):
+    if strong_match(input, target):
+        return 1
+
+    # Chcek word match
+    target = target.lower().split(' ')
+    input = input.lower()
+    if input in target:
+        return 1
+    return 0
+
+
 class Item:
 
     # initializes the item. name = the name of the item
@@ -65,7 +86,7 @@ class Player:
     def take(self, item):
         foundItem = None
         for thing in self._Location.Floor:
-            if thing.Name == item:
+            if strong_match(item, thing.Name):
                 foundItem = thing
                 self._Location.Floor.remove(thing)
                 break
@@ -73,25 +94,28 @@ class Player:
             for shelf in self._Location.Shelves:
                 if not shelf.Locked:
                     for thing in shelf.Contents:
-                        if thing.Name == item:
+                        if strong_match(item, thing.Name):
                             foundItem = thing
                             shelf.Contents.remove(thing)
         if foundItem is None:
             print("There is no {item} here.".format(item=highlight(item)))
-            return 0
         else:
             self.Bag.append(foundItem)
             print("You pick up the {name} and put it in your bag.".format(name=highlight(foundItem.Name)))
             if foundItem.Trap_Desc:
-                print(thing.Trap_Desc)
-                try:
-                    if thing.Destination:
-                        self.Turns_Remaining = 12
-                        self.move(thing.Destination)
-                except:
-                    self.Turns_Remaining = 0
-                return 0
-            return 1
+
+                print(foundItem.Trap_Desc)
+
+                if foundItem.Destination:
+                    foundItem.Destination.enter()
+                    self._Location = foundItem.Destination
+                    turns = self.Turns_Remaining - 12
+                    if turns < 1:
+                        turns = 1
+                    return turns
+                else:
+                    return self.Turns_Remaining
+        return 0
 
     # represents the player using an item from their inventory on another object (combining it with another item in
     # their inventory, using it to unlock a door, or shelf, or disarm a trap). Takes as argument the Name of the Item
@@ -100,40 +124,41 @@ class Player:
         lock = None
         key = None
         for thing in self.Bag:
-            if thing.Name == item:
+            if strong_match(item, thing.Name):
                 key = thing
-            elif thing.Name == target:
+            elif strong_match(target, thing.Name):
                 lock = thing
         for thing in self._Location.Doors:
-            if thing.Name == target:
+            if weak_match(target, thing.Name):
                 lock = thing
         for thing in self._Location.Traps:
-            if thing.Name == target:
+            if weak_match(target, thing.Name):
                 lock = thing
         for thing in self._Location.Shelves:
-            if thing.Name == target:
+            if weak_match(target, thing.Name):
                 lock = thing
         if lock and key:
             if lock.use(key) == 1:
                 self.Bag.remove(key)
+                try:
+                    if lock.Trap_Desc:
+                        print(lock.Trap_Desc)
+                        if lock.Destination:
+                            lock.Destination.enter()
+                            self._Location = lock.Destination
+                        else:
+                            return self.Turns_Remaining
+                except:
+                    pass
+
             else:
                 print("You cannot use " + highlight(key.Name) + " on " + highlight(lock.Name) +".")
-
-            try:
-                if lock.Trap_Desc:
-                    print(lock.Trap_Desc)
-                    if lock.Destination:
-                        self._Location = lock.Destination
-                        self._Location.enter()
-                else:
-                    self.Turns_Remaining = 0
-            except:
-                pass
 
         if not key:
             print("You do not have a {item}.".format(item=highlight(item)))
         elif not lock:
             print("There is no " + highlight(target) + " to use your " + highlight(item) + " on.")
+        return 0
 
     def inventory(self):
         content = (highlight(item.Name) for item in self.Bag)
@@ -142,34 +167,34 @@ class Player:
     # takes as argument the name of an object the player wishes to examine more closely. If the object is found, prints
     # the description of that object
     def look(self, target):
-        if self._Location.Name == target:
+        if weak_match(target, self._Location.Name):
             self._Location.examine()
-            return 1
+            return 0
         for thing in self.Bag:
-            if thing.Name == target:
+            if strong_match(target, thing.Name):
                 thing.examine()
-                return 1
+                return 0
         for thing in self._Location.Floor:
-            if thing.Name == target:
+            if strong_match(target, thing.Name):
                 thing.examine()
-                return 1
+                return 0
         for thing in self._Location.Shelves:
-            if thing.Name == target:
+            if weak_match(target, thing.Name):
                 thing.examine()
-                return 1
+                return 0
             elif not thing.Locked:
                 for item in thing.Contents:
-                    if item.Name == target:
+                    if strong_match(target, item.Name):
                         item.examine()
-                        return 1
+                        return 0
         for thing in self._Location.Traps:
-            if thing.Name == target:
+            if weak_match(target, thing.Name):
                 thing.examine()
-                return 1
+                return 0
         for thing in self._Location.Doors:
-            if thing.Name == target:
+            if weak_match(target, thing.Name):
                 thing.examine()
-                return 1
+                return 0
         print("There is no " + highlight(target) + " here.")
         return 0
 
@@ -180,11 +205,11 @@ class Player:
     # takes as argument the name of an Item the player wishes to remove from their bag
     def drop(self, item):
         for thing in self.Bag:
-            if thing.Name == item:
+            if strong_match(item, thing.Name):
                 print("You drop your " + highlight(item) + " on the floor.")
                 self._Location.add_item(thing)
                 self.Bag.remove(thing)
-                return 1
+                return 0
         print("You do not have a {item}.".format(item=highlight(item)))
         return 0
 
@@ -193,8 +218,7 @@ class Player:
     def move(self, user_input):
         for door in self._Location.Doors:
             options = [door.Destination.Name, door.Direction, door.Name]
-            if user_input in options:
-                next_location = door.Destination
+            if any(weak_match(user_input, target) for target in options):
                 if door.Locked:
                     print("{name} seems to be locked.  You will need to find something to help you get through.".format(name=highlight(door.Name)))
                 else:
@@ -202,11 +226,14 @@ class Player:
                         if trap.Locked:
                             trap.spring()
                             if trap.Destination:
-                                next_location = trap.Destination
-                                self.Turns_Remaining = 12
+                                trap.Destination.enter()
+                                self._Location = trap.Destination
+                                turns = self.Turns_Remaining - 12
+                                if turns < 1:
+                                    turns = 1
+                                return turns
                             else:
-                                self.Turns_Remaining = 0
-                            return 2
+                                return self.Turns_Remaining
                     self.Last_Loc = self._Location
                     self._Location = door.Destination
                     self._Location.enter()
@@ -215,6 +242,15 @@ class Player:
         print("You cannot get to {room} from here".format(room=highlight(user_input)))
         return 0
 
+    def jump(self):
+        bag = [stuff.KeyVal for stuff in self.Bag]
+        trap = self._Location.Traps[0]
+        if self._Location.Name == "Waterfall" and "scepter" in bag:
+            trap.spring()
+            self._Location = trap.Destination
+            return 1
+        print("You jump and hit your head")
+        return 0
 
 class Room:
     # Represents the discrete spaces found within the dungeon. Initializes with a name and a description, as well as
@@ -280,8 +316,8 @@ class Door:
         return self._LockVal
 
     def examine(self):
-            print(self.Desc)
-            print("The {dest} lies {direction} through the {name}.".format(dest=highlight(self.Destination.Name), direction=highlight(self.Direction), name=highlight(self.Name)))
+        print(self.Desc)
+        print("The {dest} lies {direction} through the {name}.".format(dest=highlight(self.Destination.Name), direction=highlight(self.Direction), name=highlight(self.Name)))
 
     # takes an Item as input, if the door is locked it compares the key value of the item passed against the key it
     # expects. If they match, it adds the room it stores (leads to) to the list of Rooms accessible from the room set as

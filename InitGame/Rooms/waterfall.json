@@ -27,7 +27,7 @@
 	"floor": ["pebbles"]
  },
 
- "traps": [],
+ "traps": ["river"],
 
  "doors": [
 	{

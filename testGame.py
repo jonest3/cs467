@@ -10,7 +10,7 @@ class TestGame:
 			print("Turns Remaining: {turns}".format(turns=player.Turns_Remaining))
 			print("Bag Contents:")
 			for item in player.Bag:
-				print(item.Name)			
+				print(item.Name)
 
 
 
@@ -72,7 +72,7 @@ class TestGame:
 		print("\n-- Testing Entering Room --\n")
 		room = self.game.player._Location
 		room.enter()
-		print("--------------------")	
+		print("--------------------")
 
 
 	def testPlayerTake(self):
@@ -82,13 +82,13 @@ class TestGame:
 		room.enter()
 		self.playerDetails()
 		take_item = input("\n\nEnter Item to take: ")
-		self.game.player.take(take_item)		
+		self.game.player.take(take_item)
 		print("-- Show Room Again --")
 		print("\n--- item should be missing ---")
 		room.enter()
 		self.playerDetails()
-		
-		
+
+
 	def testPlayerDrop(self):
 		print("\n-- Test Dropping Item --\n")
 		print("Player Details:")
@@ -116,7 +116,7 @@ class TestGame:
 
 		self.game.player.use(item, target)
 
-	
+
 	def testPlayerLook(self):
 		room = self.game.player._Location
 		self.printRoomDetails(room)
@@ -130,7 +130,7 @@ class TestGame:
 
 	def testPlayerInventory(self):
 		self.game.player.inventory()
-	
+
 
 	def numToTest(self, argument):
 		switcher = {
@@ -153,7 +153,7 @@ class TestGame:
 
 	def main(self):
 		user_input = 1
-		
+
 		while user_input:
 			print("\n\n-- TEST MENU--\n")
 			print(" 0 -- Exit")
@@ -174,3 +174,9 @@ class TestGame:
 			if user_input and user_input <= 12:
 				self.numToTest(user_input)
 		return user_input
+
+from gameSetup import GameComponents
+
+game = GameComponents()
+testgame = TestGame(game)
+testgame.main()

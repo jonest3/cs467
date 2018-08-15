@@ -8,6 +8,13 @@ by the function logic.
 
 '''
 
+feedback = {
+    "24": "The walls groan and the floor creaks...",
+    "18": "You feel the castle shake...",
+    "12": "The ground begins to shift...",
+    "6": "The walls literally crumble around you...",
+    "0": "The castle collapses around you"
+}
 
 class inputParser:
 
@@ -19,7 +26,11 @@ class inputParser:
         os.system("clear")
         game_cont = 1
         self.game.player._Location.enter()
-        while game_cont:
+        while game_cont and self.game.player.Turns_Remaining > 0:
+            if feedback.get(str(self.game.player.Turns_Remaining)):
+                print(feedback[str(self.game.player.Turns_Remaining)])
+                del feedback[str(self.game.player.Turns_Remaining)]
+            print("You have {turns} turns left.".format(turns=self.game.player.Turns_Remaining))
             raw_input = input("Input a command: ")
             args = raw_input.split(" ")
             os.system("clear")
@@ -32,6 +43,9 @@ class inputParser:
                 self.badInput(args)
             except Exception as e:
                 print (str(e))
+
+        if  self.game.player.Turns_Remaining <= 0:
+            print("Game Over")
 
     def parse(self, action):
 
@@ -79,6 +93,9 @@ class inputParser:
             "SOUTHWEST": self.move,
             "SOUTHEAST": self.move,
 
+            # Player.jump() verb
+            "JUMP": self.jump,
+
             # GameHandler.saveGame(game) verbs
             "SAVEGAME": self.save,
 
@@ -106,7 +123,7 @@ class inputParser:
             self.game.player.inventory()
             return 1
 
-        self.game.player.look(target)
+        self.game.player.Turns_Remaining -= self.game.player.look(target)
         return 1
 
     def use(self, args):
@@ -122,7 +139,7 @@ class inputParser:
         index = args.index(pronoun)
         item = " ".join(args[1:index])
         target =  " ".join(args[index+1:])
-        self.game.player.use(item, target)
+        self.game.player.Turns_Remaining -= self.game.player.use(item, target)
         return 1
 
     def move(self, args):
@@ -135,7 +152,7 @@ class inputParser:
             target = " ".join(args[2:])
         else:
             target = " ".join(args[1:])
-        self.game.player.move(target)
+        self.game.player.Turns_Remaining -= self.game.player.move(target)
         return 1
 
     def take(self, args):
@@ -144,16 +161,22 @@ class inputParser:
         else:
             target = " ".join(args[1:])
 
-        self.game.player.take(target)
+        self.game.player.Turns_Remaining -= self.game.player.take(target)
         return 1
 
     def drop(self, args):
         target = " ".join(args[1:])
-        self.game.player.drop(target)
+        self.game.player.Turns_Remaining -= self.game.player.drop(target)
         return 1
 
     def quit(self, args):
         return 0
+
+    def jump(self, args):
+        if self.game.player.jump():
+            print ("You Escaped! Congratulations!")
+            self.game.player.Turns_Remaining = 0
+        return 1
 
     def save(self, args):
         self.handler.saveGame(self.game)

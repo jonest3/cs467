@@ -31,7 +31,7 @@ class inputParser:
             except ValueError as e:
                 self.badInput(args)
             except Exception as e:
-                print ("Unknown error occured.")
+                print (str(e))
 
     def parse(self, action):
 

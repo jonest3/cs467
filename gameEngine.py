@@ -37,7 +37,7 @@ class Item:
             self.Desc = self._TransID.Desc
             self.KeyVal = self._TransID.KeyVal
             self._LockVal = self._TransID.get_lock_val()
-            self.Trap_Desc = self._TransID.Trap_Desc if self._TransID is not None else None
+            self.Trap_Desc = None if not self._TransID.Trap_Desc else self._TransID.Trap_Desc
             self.Destination = self._TransID.Destination
             self._TransID = self._TransID.get_trans_id()
             return 1
@@ -82,7 +82,7 @@ class Player:
         else:
             self.Bag.append(foundItem)
             print("You pick up the {name} and put it in your bag.".format(name=highlight(foundItem.Name)))
-            if foundItem.Trap_Desc is not None:
+            if foundItem.Trap_Desc:
                 print(thing.Trap_Desc)
                 try:
                     if thing.Destination:
@@ -118,6 +118,18 @@ class Player:
                 self.Bag.remove(key)
             else:
                 print("You cannot use " + highlight(key.Name) + " on " + highlight(lock.Name) +".")
+
+            try:
+                if lock.Trap_Desc:
+                    print(lock.Trap_Desc)
+                    if lock.Destination:
+                        self._Location = lock.Destination
+                        self._Location.enter()
+                else:
+                    self.Turns_Remaining = 0
+            except:
+                pass
+
         if not key:
             print("You do not have a {item}.".format(item=highlight(item)))
         elif not lock:

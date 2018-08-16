@@ -1,6 +1,6 @@
 {
    "name": "Vial of Sleeping Potion",
-   "desc": "A tiny vial filled with the purple Sleeping Potion.",
+   "desc": "You hold the tiny vial filled with the purple Sleeping Potion carefully in your hand.  Ma-go'faan has NOTHING on you!",
    "key_val": "fullVial",
    "lock_val": "",
    "trans_id": "",

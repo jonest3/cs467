@@ -30,8 +30,8 @@ class inputParser:
             if feedback.get(str(self.game.player.Turns_Remaining)):
                 print(feedback[str(self.game.player.Turns_Remaining)])
                 del feedback[str(self.game.player.Turns_Remaining)]
-            print("You have {turns} turns left.".format(turns=self.game.player.Turns_Remaining))
-            raw_input = input("Input a command: ")
+#            print("You have {turns} turns left.".format(turns=self.game.player.Turns_Remaining))
+            raw_input = input("\nInput a command: ")
             args = raw_input.split(" ")
             os.system("clear")
             action = self.parse(args[0].upper())
@@ -103,7 +103,6 @@ class inputParser:
             # GameHandler.saveGame(game) verbs
             "SAVEGAME": self.save,
 
-
             # GameHandler.loadGame() verbs
             "LOADGAME": self.load,
 
@@ -158,6 +157,8 @@ class inputParser:
         else:
             target = " ".join(args[1:])
         self.game.player.Turns_Remaining -= self.game.player.move(target)
+        if self.game.player.Turns_Remaining > 0:
+            print("You have {turns} turns left.".format(turns=self.game.player    .Turns_Remaining))
         return 1
 
     def take(self, args):

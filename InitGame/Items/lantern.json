@@ -1,6 +1,6 @@
 {
    "name": "Lantern",
-   "desc": "A dirty, iron lantern.",
+   "desc": "You look at the dirty, iron lantern.  It seems to still have oil so you are able to turn it on.",
    "key_val": "lantern",
    "lock_val": "",
    "trans_id": "",

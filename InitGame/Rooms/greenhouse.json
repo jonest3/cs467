@@ -3,9 +3,9 @@
 
  "name": "Over-grown Greenhouse",
 
- "longDesc": "This area was clearly once used for cultivating plants- exotic and magical ones, if you had to guess. The lack of active cultivation doesn't seem to have done them much real harm- the room has a thick coating og dark green moss over every surface, a few bright floral blooms peak out between the leaves, and the air is thick with petrichor.",
+ "longDesc": "This area was clearly once used for cultivating plants- exotic and magical ones, if you had to guess. The lack of active cultivation doesn't seem to have done them much real harm- the room has a thick coating of dark green moss over every surface while a few bright, floral blooms peak out between the leaves.  The air is thick with petrichor.",
 
- "shortDesc": "An area covered in moss and a few bright flowers.",
+ "shortDesc": "Once again, you are back in the moss-covered room.  You see a few bright flowers poking through.  They signify a sign of hope to you.  Hope that you can escape the curse.",
 
  "items": {
 	"shelves": [

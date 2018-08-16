@@ -1,6 +1,6 @@
 {
    "name": "Sleeping Spell",
-   "desc": "When it's sleep you wish to make, a mellow plant you'll have to take. Mix with the substance that clouds weep and place in a vial to store liquid sleep.",
+   "desc": "When it's sleep you wish to make,\na mellow plant you'll have to take.\n\nMix with the substance that clouds weep,\nand place in a vial to store liquid sleep.",
    "key_val": "spell",
    "lock_val": "purpleMush",
    "trans_id": "potion",

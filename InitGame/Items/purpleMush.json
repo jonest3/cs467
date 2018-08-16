@@ -1,6 +1,6 @@
 {
    "name": "Purple Mush",
-   "desc": "Globby, purple mush.",
+   "desc": "The globby, purple mush drips through your fingers.",
    "key_val": "purpleMush",
    "lock_val": "spell",
    "trans_id": "potion",

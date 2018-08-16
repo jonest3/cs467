@@ -3,22 +3,22 @@
 
  "name": "Landing Pad",
 
- "longDesc": "The air is humid and full of buzzing insects here, deep in the jungle where you tracked down the forgotten ruins and landed your helicopter. Before you stands the imposing stone gate that leads to the find of your career.",
+ "longDesc": "After 4 hours in your helicopter, you finally land seemingly in the middle of nowhere.\nThe air is humid here and full of buzzing insects.  You stand burried deeply in the forgotten jungle tucked away between mountains at the entrace to the lost ruins of \nCastle Charenji where you believe the Golden Scepter of Ma-go'Faan has been hidden for thousands of years.\nYou know that if you can find and retrieve the scepter, you would never have to work another day in your life.\n\nThe catch?\n\nThe castle is said to be cursed and that anyone who seeks the scepter will undoubtedly perish before they can retrieve it.\n\nBut, you don't really believe in curses...right?\n",
 
- "shortDesc": "A clearing in the deep jungle where you landed your helicopter.",
+ "shortDesc": "You are back in the small clearing deep in the jungle where you landed your helicopter.",
 
  "items": {
 	"shelves": [
 		{
                         "name": "Helicopter",
-                        "desc": "A one-person helicopter painted black with a green roof.",
+                        "desc": "You turn back to your one-person helicopter that is painted black with a green roof to blend into the jungle.",
                         "locked": "False",
 			"lock_val": "",
 			"contents": ["machete", "rustyKey"]
 		},
 		{
                         "name": "Nearby Bush",
-                        "desc": "A shaggy bush with bright blue berries.",
+                        "desc": "You examin the shaggy bush and note that it has bright blue berries.",
                         "locked": "False",
 			"lock_val": "",
 			"contents": []
@@ -31,8 +31,8 @@
  "doors": [
 	{
 		"name": "Stone Gate",
-		"desc": "An ancient stone gate that stands 7 feet tall and 5 feet wide.  In the middle of the gate, there is intricate, metal symbols and what appears to be a rusty keyhole.",
-		"unlock_desc": "As you slide the key into the keyhole and rotate it to the left, you hear a loud clicking sound.  You push on the gate and it begins to slowly open reveiling the Antechamber inside.  You have made it into the castle.",
+		"desc": "Before you is an ancient stone gate that stands 7 feet tall and 5 feet wide.  In the middle of the gate are intricate, metal symbols and what appears to be a rusty keyhole.",
+		"unlock_desc": "You have unlocked the gate and have slowly pushed it open to reveil the Antechamber inside.",
 		"direction": "north",
 		"lock_val": "rustyKey",
 		"neighbor": "antechamber",

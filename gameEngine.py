@@ -239,17 +239,17 @@ class Player:
                     self._Location.enter()
                     return 1
 
-        print("You cannot get to {room} from here".format(room=highlight(user_input)))
+        print("You cannot get to {room} from here.".format(room=highlight(user_input)))
         return 0
 
     def jump(self):
         bag = [stuff.KeyVal for stuff in self.Bag]
-        trap = self._Location.Traps[0]
         if self._Location.Name == "Waterfall" and "scepter" in bag:
+            trap = self._Location.Traps[0]
             trap.spring()
             self._Location = trap.Destination
             return 1
-        print("You jump and hit your head")
+        print("You jump and hit your head.")
         return 0
 
 class Room:
@@ -285,13 +285,13 @@ class Room:
         for door in self.Doors:
             door.examine()
         if len(self.Shelves) > 0:
-            for shelf in self.Shelves:
-                print("There is a " + highlight(shelf.Name) + " here.")
+            shelves = (highlight(shelf.Name) for shelf in self.Shelves)
+            print("You spot a {shelf_list} close by.".format(shelf_list=(' and a '.join(shelves))))
 #        if len(self.Traps) > 0:
 #            for trap in self.Traps:
 #                print("There is a " + trap.Name + " here.")
         if len(self.Floor) > 0:
-            print("There are a few items scattered about: ")
+            print("There are a few items scattered about the floor: ")
             items = (highlight(item.Name) for item in self.Floor)
             print(', '.join(items))
 
@@ -317,7 +317,7 @@ class Door:
 
     def examine(self):
         print(self.Desc)
-        print("The {dest} lies {direction} through the {name}.".format(dest=highlight(self.Destination.Name), direction=highlight(self.Direction), name=highlight(self.Name)))
+        print("You see that the {dest} lies {direction} through the {name}.".format(dest=highlight(self.Destination.Name), direction=highlight(self.Direction), name=highlight(self.Name)))
 
     # takes an Item as input, if the door is locked it compares the key value of the item passed against the key it
     # expects. If they match, it adds the room it stores (leads to) to the list of Rooms accessible from the room set as
@@ -329,7 +329,7 @@ class Door:
             if key == self._LockVal:
                 self.Locked = False
                 self.Desc = self.UnlockDesc
-                print("Success! The passage opens to reveal: ")
+#                print("Success! The passage opens to reveal: ")
                 self.examine()
                 return 1
             else:
@@ -366,7 +366,7 @@ class Shelf:
             self.Locked = False
             return 1
         else:
-            print("That doesn't seem to do anything.")
+            print("Hmm... that didn't seem to do anything.")
             return 0
 
     def examine(self):
@@ -377,8 +377,6 @@ class Shelf:
         elif len(self.Contents) > 0:
             print("The " + highlight(self.Name) + " contains:")
             contents = (highlight(item.Name) for item in self.Contents)
-#            for item in self.Contents:
-#               contents.append(item.Name)
             print(', '.join(contents))
             return 1
         else:

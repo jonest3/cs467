@@ -84,6 +84,10 @@ class inputParser:
             "PASS": self.move,
             "TRAVEL": self.move,
 
+            "UP": self.move,
+            "UPSTAIRS": self.move,
+            "DOWN": self.move,
+            "DOWNSTAIRS": self.move,
             "NORTH": self.move,
             "SOUTH": self.move,
             "EAST": self.move,
@@ -105,6 +109,7 @@ class inputParser:
 
             # Quit
             "QUIT": self.quit,
+            "EXIT": self.quit
         }
 
         return valid_commands.get(action, self.badInput)
@@ -144,7 +149,7 @@ class inputParser:
 
     def move(self, args):
         directions = ["NORTH", "SOUTH", "WEST", "EAST",
-            "NORTHWEST", "NORTHEAST", "SOUTHWEST", "SOUTHEAST"]
+            "NORTHWEST", "NORTHEAST", "SOUTHWEST", "SOUTHEAST", "UP", "UPSTAIRS", "DOWN", "DOWNSTAIRS"]
 
         if args[0].upper() in directions:
             target = args[0]

@@ -32,7 +32,7 @@
  "doors": [
 	{
 		"name": "Narrow Passage",
-		"desc": "A narrow passage- tight enough you have to hold you breath to squeeze through- leads off to the east.",
+		"desc": "A narrow passage- tight enough you have to hold your breath to squeeze through- leads off to the distance.",
 		"unlock_desc": "",
 		"direction": "east",
 		"lock_val": "",

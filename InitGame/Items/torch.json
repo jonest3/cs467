@@ -1,6 +1,6 @@
 {
    "name": "Torch",
-   "desc": "A metal torch burning brightly with fire.",
+   "desc": "You can feel the warm radiating from this metal torch burning brightly with fire.",
    "key_val": "torch",
    "lock_val": "",
    "trans_id": "",

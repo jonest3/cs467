@@ -1,6 +1,6 @@
 {
    "name": "Wood",
-   "desc": "A see a stack of rotting, wooden planks.",
+   "desc": "You carefully inspect the stack of rotting, wooden planks.",
    "key_val": "wood",
    "lock_val": "rope",
    "trans_id": "ladder",

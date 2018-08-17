@@ -41,7 +41,7 @@
 	},
 	{
 		"name": "Slick Stones",
-		"desc": "A path of water-slicked stones leads off to the east, towards the sound of a waterfall.",
+		"desc": "A path of water-slicked stones leads off towards the sound of a waterfall.",
 		"unlock_desc": "",
 		"direction": "east",
 		"lock_val": "",

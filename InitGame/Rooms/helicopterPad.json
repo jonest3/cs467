@@ -32,7 +32,7 @@
 	{
 		"name": "Stone Gate",
 		"desc": "Before you is an ancient stone gate that stands 7 feet tall and 5 feet wide.  In the middle of the gate are intricate, metal symbols and what appears to be a rusty keyhole.",
-		"unlock_desc": "You have unlocked the gate and have slowly pushed it open to reveil the Antechamber inside.",
+		"unlock_desc": "You have unlocked the gate and have pushed it open to reveil the Antechamber inside.",
 		"direction": "north",
 		"lock_val": "rustyKey",
 		"neighbor": "antechamber",

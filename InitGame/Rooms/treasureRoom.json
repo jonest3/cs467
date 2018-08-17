@@ -31,8 +31,8 @@
 
  "doors": [
 	{
-		"name": "Stone Door",
-		"desc": "The gold in the door shines from the light that is cast inside through the crack.  You can hear the dragon stir from behind it.",
+		"name": "Golden Gate",
+		"desc": "The gold in the gate shines from the light that is cast inside through the crack.  You can hear the dragon stir from behind it.",
 		"unlock_desc": " The smell of brimstone floods the room leading from the Dragon's Den now that the stone door has been opened.",
 		"direction": "south",
 		"lock_val": "",

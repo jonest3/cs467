@@ -73,6 +73,9 @@ class inputParser:
             "EXAMINE": self.look,
             "READ": self.look,
 
+            # Player.Inventory() verbs
+            "INVENTORY": self.inventory,
+
             # Player.drop(item) verbs
             "DROP": self.drop,
             "DUMP": self.drop,
@@ -99,6 +102,9 @@ class inputParser:
 
             # Player.jump() verb
             "JUMP": self.jump,
+
+            # Help verb
+            "HELP": self.help,
 
             # GameHandler.saveGame(game) verbs
             "SAVEGAME": self.save,
@@ -196,4 +202,24 @@ class inputParser:
 
     def badInput(self, args):
         print("'{verb}' not valid command".format(verb=args[0]))
+        return 1
+
+    def inventory(self, args):
+        self.game.player.inventory()
+        return 1
+
+    def help(self, args):
+        print('use item {on|with} {item|door|trap}')
+        print('take item')
+        print('drop item')
+        print('look at {item|door|trap|shelf}')
+        print('look around')
+        print('inventory')
+        print('move to {direction|door|room}')
+        print('{direction}')
+        print('jump')
+        print('savegame')
+        print('loadgame')
+        print('quit')
+        print('help')
         return 1

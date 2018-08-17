@@ -11,14 +11,14 @@
 	"shelves":[
 		{
                         "name": "Hedera Hibernica",
-                        "desc": "A lush, green ivy with small white flowers.",
+                        "desc": "You notice a lush, green ivy with small white flowers.",
                         "locked": "False",
 			"lock_val": "",
 			"contents": []
 		},
 		{
                         "name": "Climbing Hydrangea",
-                        "desc": "A more floral-like vine with bunches of tiny flowers.",
+                        "desc": "You haven't seen one of these in a long time!  You admire the floral-like vine with bunches of tiny flowers.",
                         "locked": "False",
 			"lock_val": "",
 			"contents": []
@@ -27,12 +27,12 @@
 	"floor":[]
  },
 
- "traps": ["rootTrap"],
+ "traps": ["Winding Roots"],
 
  "doors": [
 	{
-		"name": "Steep Cliff",
-		"desc": "A steep cliff lies to the west- the ladder you used to descend still hangs here to enable your egress.",
+		"name": "Darkness",
+		"desc": "The unwelcoming darkness creeps up behind you.  The ladder is still there if you wish to turn back.",
 		"unlock_desc": "",
 		"direction": "west",
 		"lock_val": "",

@@ -38,6 +38,7 @@ class Item:
         self._TransID = trans_id
         self.Trap_Desc = trap_desc
         self.Destination = destination
+        self.hasSprung = False
 
     def get_lock_val(self):
         return self._LockVal
@@ -102,8 +103,8 @@ class Player:
         else:
             self.Bag.append(foundItem)
             print("You pick up the {name} and put it in your bag.\n".format(name=highlight(foundItem.Name)))
-            if foundItem.Trap_Desc:
-
+            if foundItem.Trap_Desc and foundItem.hasSprung == False:
+                foundItem.hasSprung = True
                 print(foundItem.Trap_Desc)
 
                 if foundItem.Destination:
@@ -220,10 +221,10 @@ class Player:
             options = [door.Destination.Name, door.Direction, door.Name]
             if any(weak_match(user_input, target) for target in options):
                 if door.Locked:
-                    print("{name} seems to be locked.  You will need to find something to help you get through.\n".format(name=highlight(door.Name)))
+                    print("You can't seem to get through the {name}.  You will need to find something to help you.\n".format(name=highlight(door.Name)))
                 else:
                     for trap in self._Location.Traps:
-                        if trap.Locked:
+                        if trap.Locked and self.Last_Loc.Name != door.Destination.Name:
                             trap.spring()
                             if trap.Destination:
                                 trap.Destination.enter()
@@ -232,7 +233,7 @@ class Player:
                                 if turns < 1:
                                     turns = 1
                                 return turns
-                            else:
+                            else: 
                                 return self.Turns_Remaining
                     self.Last_Loc = self._Location
                     self._Location = door.Destination
@@ -249,7 +250,7 @@ class Player:
             trap.spring()
             self._Location = trap.Destination
             return 1
-        print("You jump and hit your head.\n")
+        print("Why are you so jumpy?\n")
         return 0
 
 class Room:
@@ -289,8 +290,11 @@ class Room:
             print("You spot a(n) {shelf_list} close by.\n".format(shelf_list=(' and a(n) '.join(shelves))))
         if len(self.Traps) > 0:
             for trap in self.Traps:
-                if trap.Name == "dragon":
-                    print("You quiver in the shadow of the mighty " + highlight(trap.Name) + ".\n")
+                if trap.Locked:
+                    if trap.Name == "Dragon":
+                        print("You quiver in the shadow of the mighty " + highlight(trap.Name) + ".\n")
+                    else:
+                        print("You get an un easy feeling while looking at the " + highlight(trap.Name) + ".\n")
         if len(self.Floor) > 0:
             print("There are a few items scattered about the floor: ")
             items = (highlight(item.Name) for item in self.Floor)
@@ -420,8 +424,8 @@ class Trap:
                 self.Locked = False
                 return 1
             else:
-                print("That doesn't seem to do anything.\n")
+                print("Uh oh, that doesn't seem to do anything.\n")
                 return 0
         else:
-            print("This trap is already disarmed.\n")
+            print("You don't need to worry about this anymore.  It is safe here now.\n")
             return 0

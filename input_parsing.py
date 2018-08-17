@@ -12,8 +12,8 @@ feedback = {
     "24": "The walls groan and the floor creaks...",
     "18": "You feel the castle shake...",
     "12": "The ground begins to shift...",
-    "6": "The walls literally crumble around you...",
-    "0": "The castle collapses around you"
+    "6": "The walls start to crumble around you...",
+    "0": "You hear the castle rumble and see it to collapses around you...Sadly, you don't make it out."
 }
 
 class inputParser:
@@ -136,8 +136,10 @@ class inputParser:
             pronoun = 'on'
         elif 'with' in args:
             pronoun = 'with'
+        elif 'in' in args:
+            pronoun = 'in'
         else:
-            print ("Usage: {verb} [item] on|with [target]".format(verb=args[0]))
+            print ("Usage: {verb} [item] on|with|in [target]".format(verb=args[0]))
             return 1
 
         index = args.index(pronoun)
@@ -180,7 +182,7 @@ class inputParser:
 
     def jump(self, args):
         if self.game.player.jump():
-            print ("You Escaped! Congratulations!")
+            print ("You land safely below and are carried away from the castle.  You may be drenched, but you are alive!  And you have the scepter!  What an adventure.  Congratulations, you've won!")
             self.game.player.Turns_Remaining = 0
         return 1
 

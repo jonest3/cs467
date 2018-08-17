@@ -49,8 +49,8 @@
 		"locked": "False"
 	},
 	{
-		"name": "Stone Door",
-		"desc": "A large stone door with iron details stands before you.  Smoke bellows out from the edges as it tries to escape from whatever is hidden inside.  You can feel heat radiating from the door as you ask yourself: 'Do I even dare try to enter it?'",
+		"name": "Copper Door",
+		"desc": "A large, copper door with iron details stands before you.  Smoke bellows out from the edges as it tries to escape from whatever is hidden inside.  You can feel heat radiating from the door as you ask yourself: 'Do I even dare try to enter it?'",
 		"unlock_desc": "I guess you dared because you inserted the copper key and unlocked the door.  You push open the heavy door, almost burning your hands as you do, and step inside.",
 		"direction": "north",
 		"lock_val": "copperKey",

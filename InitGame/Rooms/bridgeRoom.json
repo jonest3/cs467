@@ -1,11 +1,11 @@
 {
  "key": "bridgeRoom",
 
- "name": "Bridge Room",
+ "name": "Haunting Abyss",
 
- "longDesc": "You slowly walk into the next room, trying to feel around to avoid stumbling on rocks or running into another wall.  The ceiling in this place is much taller than in the cave so you are able to stand up right.  As you continue into this new room you kick a few rocks and watch as they fall over the edge.  The floor is missing and in its place a large chasm of darkness!  You can see another room across the chasm, but you also notice light coming from above.",
+ "longDesc": "You slowly walk into the next room, trying to feel around to avoid stumbling on rocks or running into another wall.\nThe ceiling in this place is much taller than in the cave so you are able to stand up right.  As you continue into this new room you kick a few rocks and watch as they fall over the edge.\n\nThe floor is missing and in its place is a large chasm of darkness!\n\nYou can see another room across the abyss, but you also notice light coming from above.",
 
- "shortDesc": "An almost empty room due to the large chasm in the middle.",
+ "shortDesc": "You have found yourself in an almost empty room due to the large chasm in the middle where the floor should be.",
 
  "traps": [],
 
@@ -13,13 +13,13 @@
 	"shelves": [
 		{
                         "name": "Pile of Rocks",
-                        "desc": "A large pile of rocks in the corner of the room.",
+                        "desc": "There are a large pile of rocks in the corner of the room close to the edge.",
                         "locked": "False",
 			"lock_val": "",
 			"contents": []
 		},
 		{
-                        "name": "The Edge",
+                        "name": "Abyss",
                         "desc": "You look down over the edge into the abyss.  You wonder how far down it is to the bottom and what would happen if you fell.",
                         "locked": "False",
 			"lock_val": "",
@@ -32,7 +32,7 @@
  "doors": [
 	{
 		"name": "Rotted Planks",
-		"desc": "To the north, a few rotted planks remain of what was once a door, now offering only the most token effort at blocking egress to the cave beyond",
+		"desc": "You see the few rotted-plank remains of what was once a door, now offering only the most token effort at blocking egress to the cave beyond.",
 		"unlock_desc": "",
 		"direction": "north",
 		"lock_val": "",
@@ -40,21 +40,12 @@
 		"locked": "False"
 	},
 	{
-		"name": "Steep Cliff",
-		"desc": "A steep cliff lies to the east, made slick by the dampness of the air in this room- definitely a health and safety violation.",
-		"unlock_desc": "You secure the end of the ladder near the top of the cliff. It should be safe to descend to the space below.",
+		"name": "Darkness",
+		"desc": "There is dampness in the air in this place- but not much else due to the gaping whole in the floor.",
+		"unlock_desc": "You've secured one end of the ladder to nearby rocks and have tossed the other end across the abyss, fortunately for you it was long enough to reach.  You can cross the ladder...if you dare.\n",
 		"direction": "east",
 		"lock_val": "ladder",
 		"neighbor": "rootRoom",
-		"locked": "True"
-	},
-	{
-		"name": "Hole in the Ceiling",
-		"desc": "a dark hole in the ceiling leads up to something out of sight above",
-		"unlock_desc": "After a few attempts, you manage to get the rope to catch on something in the hole. You're now able to ascend to the library above!",
-		"direction": "up",
-		"lock_val": "rope",
-		"neighbor": "library",
 		"locked": "True"
 	}
  ]

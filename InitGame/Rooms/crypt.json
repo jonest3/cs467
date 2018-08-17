@@ -3,9 +3,9 @@
 
  "name": "Crypt",
 
- "longDesc": "Statues stand vigil, halberds extended and crossed over a sealed sarcophagus bearing the face of someone dead so long the memory of their name has joined them. You've heard all sorts of terrible things about curses that befall those who disturb such graves but... what wealth might lie inside, undiscovered?",
+ "longDesc": "Statues stand vigil here, halberds extended and crossed over a sealed sarcophagus bearing the face of someone dead so long the memory of their name has joined them. You've heard all sorts of terrible things about curses that befall those who disturb such graves but... what wealth might lie inside, undiscovered?",
 
- "shortDesc": "An ancient crypt where someone of importance was buried.",
+ "shortDesc": "You stand in an ancient crypt where someone of importance was buried.",
 
  "items": {
 	"shelves": [
@@ -14,17 +14,17 @@
 			"desc": "A golden sarcophagus- clearly belonging to someone important- probably holding riches, and probably cursed.",
 			"locked": "False",
 			"lock_val": "",
-			"contents": []
+			"contents": ["brokenSword"]
 		},
 		{
 			"name": "Broken Tomb",
-			"desc": "The top of a stone tomb lies broken in half.  Did that happen when the floor crumbled?  Or did someone break out?",
+			"desc": "The top of a stone tomb lies broken in half.  Did that happen when the floor crumbled?  Or did someone- or something - break out?",
 			"locked": "False",
 			"lock_val": "",
 			"contents": []
 		}
 	],
-	"floor": ["brokenSword"]
+	"floor": []
  },
 
  "traps": [],

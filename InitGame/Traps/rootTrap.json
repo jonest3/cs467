@@ -1,8 +1,8 @@
 {
-   "name": "rootTrap",
+   "name": "Winding Roots",
    "desc": "The roots seem to dance above you.  Or are they following you?",
    "s_desc": "As you begin to move through the room, you become trapped and entangled by the roots.  The harder you fight them, the tighter they become. Suddently, you can't breathe.  The roots have wrapped around your throat.  You slowly drift out of consciousness before dying.",
    "lock_val": "dragonDrool", 
-   "d_desc": "You douse yourself with the dragon's drool.  As you begin to walk through the room, it seems to repel the roots away from you.  You are able to move around freely now.",
+   "d_desc": "You shake the drool and splash it on the roots.  They begin to shrivel up and turn brown.  You seem to be able to move through them safely now.",
    "destination": ""
 }

@@ -3,14 +3,14 @@
 
  "name": "Waterfall",
 
- "longDesc": "A large waterfall plummets from an unseen origin into a fast-moving underground river, and then on further into the distance.",
+ "longDesc": "You've stumbled upon a large waterfall plummeting from an unseen origin into a fast-moving, underground river and then on further into the distance.  Is that... your helicopter you see?",
 
- "shortDesc": "A large waterfall lands here and becomes a swift river.",
+ "shortDesc": "You stand behind a large waterfall and watch as it becomes a swift river.",
 
  "items": {
 	"shelves": [
 		{
-                        "name": "The View",
+                        "name": "Lovely View",
                         "desc": "You look out and see your helicopter in the distance among the heavily brushed jungle.",
                         "locked": "False",
 			"lock_val": "",
@@ -18,7 +18,7 @@
 		},
 		{
                         "name": "Crack in Cavern Wall",
-                        "desc": "A small, dark crevice that seems to be the perfect place to hide something of value.",
+                        "desc": "You see a small, dark crevice that seems to be the perfect place to hide something of value....",
                         "locked": "False",
 			"lock_val": "",
 			"contents": []
@@ -27,12 +27,12 @@
 	"floor": ["pebbles"]
  },
 
- "traps": ["river"],
+ "traps": ["Rushing Water"],
 
  "doors": [
 	{
 		"name": "Slick Stones",
-		"desc": "A path of water-slicked stones leads off to the west, away from the sound of a waterfall.",
+		"desc": "You turn back around and look at the slick stones you scrambled across.  Should you turn back?",
 		"unlock_desc": "",
 		"direction": "west",
 		"lock_val": "",

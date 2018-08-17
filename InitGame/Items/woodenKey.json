@@ -1,6 +1,6 @@
 {
    "name": "Wooden Key",
-   "desc": "A sturdy key carved from the oldest oak tree.",
+   "desc": "How can such a small key be so intricately carved out of wood? Where did it come from?",
    "key_val": "woodenKey",
    "lock_val": "",
    "trans_id": "",

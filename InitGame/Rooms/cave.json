@@ -3,9 +3,9 @@
 
  "name": "Cave",
 
- "longDesc": "The cave's ceiling low enough that you have to hunch over to be able to walk. The smell of some beast is thick in the air here where some beast seems to have made it's den. Some bones crunch underfoot as you pass- some animal? Or a less fortunate fellow explorer? You get the feeling you should move along quickly, whatever lives here could return at any moment.",
+ "longDesc": "The cave's ceiling is low enough that you have to hunch over to be able to walk. The smell of some beast is thick in the air here where it seems that some creature has made it's den. Some bones crunch underfoot as you pass- some animal? Or a less fortunate fellow explorer? You get the feeling you should move along quickly, whatever lives here could return at any moment.",
 
- "shortDesc": "A low cave where something seems to have made it's den.",
+ "shortDesc": "You are in a low cave where something seems to have made it's den.",
 
  "items": {
 	"shelves": [
@@ -32,7 +32,7 @@
  "doors": [
 	{
 		"name": "Narrow Passage",
-		"desc": "a narrow passage- tight enough you have to hold your breath to squeeze through- leads off to the west.",
+		"desc": "Squinting, you see a narrow passage- it looks tight enough that you might have to hold your breath to squeeze through- that leads off to the west.",
 		"unlock_desc": "",
 		"direction": "west",
 		"lock_val": "",
@@ -41,7 +41,7 @@
 	},
 	{
 		"name": "Blood-stained Arch",
-		"desc": "A stone archway to the north bears disturbing stains of a dark brownish red.",
+		"desc": "You see a stone archway to the north that bears disturbing stains of a dark brownish red.",
 		"unlock_desc": "",
 		"direction": "north",
 		"lock_val": "",
@@ -50,7 +50,7 @@
 	},
 	{
 		"name": "Rotted Planks",
-		"desc": "To the south, a few rotted planks remain of what was once a door, now offering only the most token effort at blocking egress to the bridge room beyond.",
+		"desc": "To the south, you encounter a few rotted planks that are all that remain of what was once a door, now offering only the most token effort at blocking egress to the bridge room beyond.",
 		"unlock_desc": "",
 		"direction": "south",
 		"lock_val": "",

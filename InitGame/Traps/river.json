@@ -1,8 +1,8 @@
 {
-   "name": "river",
-   "desc": "A rolling river flowing away from the waterfall and into the jungle",
-   "s_desc": "You jump into the river...",
-   "lock_val": "jump",
-   "d_desc": "You jump into the river...",
+   "name": "Rushing Water",
+   "desc": "You reach your hand out and let the rushing water bathe it.",
+   "s_desc": "You take a deep breath and jump!",
+   "lock_val": "", 
+   "d_desc": "You land safely below and are carried away from the castle.  You may be drenched but you're alive and you have the scepter!  What an adventure.",
    "destination": "helicopterPad"
 }

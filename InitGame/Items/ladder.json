@@ -1,6 +1,6 @@
 {
-   "name": "Rope Ladder",
-   "desc": "A make-shift ladder made from planks of wood and rope.",
+   "name": "Ladder",
+   "desc": "You have made a make-shift ladder out of rotting wood and fraying rope.  I'm sure nothing bad would happen if you tried to use it...",
    "key_val": "ladder",
    "lock_val": "",
    "trans_id": "",

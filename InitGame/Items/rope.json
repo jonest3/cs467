@@ -1,6 +1,6 @@
 {
    "name": "Rope",
-   "desc": "Thick, twine rope with frayed ends.",
+   "desc": "You see the thick, twine rope with frayed ends.  This might come in handy.",
    "key_val": "rope",
    "lock_val": "wood",
    "trans_id": "ladder",

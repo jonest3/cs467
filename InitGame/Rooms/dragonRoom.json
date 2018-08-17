@@ -3,14 +3,14 @@
 
  "name": "Dragon's Den",
 
- "longDesc": "A fearsome sight, a dragon. One you had not hoped to see from this close up. It rests fitfully here in this large, domed chamber, smoke trailing from it's glowing nostrils. It must have been here a while, it certainly looks to have grown too large to fit through any of the doors.",
+ "longDesc": "You're startled at what was behind the door: a fearsome dragon! You had hoped to never see one from this close up. It rests fitfully here in this large, domed chamber, smoke trailing from it's glowing nostrils. It must have been here a while, it certainly looks to have grown too large to fit through any of the doors.",
 
- "shortDesc": "A room where a dragon slumbers.",
+ "shortDesc": "You stand in the room with the mighty dragon.  You don't dare make any sudden movements... or loud noises.",
 
  "items": {
 	"shelves": [
 		{
-                        "name": "Charred Boots",
+                        "name": "Pair of Charred Boots",
                         "desc": "A pair of charred boots stand in front of the wall where the outline of a person remains scortched on the stone.",
                         "locked": "False",
 			"lock_val": "",
@@ -18,7 +18,7 @@
 		},
 		{
                         "name": "Dragon's Egg Shell",
-                        "desc": "The broken remains of the dragon's egg.",
+                        "desc": "The broken remains of what appears to be the dragon's egg lies in the corner of the room.",
                         "locked": "False",
 			"lock_val": "",
 			"contents": ["goldenKey"]
@@ -32,7 +32,7 @@
  "doors": [
 	{
 		"name": "Scorched Door",
-		"desc": "The heavy, stone door is completely scorched on the inside from the dragon's fiery breath.  The iron, shining brightly as it drips to the floor.",
+		"desc": "The heavy, stone door is completely scorched on the inside from the dragon's fiery breath.  Iron shines brightly from it as it drips to the floor.",
 		"unlock_desc": "The door is open and you can see the Nexus safely on the otherside.",
 		"direction": "south",
 		"lock_val": "",
@@ -41,7 +41,7 @@
 	},
 	{
 		"name": "Golden Stone Door",
-		"desc": "Another stone door lays in front of you. Gold inlay once adorning the door has melted and burned deeper into the stone. Fortunately, the keyhole that also forged out of gold and stone has remained intact.  Now if only you had the key.",
+		"desc": "Another stone door lays in front of you. Gold inlay once adorning the door has melted and burned deeper into the stone. Fortunately, the keyhole that was also forged out of gold and stone has magically remained intact.  Now if only you had the key....",
 		"unlock_desc": "You push the door ever-so-slowly trying to be as quiet as possible.  You know the dragon is sleeping, but you aren't sure how long your spell will hold.",
 		"direction": "north",
 		"lock_val": "goldenKey",

@@ -11,7 +11,7 @@
 	"shelves": [
 		{
 			"name": "Pile of Bones",
-			"desc": "a piles of clean-picked bones, piled haphazard in a corner",
+			"desc": "You shiver as you gaze over at the  piles of clean-picked bones, piled haphazard in a corner.",
 			"locked": "False",
 			"lock_val": "",
 			"contents": ["lantern"]

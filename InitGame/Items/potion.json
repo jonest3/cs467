@@ -1,6 +1,6 @@
 {
    "name": "Sleeping Potion",
-   "desc": "Bubbling, purple potion with a sweet smelling aroma.",
+   "desc": "You admire your bubbling, purple potion that has a sweet smelling aroma.  Ma-go'Faan would be proud.",
    "key_val": "potion",
    "lock_val": "vial",
    "trans_id": "fullVial",

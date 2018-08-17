@@ -142,6 +142,8 @@ class inputParser:
             pronoun = 'on'
         elif 'with' in args:
             pronoun = 'with'
+        elif 'in' in args:
+            pronoun = 'in'
         else:
             print ("Usage: {verb} [item] on|with [target]".format(verb=args[0]))
             return 1

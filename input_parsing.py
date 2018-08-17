@@ -30,8 +30,8 @@ class inputParser:
             if feedback.get(str(self.game.player.Turns_Remaining)):
                 print(feedback[str(self.game.player.Turns_Remaining)])
                 del feedback[str(self.game.player.Turns_Remaining)]
-            print("You have {turns} turns left.".format(turns=self.game.player.Turns_Remaining))
-            raw_input = input("Input a command: ")
+#            print("You have {turns} turns left.".format(turns=self.game.player.Turns_Remaining))
+            raw_input = input("\nInput a command: ")
             args = raw_input.split(" ")
             os.system("clear")
             action = self.parse(args[0].upper())
@@ -73,6 +73,9 @@ class inputParser:
             "EXAMINE": self.look,
             "READ": self.look,
 
+            # Player.Inventory() verbs
+            "INVENTORY": self.inventory,
+
             # Player.drop(item) verbs
             "DROP": self.drop,
             "DUMP": self.drop,
@@ -100,9 +103,11 @@ class inputParser:
             # Player.jump() verb
             "JUMP": self.jump,
 
+            # Help verb
+            "HELP": self.help,
+
             # GameHandler.saveGame(game) verbs
             "SAVEGAME": self.save,
-
 
             # GameHandler.loadGame() verbs
             "LOADGAME": self.load,
@@ -158,6 +163,8 @@ class inputParser:
         else:
             target = " ".join(args[1:])
         self.game.player.Turns_Remaining -= self.game.player.move(target)
+        if self.game.player.Turns_Remaining > 0:
+            print("You have {turns} turns left.".format(turns=self.game.player    .Turns_Remaining))
         return 1
 
     def take(self, args):
@@ -193,4 +200,24 @@ class inputParser:
 
     def badInput(self, args):
         print("'{verb}' not valid command".format(verb=args[0]))
+        return 1
+
+    def inventory(self, args):
+        self.game.player.inventory()
+        return 1
+
+    def help(self, args):
+        print('use item {on|with} {item|door|trap}')
+        print('take item')
+        print('drop item')
+        print('look at {item|door|trap|shelf}')
+        print('look around')
+        print('inventory')
+        print('move to {direction|door|room}')
+        print('{direction}')
+        print('jump')
+        print('savegame')
+        print('loadgame')
+        print('quit')
+        print('help')
         return 1
